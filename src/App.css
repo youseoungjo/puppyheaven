@@ -1,0 +1,269 @@
+/* Login */
+
+.LogIn {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh; 
+
+    background-color: lightblue;
+    
+}
+
+.LogIn p {
+    font-family: 'Jua', sans-serif;
+    font-size: 40px;
+}
+
+.LogIn .form_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.LogIn .id_form {
+    margin-top: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.LogIn .pw_form {
+    margin-top: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.LogIn .id_input {
+    display: flex;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 0;
+    background-color: white;
+    border: none;
+    width: 300px;
+    height: 30px;
+}
+
+.LogIn .pw_input {
+    display: flex;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 0;
+    background-color: white;
+    border: none;
+    width: 300px;
+    height: 30px;
+}
+
+.LogIn .inputError {
+    margin-top: 5px;
+    color: red;
+    font-size: 11px;
+}
+
+
+.LogIn button {
+    background-color: lightgray;
+    margin-top: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 80px;
+    height: 30px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* SignUp */
+.SignUp {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh; 
+
+    background-color: lightblue;   
+}
+
+.SignUp p {
+    font-family: 'Jua', sans-serif;
+    font-size: 40px;
+}
+
+.SignUp .form_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.SignUp .id_form {
+    margin-top: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;    
+}
+
+.SignUp .pw_form {
+    margin-top: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;    
+}
+
+.SignUp .name_form {
+    margin-top: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;    
+}
+
+.SignUp .birth_form {
+    margin-top: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;    
+}
+
+.SignUp .zonecode_form {
+    margin-top: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;    
+}
+
+
+.SignUp .address_form {
+    margin-top: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;    
+}
+
+.SignUp .detailAddress_form {
+    margin-top: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;    
+}
+
+.SignUp .id_input {
+    display: flex;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 0;
+    background-color: white;
+    border: none;
+    width: 300px;
+    height: 30px;
+}
+
+.SignUp .pw_input {
+    display: flex;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 0;
+    background-color: white;
+    border: none;
+    width: 300px;
+    height: 30px;
+}
+
+.SignUp .name_input {
+    display: flex;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 0;
+    background-color: white;
+    border: none;
+    width: 300px;
+    height: 30px;
+}
+
+.SignUp .birth_input {
+    display: flex;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 0;
+    background-color: white;
+    border: none;
+    width: 300px;
+    height: 30px;
+}
+
+.SignUp .zonecode_input {
+    display: flex;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 0;
+    background-color: white;
+    border: none;
+    width: 300px;
+    height: 30px;
+}
+
+.SignUp .address_input {
+    display: flex;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 0;
+    background-color: white;
+    border: none;
+    width: 300px;
+    height: 30px;
+}
+
+.SignUp .detailAddress_input {
+    display: flex;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 0;
+    background-color: white;
+    border: none;
+    width: 300px;
+    height: 30px;
+}
+
+.SignUp button {
+    background-color: lightgray;
+    margin-top: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 3px;
+    width: 300px;
+    height: 30px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+/* Main */
+
+.Main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh; 
+
+    background-color: lightblue;
+}
+
+.Main button {
+    background-color: white;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 250px;
+    height: 300px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
