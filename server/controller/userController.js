@@ -18,7 +18,7 @@ exports.signup = async (req, res) => {
     console.error(error);
     res.status(500).json({ success: false, message: '회원가입에 실패했습니다.' });
     }
-    };
+};
 
 exports.login = async (req, res) => {
 const { id } = req.body;

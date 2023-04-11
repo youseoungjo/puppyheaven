@@ -2,13 +2,6 @@ import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-//const User = {
-  //id : '12345678',
-  //pw : '!123qwerty'
-//}
-
-
-
 const LogIn = () => {
 
 
@@ -59,14 +52,7 @@ const LogIn = () => {
       alert("서버와의 통신에 실패했습니다.");
     }
   };
-  //const onClickLoginButton = () => {
-    //if(inputId === User.id && inputPw === User.pw){
-      //alert('로그인에 성공했습니다.');
-      //navigate('/main')
-    //} else {
-      //alert('회원 정보가 없습니다.');
-    //}
-  //};
+
 
   return (
     <div className="LogIn">

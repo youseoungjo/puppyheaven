@@ -9,16 +9,31 @@ function SignUpForm() {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const [birthday, setBirthday] = useState('');
-    //const [address, setAddress] = useState({ zonecode: '', address: '', detailAddress: '' });
+    const [address, setAddress] = useState({ zonecode: '', address: '', detailAddress: '' });
 
+    const [idValid, setIdValid] = useState(false);
+    const [pwValid, setPwValid] = useState(false);
+    
     const navigate = useNavigate();
 
     const handleIdChange = (event) => {
       setId(event.target.value);
+      const regex = /^[a-zA-Z\\d`~!@#$%^&*()-_=+]{7,24}$/;
+      if(regex.test(event.target.value)) {
+        setIdValid(true);
+      } else {
+        setIdValid(false);
+      }
     }
   
     const handlePasswordChange = (event) => {
       setPassword(event.target.value);
+      const regex = /^.*(?=^.{7,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+      if(regex.test(event.target.value)) {
+        setPwValid(true);
+      } else {
+        setPwValid(false);
+      }
     }
   
     const handleNameChange = (event) => {
@@ -28,32 +43,36 @@ function SignUpForm() {
     const handleBirthdayChange = (event) => {
       setBirthday(event.target.value);
     }
-    //const handleInputChange = (event) => {
-      //const { name, value } = event.target;
-      //setAddress({ ...address, [name]: value });
-    //}
+    const handleInputChange = (event) => {
+      const { name, value } = event.target;
+      setAddress({ ...address, [name]: value });
+    }
     const handleSubmit = async (event) => {
       event.preventDefault();
       const data = {
-      id: id,
-      password: password,
-      name: name,
-      birthday: birthday,
-      //address: address
+        id: id,
+        password: password,
+        name: name,
+        birthday: birthday,
+        address: address
       };
       console.log(`submit! ${id} ${password} ${name} ${birthday}`);
       console.log(data);
 
       axios.post('http://localhost:3001/signup', data)
       .then(response => {
-      console.log(response.data);
-      navigate('/')
+        console.log(response.data);
+        navigate('/')
       })
       .catch(error => {
-      console.log('404error');
-      }); 
-      };
-      
+        console.log('404error');
+        if (error.response.status === 409) {
+          alert('중복된 아이디입니다.');
+        } else {
+          alert('회원가입에 실패했습니다.');
+        }
+      });
+    };
   
     return (
       <form onSubmit={handleSubmit}>
@@ -63,10 +82,25 @@ function SignUpForm() {
             <div className="id_form">
               <label>아이디</label>
               <input className="id_input" type="text" value={id} onChange={handleIdChange} />
+              <div className="inputError">
+              {
+                !idValid && id.length > 0 && (
+                  <div>7자 이상 24자 이하로 작성해주세요</div>
+                )
+              }  
+            </div>
             </div>
             <div className="pw_form">
               <label>비밀번호</label>
               <input className="pw_input" type="password" value={password} onChange={handlePasswordChange} />
+              <div className="inputError">
+              {
+                !pwValid && password.length > 0 && (
+                  <div>영문, 숫자, 특수문자 모두 포함 8자 이상 입력</div>
+                )
+              }
+            </div>
+            
             </div>
             <div className="name_form">
               <label>이름</label>
@@ -75,6 +109,20 @@ function SignUpForm() {
             <div className="birth_form">
               <label>생년월일</label>
               <input className="birth_input" type="date" value={birthday} onChange={handleBirthdayChange} />
+            </div>
+            <div className="zonecode_form">
+              <label>우편번호</label>
+              <input className="zonecode_input" type="text" name="zonecode" value={address.zonecode} onChange={handleInputChange} />
+            </div>
+
+            <div className="address_form">
+              <label>주소</label>
+              <input className="address_input" type="text" name="address" value={address.address} onChange={handleInputChange} /> 
+              <AddressInput setAddress={setAddress} />
+            </div>
+            <div className="detailAddress_form">
+              <label>상세 주소:</label>
+              <input  className="detailAddress_input"type="text" name="detailAddress" value={address.detailAddress} onChange={handleInputChange} />
             </div>
             <div>
               <button type="submit">회원가입</button>

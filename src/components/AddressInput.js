@@ -14,15 +14,16 @@ function AddressInput(props) {
   };
 
   const handleClick = (event) => {
-    event.stopPropagation();
+    event.preventDefault();
     new window.daum.Postcode({
       oncomplete: handleComplete,
     }).open();
+    return false;
   };
 
   return (
     <div>
-      <button onClick={handleClick}>주소 검색</button>
+      <button type="button" onClick={handleClick}>주소 검색</button>
     </div>
   );
 }
