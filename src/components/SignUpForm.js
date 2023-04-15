@@ -129,18 +129,24 @@ function SignUpForm() {
               <label>생년월일</label>
               <input className="birth_input" type="date" value={birthday} onChange={handleBirthdayChange} />
             </div>
-            <div className="zonecode_form">
+            {/* <div className="zonecode_form">
               <label>우편번호</label>
               <input className="zonecode_input" type="text" name="zonecode" value={zonecode} onChange={handleZonecodeChange} />
-            </div>
+            </div> */}
 
             <div className="address_form">
               <label>주소</label>
               <input className="address_input" type="text" name="address" value={address} onChange={handleAddressChange} /> 
+            </div>
+            <div className="zonecode_form">
+              <label>우편번호</label>
+              <div className="zonecode_set">
+              <input className="zonecode_input" type="text" name="zonecode" value={zonecode} onChange={handleZonecodeChange} />
               <AddressInput setZonecode={setZonecode} setAddress={setAddress} setDetailAddress={setDetailAddress}/>
+              </div>
             </div>
             <div className="detailAddress_form">
-              <label>상세 주소:</label>
+              <label>상세 주소</label>
               <input  className="detailAddress_input"type="text" name="detailAddress" value={detailAddress} onChange={handleDetailAddressChange} />
             </div>
             <div>

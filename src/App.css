@@ -113,43 +113,49 @@
 }
 
 .SignUp .pw_form {
-    margin-top: 20px;
+    margin-top: 15px;
     text-align: left;
     display: flex;
     flex-direction: column;    
 }
 
 .SignUp .name_form {
-    margin-top: 20px;
+    margin-top: 15px;
     text-align: left;
     display: flex;
     flex-direction: column;    
 }
 
 .SignUp .birth_form {
-    margin-top: 20px;
+    margin-top: 15px;
     text-align: left;
     display: flex;
     flex-direction: column;    
 }
 
-.SignUp .zonecode_form {
-    margin-top: 20px;
+.SignUp .zonecode_form{
+    margin-top: 10px;
+    width: 300px;
     text-align: left;
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;  
 }
-
 
 .SignUp .address_form {
-    margin-top: 20px;
+    margin-top: 15px;
     text-align: left;
     display: flex;
     flex-direction: column;    
+}
+
+.SignUp .zonecode_set{
+    display: flex; 
+    align-content: space-between;
+    width: 145px;
 }
 
 .SignUp .detailAddress_form {
-    margin-top: 20px;
+    margin-top: 10px;
     text-align: left;
     display: flex;
     flex-direction: column;    
@@ -200,13 +206,12 @@
 }
 
 .SignUp .zonecode_input {
-    display: flex;
     border-radius: 8px;
     padding: 16px;
     margin-top: 0;
     background-color: white;
     border: none;
-    width: 300px;
+    width: 150px;
     height: 30px;
 }
 
@@ -232,7 +237,17 @@
     height: 30px;
 }
 
-.SignUp button {
+.SignUp button[type="button"] {
+    background-color: lightgray;
+    margin-right: 5px;
+    margin-bottom: 3px;
+    width: 150px;
+    height: 30px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+.SignUp button[type="submit"] {
     background-color: lightgray;
     margin-top: 30px;
     margin-left: 5px;
@@ -243,6 +258,11 @@
     border-radius: 20px;
     border: none;
     cursor: pointer;
+}
+.SignUp .inputError {
+    margin-top: 5px;
+    color: red;
+    font-size: 11px;
 }
 /* Main */
 
