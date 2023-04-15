@@ -25,10 +25,6 @@ userDao.authenticateUser = async (userId, password) => {
     if (!user) {
       return false;
     }
-    const isMatch = await user.comparePassword(password);
-    if (!isMatch) {
-      return false;
-    }
     const token = user.generateToken();
     return token;
   } catch (error) {

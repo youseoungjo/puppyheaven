@@ -3,14 +3,14 @@ import DaumPostcode from 'react-daum-postcode';
 
 
 function AddressInput(props) {
+  const { setZonecode } = props;
   const { setAddress } = props;
+  const { setDetailAddress } = props;
 
   const handleComplete = (data) => {
-    setAddress({
-      zonecode: data.zonecode,
-      address: data.address,
-      detailAddress: '',
-    });
+    setZonecode(data.zonecode);
+    setAddress(data.address);
+    setDetailAddress('');
   };
 
   const handleClick = (event) => {

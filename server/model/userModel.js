@@ -17,31 +17,39 @@ sequelize.authenticate()
 
 const User = sequelize.define('user', {
 id: {
-type: Sequelize.STRING,
-allowNull: false,
-primaryKey: true
+  type: Sequelize.STRING,
+  allowNull: false,
+  primaryKey: true
 },
 password: {
-type: Sequelize.STRING,
-allowNull: false
+  type: Sequelize.STRING,
+  allowNull: false
 },
 name: {
-type: Sequelize.STRING,
-allowNull: false
+  type: Sequelize.STRING,
+  allowNull: false
 },
 birthday: {
-type: Sequelize.DATEONLY,
-allowNull: false
+  type: Sequelize.DATEONLY,
+  allowNull: false
 },
-//address: {
-//type: Sequelize.STRING,
-//allowNull: false
-//}
+zonecode: {
+  type: Sequelize.STRING,
+  allowNull: false
+},
+address: {
+  type: Sequelize.STRING,
+  allowNull: false
+},
+detailAddress: {
+  type: Sequelize.STRING,
+  allowNull: false
+}
 });
 
 User.prototype.generateToken = function () {
-const token = jwt.sign({ id: this.id }, 'secret_key', { expiresIn: '1h' });
-return token;
+  const token = jwt.sign({ id: this.id }, 'secret_key', { expiresIn: '24h' });
+  return token;
 };
 
 module.exports = User;

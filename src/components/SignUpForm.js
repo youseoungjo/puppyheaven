@@ -9,7 +9,10 @@ function SignUpForm() {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const [birthday, setBirthday] = useState('');
-    const [address, setAddress] = useState({ zonecode: '', address: '', detailAddress: '' });
+    const [zonecode, setZonecode] = useState('');
+    const [address, setAddress] = useState('');
+    const [detailAddress, setDetailAddress] = useState('');
+
 
     const [idValid, setIdValid] = useState(false);
     const [pwValid, setPwValid] = useState(false);
@@ -43,10 +46,24 @@ function SignUpForm() {
     const handleBirthdayChange = (event) => {
       setBirthday(event.target.value);
     }
-    const handleInputChange = (event) => {
-      const { name, value } = event.target;
-      setAddress({ ...address, [name]: value });
+    const handleZonecodeChange = (event) => {
+      event.preventDefault();
+      setZonecode(event.target.value);
     }
+    const handleAddressChange = (event) => {
+      event.preventDefault();
+      setAddress(event.target.value);
+    }
+    const handleDetailAddressChange = (event) => {
+      event.preventDefault();
+      setDetailAddress(event.target.value);
+    }
+    // const handleInputChange = (event) => {
+    //   setZonecode(event.target);
+    //   setAddress(event.target);
+    //   setDetailAddress(event.target);
+    // }
+
     const handleSubmit = async (event) => {
       event.preventDefault();
       const data = {
@@ -54,9 +71,11 @@ function SignUpForm() {
         password: password,
         name: name,
         birthday: birthday,
-        address: address
+        zonecode: zonecode,
+        address: address,
+        detailAddress: detailAddress
       };
-      console.log(`submit! ${id} ${password} ${name} ${birthday}`);
+      console.log(`submit! ${id} ${password} ${name} ${birthday} ${zonecode} ${address} ${detailAddress}`);
       console.log(data);
 
       axios.post('http://localhost:3001/signup', data)
@@ -112,17 +131,17 @@ function SignUpForm() {
             </div>
             <div className="zonecode_form">
               <label>우편번호</label>
-              <input className="zonecode_input" type="text" name="zonecode" value={address.zonecode} onChange={handleInputChange} />
+              <input className="zonecode_input" type="text" name="zonecode" value={zonecode} onChange={handleZonecodeChange} />
             </div>
 
             <div className="address_form">
               <label>주소</label>
-              <input className="address_input" type="text" name="address" value={address.address} onChange={handleInputChange} /> 
-              <AddressInput setAddress={setAddress} />
+              <input className="address_input" type="text" name="address" value={address} onChange={handleAddressChange} /> 
+              <AddressInput setZonecode={setZonecode} setAddress={setAddress} setDetailAddress={setDetailAddress}/>
             </div>
             <div className="detailAddress_form">
               <label>상세 주소:</label>
-              <input  className="detailAddress_input"type="text" name="detailAddress" value={address.detailAddress} onChange={handleInputChange} />
+              <input  className="detailAddress_input"type="text" name="detailAddress" value={detailAddress} onChange={handleDetailAddressChange} />
             </div>
             <div>
               <button type="submit">회원가입</button>
