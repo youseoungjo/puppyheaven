@@ -9,7 +9,14 @@ import Map from './pages/Map';
 import Shop from './pages/Shop';
 import Video from './pages/Video';
 
+import ProductData from './ProductData';
+
 function App() {
+  
+  const [products, setProducts] = useState(ProductData);
+
+  const [cartItem, setCartItem] = useState([]);
+  
   return (
     <BrowserRouter>
       <div className="App">
@@ -19,7 +26,8 @@ function App() {
           <Route path='/find' element={<FindIdPw/>}/>
           <Route path='/main' element={<Main/>}/>
           <Route path='/map' element={<Map/>}/>
-          <Route path='/shop' element={<Shop/>}/>
+          <Route path='/shop' element={<Shop cartItem={cartItem} setCartItem={setCartItem} products={products}/>}/>
+          <Route path='/cart' element={<Cart cartItem={cartItem} setCartItem={setCartItem} />}/>
           <Route path='/video' element={<Video/>}/>
         </Routes>
       </div>
