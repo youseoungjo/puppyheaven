@@ -9,10 +9,10 @@ const sequelize = new Sequelize('mydb', 'root', 'csedbadmin', {
 
 sequelize.authenticate()
   .then(() => {
-    console.log('Connection has been established successfully.');
+    console.log('User Connection has been established successfully.');
   })
   .catch((err) => {
-    console.error('Unable to connect to the database:', err);
+    console.error('Unable to connect to the User database:', err);
 });
 
 const User = sequelize.define('user', {
