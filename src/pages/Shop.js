@@ -97,7 +97,7 @@ const showCartItem = () => {
             </div>
 
 
-            <div className="ProductList">
+            <div className="product_list">
 
               <ProductList productData={products} addCart={handleAddCart} />
 
