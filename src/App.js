@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react'
 
 import Home from './pages/Home';
 import Join from './pages/Join';
@@ -7,6 +8,7 @@ import FindIdPw from './pages/FindIdPw';
 import Main from './pages/Main';
 import Map from './pages/Map';
 import Shop from './pages/Shop';
+import Cart from './pages/Cart';
 import Video from './pages/Video';
 
 import ProductData from './ProductData';
