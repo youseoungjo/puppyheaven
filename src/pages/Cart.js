@@ -41,23 +41,23 @@ const Cart = ({cartItem, setCartItem}) => {
                   <td rowSpan="2" style={{ width: "200px", height: "150px" }}>{item.name}</td>
                   <td rowSpan="2" style={{ width: "100px", height: "150px" }}>{formatter.format(item.price)}</td>
                   <td className="cart" style={{ width: "150px", height: "75px" }}><button onClick={()=>handleRemoveCart(item)}>제거</button></td>
-                  <td rowSpan="2" onClick={() => handleFavoriteClick(item.id)} style={{ width: "100px", height: "75px", cursor: "pointer" }}>
+                  {/* <td rowSpan="2" onClick={() => handleFavoriteClick(item.id)} style={{ width: "100px", height: "75px", cursor: "pointer" }}>
                       {item.isFavorited ? '❤️' : '🤍'}
-                  </td>
+                  </td> */}
                 </tr>
               </React.Fragment>
             ))
     }
 
     
-    const handleQuantity = (type) => {
-        if (type === 'plus') {
-            setQuantity(quantity + 1)
-        } else {
-            if (quantity === 1) return;
-            setQuantity(quantity - 1)
-        }
-    }
+    // const handleQuantity = (type) => {
+    //     if (type === 'plus') {
+    //         setQuantity(quantity + 1)
+    //     } else {
+    //         if (quantity === 1) return;
+    //         setQuantity(quantity - 1)
+    //     }
+    // }
 
 
 

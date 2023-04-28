@@ -1,5 +1,15 @@
 const productModel = require('../model/productModel');
 
+const getProducts = async () => {
+  try {
+    const products = await productModel.Product.findAll();
+    return products;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
 const getCoupangs = async () => {
   try {
     const coupangs = await productModel.Coupang.findAll();
@@ -31,5 +41,5 @@ const getElevens = async () => {
 };
 
 module.exports = {
-  getCoupangs, getGmarkets, getElevens
+  getProducts, getCoupangs, getGmarkets, getElevens
 };

@@ -13,6 +13,7 @@ app.post('/signup', userRouter);
 app.post('/login', userRouter);
 
 //물품 정보 get
+app.get('/productdata', productRouter);
 app.get('/coupang', productRouter);
 app.get('/gmarket', productRouter);
 app.get('/eleven', productRouter);

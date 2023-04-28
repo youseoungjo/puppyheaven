@@ -1,5 +1,14 @@
 const productDao = require('../dao/productDao');
 
+const getProducts = async (req, res, next) => {
+  try {
+    const products = await productDao.getProducts();
+    res.json(products);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const getCoupangs = async (req, res, next) => {
   try {
     const coupangs = await productDao.getCoupangs();
@@ -28,5 +37,5 @@ const getElevens = async (req, res, next) => {
 };
 
 module.exports = {
-  getCoupangs, getGmarkets, getElevens
+  getProducts, getCoupangs, getGmarkets, getElevens
 };

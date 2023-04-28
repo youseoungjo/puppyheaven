@@ -14,6 +14,26 @@ sequelize.authenticate()
     console.error('Unable to connect to the Product database:', err);
 });
 
+const Product = sequelize.define('product', {
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  image: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  age: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  maker: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+});
+
+
 const Coupang = sequelize.define('coupang', {
   productId: {
     type: Sequelize.INTEGER,
@@ -124,11 +144,12 @@ const Eleven = sequelize.define('eleven', {
 
 const productModel = {
   findAll: async () => {
+    const productProducts = await Product.findAll();
     const coupangProducts = await Coupang.findAll();
     const gmarketProducts = await Gmarket.findAll();
     const elevenProducts = await Eleven.findAll();
-    return [coupangProducts, gmarketProducts, elevenProducts];
+    return [productProducts, coupangProducts, gmarketProducts, elevenProducts];
     }
 };
 
-module.exports = {Coupang, Gmarket, Eleven, productModel};
+module.exports = {Product, Coupang, Gmarket, Eleven, productModel};
