@@ -87,10 +87,6 @@ const App = () => {
         minPrice = product.price;
       }
     });
-    // 가격을 찾지 못한 경우
-    if (minPrice === Infinity) {
-      return '-';
-    }
 
     return minPrice;
   };
@@ -105,7 +101,13 @@ const App = () => {
             <td><a href="/price">{productdata.name}</a></td>
             <td>
             {uniqueSortedProducts.map((product) => (
-              <tr><a href="/price">{product.kg}kg {getPrice(productdata.name, product.kg)}</a><input type="checkbox"/></tr>
+            <tr>
+              {product.kg === 0 ? (
+                getPrice(productdata.name, product.kg) === Infinity ? null : <a href="/price">{getPrice(productdata.name, product.kg)}원<input type="checkbox"/></a>
+              ) : (
+                getPrice(productdata.name, product.kg) === Infinity ? null : <a href="/price">{product.kg}kg {getPrice(productdata.name, product.kg)}원<input type="checkbox"/></a>
+              )}
+            </tr>
             ))}
             </td>
             <td onClick={() => handleFavoriteClick(productdata.id)} style={{cursor: "pointer" }}>{productdata.isFavorited ? '❤️' : '🤍'}</td>
