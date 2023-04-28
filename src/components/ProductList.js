@@ -38,24 +38,17 @@ const App = () => {
   const sortedGmarkets = [...gmarkets].sort((a, b) => a.price - b.price);
   const sortedElevens = [...elevens].sort((a, b) => a.price - b.price);
   const sortedProducts = [...sortedCoupangs, ...sortedGmarkets, ...sortedElevens];
-  sortedProducts.sort((a, b) => a.price - b.price);
-
+  
   const uniqueProducts = {};
   sortedProducts.forEach((product) => {
     if (!uniqueProducts[product.kg]) {
-      uniqueProducts[product.kg] = [product];
-    } else {
-      uniqueProducts[product.kg].push(product);
+      uniqueProducts[product.kg] = product;
+    } else if (product.price < uniqueProducts[product.kg].price) {
+      uniqueProducts[product.kg] = product;
     }
   });
-
-  const uniqueSortedProducts = [];
-  for (const kg in uniqueProducts) {
-    const products = uniqueProducts[kg];
-    const minPrice = Math.min(...products.map((product) => product.price));
-    const minProduct = products.find((product) => product.price === minPrice);
-    uniqueSortedProducts.push(minProduct);
-  }
+  
+  const uniqueSortedProducts = Object.values(uniqueProducts).sort((a, b) => a.price - b.price);
 
   const handleFavoriteClick = (id) => {
     const newProducts = products.map((product) => {
@@ -94,6 +87,10 @@ const App = () => {
         minPrice = product.price;
       }
     });
+    // 가격을 찾지 못한 경우
+    if (minPrice === Infinity) {
+      return '-';
+    }
 
     return minPrice;
   };
@@ -108,7 +105,7 @@ const App = () => {
             <td><a href="/price">{productdata.name}</a></td>
             <td>
             {uniqueSortedProducts.map((product) => (
-              <tr><a href="/price">{product.kg}kg {getPrice(productdata.name, product.kg)}</a></tr>
+              <tr><a href="/price">{product.kg}kg {getPrice(productdata.name, product.kg)}</a><input type="checkbox"/></tr>
             ))}
             </td>
             <td onClick={() => handleFavoriteClick(productdata.id)} style={{cursor: "pointer" }}>{productdata.isFavorited ? '❤️' : '🤍'}</td>
