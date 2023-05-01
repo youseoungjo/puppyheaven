@@ -66,7 +66,7 @@ const LogIn = () => {
 
   return (
     <div className="LogIn">
-        <p>애견헤븐</p>
+        <img src="shortlogo.png" alt="로고 이미지"></img>
 
         <div className="form_wrap">
         
@@ -98,7 +98,7 @@ const LogIn = () => {
           <a href="/find" class="link-light">아이디/비밀번호 찾기</a>
           </div>
 
-          <div>
+          <div className="btn-form">
           <button onClick={onClickLoginButton}>로그인</button>
           <button onClick={()=>navigate('/join')}>회원가입</button>
           </div>
