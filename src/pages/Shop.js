@@ -6,6 +6,7 @@ import ProductData from "../ProductData";
 import { ListGroupItem } from "react-bootstrap";
 
 import ProductList from '../components/ProductList';
+// import SignUpForm from '../components/SignUpForm';
 
 const Shop = ({cartItem, setCartItem}) => {
 
@@ -78,36 +79,44 @@ const showCartItem = () => {
   return (
     <div className="Shop">
 
-              <div className="Category">
-                <div className="list-group list-group-flush">
-                    <div style={{margin: "10px"}}/>
-                    <button type="button" className="list-group-item" onClick={()=>navigate('/main')}>메인화면</button>
-                    <button type="button" className="list-group-item" onClick={()=>navigate('/shop')}>계속 쇼핑하기</button>
-                    <button type="button" className="list-group-item" onClick={()=>navigate('/cart')}>장바구니</button>
-                    <div style={{margin: "30px"}}/>
-                    <section>
-                        <div className="list-group-item"><button className="cate_btn" onClick={()=>categoryFilterResult('all')}>all</button></div>
-                        <div className="list-group-item"><button className="cate_btn" onClick={()=>categoryFilterResult('category1')}>카테고리1</button></div>
-                        <div className="list-group-item"><button className="cate_btn" onClick={()=>categoryFilterResult('category2')}>카테고리2</button></div>
-                        <div className="list-group-item"><button className="cate_btn" onClick={()=>categoryFilterResult('category3')}>카테고리3</button></div>
-                        <div className="list-group-item"><button className="cate_btn" onClick={()=>categoryFilterResult('category4')}>카테고리4</button></div>
-                        <div className="list-group-item"><button className="cate_btn" onClick={()=>categoryFilterResult('category5')}>카테고리5</button></div>
-                    </section>
+
+        <div className="Logo">
+          <img src="shortlogo.png" alt="로고 이미지" className="logo-image"></img>
+        </div>
+
+        <div className="Shop-content">
+            <div className="Category">
+              <div className="list-group list-group-flush">
+                  <div style={{margin: "10px"}}/>
+                  <button type="button" className="list-group-item" onClick={()=>navigate('/main')}>메인화면</button>
+                  <button type="button" className="list-group-item" onClick={()=>navigate('/shop')}>계속 쇼핑하기</button>
+                  <button type="button" className="list-group-item" onClick={()=>navigate('/cart')}>장바구니</button>
+                  <div style={{margin: "30px"}}/>
+                  <section>
+                      <div className="list-group-item"><button className="cate_btn" onClick={()=>categoryFilterResult('all')}>all</button></div>
+                      <div className="list-group-item"><button className="cate_btn" onClick={()=>categoryFilterResult('category1')}>카테고리1</button></div>
+                      <div className="list-group-item"><button className="cate_btn" onClick={()=>categoryFilterResult('category2')}>카테고리2</button></div>
+                      <div className="list-group-item"><button className="cate_btn" onClick={()=>categoryFilterResult('category3')}>카테고리3</button></div>
+                      <div className="list-group-item"><button className="cate_btn" onClick={()=>categoryFilterResult('category4')}>카테고리4</button></div>
+                      <div className="list-group-item"><button className="cate_btn" onClick={()=>categoryFilterResult('category5')}>카테고리5</button></div>
+                  </section>
                 </div>
             </div>
 
 
-            <div className="product_list">
+            <div className="product-list">
 
               <ProductList productData={products} addCart={handleAddCart} />
 
-
-
-
-
             </div>
 
-          </div>
+            <div className="product-compare-list">
+
+              {/* <ProductCompareList /> */}
+
+            </div>
+        </div>
+    </div>
 
   )
 }
