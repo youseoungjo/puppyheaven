@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const App = () => {
+const ProductList  = () => {
   const [coupangs, setCoupangs] = useState([]);
   const [gmarkets, setGmarkets] = useState([]);
   const [elevens, setElevens] = useState([]);
@@ -48,6 +48,27 @@ const App = () => {
     }
   });
   
+  // function ProductList(props) {
+  //   const {productData, addCart, addToCompare, removeFromCompare} = props;
+  
+  //   function PriceGet(name, kg) {
+  //     const product = productData.find((product) => product.name === name);
+  //     return product.prices[kg];
+  //   }
+  
+  //   const uniqueProducts = productData.reduce((acc, cur) => {
+  //     cur.packages.forEach((pkg) => {
+  //       const key = cur.name + "-" + pkg.weight;
+  //       if (!acc[key]) {
+  //         acc[key] = {
+  //           name: cur.name,
+  //           kg: pkg.weight,
+  //         };
+  //       }
+  //     });
+  //   return acc;
+  // }, {});
+
   const uniqueSortedProducts = Object.values(uniqueProducts).sort((a, b) => a.price - b.price);
 
   const handleFavoriteClick = (id) => {
@@ -105,7 +126,16 @@ const App = () => {
               {product.kg === 0 ? (
                 getPrice(productdata.name, product.kg) === Infinity ? null : <a href="/price">{getPrice(productdata.name, product.kg)}원<input type="checkbox"/></a>
               ) : (
-                getPrice(productdata.name, product.kg) === Infinity ? null : <a href="/price">{product.kg}kg {getPrice(productdata.name, product.kg)}원<input type="checkbox"/></a>
+                getPrice(productdata.name, product.kg) === Infinity ? null : <a href="/price">{product.kg}kg {getPrice(productdata.name, product.kg)}원
+                <input type="checkbox" 
+                  // onChange={(e) => {
+                  //   if (e.target.checked) {
+                  //     addToCompare(productdata.name, product.kg);
+                  //   } else {
+                  //     removeFromCompare(productdata.name, product.kg);
+                  //   }
+                  // }}
+                  /></a>
               )}
             </tr>
             ))}
@@ -117,71 +147,9 @@ const App = () => {
       </table>
     </div>
     );
+  // }
 }; 
-export default App;
-// import { useEffect, useState } from 'react';
-// import React from 'react';
-// import ProductData from '../ProductData';
-
-// const ProductList = ({productData, addCart}) => {
 
 
 
-//   const [products, setProducts] = useState(ProductData);
-
-//   const formatter = new Intl.NumberFormat('ko-KR', {
-//     style: 'currency',
-//     currency: 'KRW'
-//   });
-
-//   // category
-
-//   useEffect(() => {
-//     setProducts(productData);
-//   }, [productData]);
-
-//   const handleFavoriteClick = (id) => {
-//     const newProducts = products.map((product) => {
-//       if (product.id === id) {
-//         return {
-//           ...product,
-//           isFavorited: !product.isFavorited,
-//         };
-//       } else {
-//         return product;
-//       }
-//     });
-
-//     setProducts(newProducts);
-//   };
-
-
-//   return (
-//     <div className="ProductList">
-
-//       <table>
-//         <tbody>
-//         {products.map((product, index) => (
-//           <React.Fragment key={index}>
-//             <tr>
-//               <td rowSpan="2" style={{ width: "150px", height: "150px" }}><img src={process.env.PUBLIC_URL + product.image} alt={product.name} width="120" height="100"/></td>
-//               <td rowSpan="2" style={{ width: "200px", height: "150px" }}>{product.name}</td>
-//               <td rowSpan="2" style={{ width: "100px", height: "150px" }}>{formatter.format(product.price)}</td>
-//               <td className="cart" style={{ width: "150px", height: "75px" }}><button onClick={()=>addCart(product)}>카트에 담기</button></td>
-//               <td rowSpan="2" onClick={() => handleFavoriteClick(product.id)} style={{ width: "100px", height: "75px", cursor: "pointer" }}>
-//                   {product.isFavorited ? '❤️' : '🤍'}
-//               </td>
-//             </tr>
-//             <tr>
-//               <td className="compare" style={{ width: "150", height: "75px" }}><button>가격 비교</button></td>
-//             </tr>
-//           </React.Fragment>
-//         ))}
-//         </tbody>
-//       </table>
-
-//     </div>
-//   );
-// };
-
-// export default ProductList;
+export default ProductList ;

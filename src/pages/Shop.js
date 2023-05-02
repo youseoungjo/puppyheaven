@@ -6,7 +6,7 @@ import ProductData from "../ProductData";
 import { ListGroupItem } from "react-bootstrap";
 
 import ProductList from '../components/ProductList';
-// import SignUpForm from '../components/SignUpForm';
+import ProductCompareList from '../components/ProductCompareList';
 
 const Shop = ({cartItem, setCartItem}) => {
 
