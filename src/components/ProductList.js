@@ -110,15 +110,15 @@ const ProductList  = (props) => {
         <tbody>
         {productdatas.map((productdata) => (
           <tr>
-            <td><img src={productdata.image} alt={productdata.name} width="120" height="100" /></td>
-            <td><a href="/price">{productdata.name}</a></td>
+            <td><a href={`/ProductCompare?id=${productdata.id}`}><img src={productdata.image} alt={productdata.name} width="120" height="100" /></a></td>
+            <td><a href={`/ProductCompare?id=${productdata.id}`}>{productdata.name}</a></td>
             <td>
             {uniqueSortedProducts.map((product) => (
             <tr>
               {product.kg === 0 ? (
-                getPrice(productdata.name, product.kg) === Infinity ? null : <a href="/price">{getPrice(productdata.name, product.kg)}원<input type="checkbox"/></a>
+                getPrice(productdata.name, product.kg) === Infinity ? null : <a href={`/ProductCompare?id=${productdata.id}`}>{getPrice(productdata.name, product.kg)}원<input type="checkbox"/></a>
               ) : (
-                getPrice(productdata.name, product.kg) === Infinity ? null : <a href="/price">{product.kg}kg {getPrice(productdata.name, product.kg)}원
+                getPrice(productdata.name, product.kg) === Infinity ? null : <a href={`/ProductCompare?id=${productdata.id}`}>{product.kg}kg {getPrice(productdata.name, product.kg)}원
                 <input type="checkbox" onChange={event => handleCheckboxChange(event, product)} /></a>
               )}
             </tr>

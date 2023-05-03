@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import ProductList from './ProductList';
+import PriceCompare from './PriceCompare';
 
 const ProductCompareList = () => {
   const [selectedProducts, setSelectedProducts] = useState([]);
-
+  
+  const navigate = useNavigate();
   const handleCompareClick = () => {
     // 상품 비교 사이트로 이동하는 코드
+    navigate('/PriceCompare');
+    return <PriceCompare selectedProducts={selectedProducts} />;
   };
 
   return (
