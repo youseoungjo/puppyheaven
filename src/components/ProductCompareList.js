@@ -1,40 +1,49 @@
-// import React, { useState } from 'react';
-// import ProductList from './ProductList';
+import React, { useState } from 'react';
+import ProductList from './ProductList';
 
-// function App() {
-//   const [checkedProducts, setCheckedProducts] = useState([]);
+const ProductCompareList = () => {
+  const [selectedProducts, setSelectedProducts] = useState([]);
 
-//   function handleAddToCompare(productName, kg) {
-//     const newCheckedProduct = {name: productName, kg: kg};
-//     setCheckedProducts([...checkedProducts, newCheckedProduct]);
-//   }
+  const handleCompareClick = () => {
+    // 상품 비교 사이트로 이동하는 코드
+  };
 
-//   function handleRemoveFromCompare(productName, kg) {
-//     const newCheckedProduct = {name: productName, kg: kg};
-//     setCheckedProducts(checkedProducts.filter(product => JSON.stringify(product) !== JSON.stringify(newCheckedProduct)));
-//   }
+  return (
+    <div className="ProductCompareList">
+      <h4>상품 비교</h4>
+      <ProductList setSelectedProducts={setSelectedProducts} />
 
-//   return (
-//     <div className="ProductCompareList">
-//       <div className="product-compare-list">
-//         <h2>상품 비교</h2>
-//         <ul>
-//           {checkedProducts.map(product => (
-//             <li key={`${product.name}-${product.kg}`}>
-//               <img src={getProductImage(product.name)} alt={product.name} width="120" height="100" />
-//               {product.kg === 0 ? (
-//                 <div>{getPrice(product.name, product.kg)}원</div>
-//               ) : (
-//                 <div>{product.kg}kg {getPrice(product.name, product.kg)}원</div>
-//               )}
-//               <button onClick={() => handleRemoveFromCompare(product.name, product.kg)}>Remove</button>
-//             </li>
-//           ))}
-//         </ul>
-//       </div>
-//       <ProductList productData={products} addCart={handleAddCart} addToCompare={handleAddToCompare} removeFromCompare={handleRemoveFromCompare} />
-//     </div>
-//   );
-// }
+      {selectedProducts.length > 0 && (
+        <table>
+          <thead>
+            <tr>
+              {selectedProducts.map((product) => (
+                <th key={product.id}>{product.name}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              {selectedProducts.map((product) => (
+                <td key={product.id}><img src={product.image} alt={product.name} /></td>
+              ))}
+            </tr>
+            <tr>
+              {selectedProducts.map((product) => (
+                <td key={product.id}>{product.weight}</td>
+              ))}
+            </tr>
+            <tr>
+              {selectedProducts.map((product) => (
+                <td key={product.id}>{product.price}</td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      )}
+      <button onClick={handleCompareClick}>상품 비교</button>
+    </div>
+  );
+};
 
-// export default ProductCompareList ;
+export default ProductCompareList;

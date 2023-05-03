@@ -112,7 +112,7 @@ const showCartItem = () => {
 
             <div className="product-compare-list">
 
-              {/* <ProductCompareList /> */}
+              <ProductCompareList />
 
             </div>
         </div>

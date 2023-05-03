@@ -1,7 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ProductList  = () => {
+const ProductList  = (props) => {
+
+  const [selectedProducts, setSelectedProducts] = useState([]);
+  
+    function handleCheckboxChange(event, product) {
+      if (event.target.checked) {
+        if (!selectedProducts.find(p => p.id === product.id)) {
+          setSelectedProducts([...selectedProducts, product]);
+        }
+      } else {
+        setSelectedProducts(selectedProducts.filter(p => p.id !== product.id));
+      }
+    }
+
   const [coupangs, setCoupangs] = useState([]);
   const [gmarkets, setGmarkets] = useState([]);
   const [elevens, setElevens] = useState([]);
@@ -47,27 +60,6 @@ const ProductList  = () => {
       uniqueProducts[product.kg] = product;
     }
   });
-  
-  // function ProductList(props) {
-  //   const {productData, addCart, addToCompare, removeFromCompare} = props;
-  
-  //   function PriceGet(name, kg) {
-  //     const product = productData.find((product) => product.name === name);
-  //     return product.prices[kg];
-  //   }
-  
-  //   const uniqueProducts = productData.reduce((acc, cur) => {
-  //     cur.packages.forEach((pkg) => {
-  //       const key = cur.name + "-" + pkg.weight;
-  //       if (!acc[key]) {
-  //         acc[key] = {
-  //           name: cur.name,
-  //           kg: pkg.weight,
-  //         };
-  //       }
-  //     });
-  //   return acc;
-  // }, {});
 
   const uniqueSortedProducts = Object.values(uniqueProducts).sort((a, b) => a.price - b.price);
 
@@ -127,15 +119,7 @@ const ProductList  = () => {
                 getPrice(productdata.name, product.kg) === Infinity ? null : <a href="/price">{getPrice(productdata.name, product.kg)}원<input type="checkbox"/></a>
               ) : (
                 getPrice(productdata.name, product.kg) === Infinity ? null : <a href="/price">{product.kg}kg {getPrice(productdata.name, product.kg)}원
-                <input type="checkbox" 
-                  // onChange={(e) => {
-                  //   if (e.target.checked) {
-                  //     addToCompare(productdata.name, product.kg);
-                  //   } else {
-                  //     removeFromCompare(productdata.name, product.kg);
-                  //   }
-                  // }}
-                  /></a>
+                <input type="checkbox" onChange={event => handleCheckboxChange(event, product)} /></a>
               )}
             </tr>
             ))}
@@ -147,7 +131,6 @@ const ProductList  = () => {
       </table>
     </div>
     );
-  // }
 }; 
 
 
