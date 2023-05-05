@@ -1,24 +1,23 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import ProductList from './ProductList';
-import PriceCompare from './PriceCompare';
+import PriceCompare from './ProductCompare';
 
 const ProductCompareList = () => {
   const [selectedProducts, setSelectedProducts] = useState([]);
-  
+
   const navigate = useNavigate();
   const handleCompareClick = () => {
-    // 상품 비교 사이트로 이동하는 코드
-    navigate('/PriceCompare');
+    navigate('/productcompare');
     return <PriceCompare selectedProducts={selectedProducts} />;
   };
 
   return (
     <div className="ProductCompareList">
-      <h4>상품 비교</h4>
-      <ProductList setSelectedProducts={setSelectedProducts} />
+      {/* <h4>상품 비교</h4>
+      <ProductList setSelectedProducts={setSelectedProducts} /> */}
 
-      {selectedProducts.length > 0 && (
+       {/* {selectedProducts.length > 0 && (
         <table>
           <thead>
             <tr>
@@ -45,7 +44,7 @@ const ProductCompareList = () => {
             </tr>
           </tbody>
         </table>
-      )}
+      )} */}
       <button onClick={handleCompareClick}>상품 비교</button>
     </div>
   );
