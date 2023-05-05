@@ -6,6 +6,7 @@ import ProductCompareList from '../components/ProductCompareList';
 
 const Shop = ({ wishItem, setWishItem }) => {
   const [productdatas, setProductdatas] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState({});
 
   const navigate = useNavigate();
 
@@ -82,6 +83,11 @@ const Shop = ({ wishItem, setWishItem }) => {
     saveToLocalStorage('wishItem', newWishItem); // 로컬 스토리지에 위시리스트 데이터 저장
   };
 
+  //체크된 상품 비교 페이지로
+  const handleProductSelect = (image, name, price) => {
+    setSelectedProduct({ image, name, price });
+  };
+
   return (
     <div className="Shop">
 
@@ -142,12 +148,15 @@ const Shop = ({ wishItem, setWishItem }) => {
                 handleAddWish={handleAddWish}
                 handleRemoveWish={handleRemoveWish}
                 wishItem={wishItem}
+                handleProductSelect={handleProductSelect}
               />
           </div>
 
           <div className="product-compare-list">
 
-              <ProductCompareList />
+              <ProductCompareList 
+                selectedProduct={selectedProduct}
+              />
 
           </div>
       </div>
