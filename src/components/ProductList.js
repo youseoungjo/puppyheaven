@@ -95,9 +95,9 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
 
   const navigate = useNavigate();
 
-  const handlePriceCompare = (productName, productKg) => {
-    navigate(`/pricecompare?name=${productName}&kg=${productKg}`);
-  };
+  // const handlePriceCompare = (productName, productKg) => {
+  //   navigate(`/pricecompare?name=${productName}&kg=${productKg}`);
+  // };
 
   return (
     <div className="ProductList">
@@ -106,29 +106,35 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
           {products.map((product) => (
             <tr key={product.id}>
               <td>
-                <img src={product.image} alt={product.name} width="120" height="100" />
+                  <img src={product.image} alt={product.name} width="120" height="100" />
               </td>
               <td>
-                {product.name}
+                  {product.name}
               </td>
               <td>
-                {uniqueSortedProducts.map((uniqueProduct) => (
-                  <tr onClick={() => handlePriceCompare(product.name, uniqueProduct.kg)}>
-                    {uniqueProduct.kg === 0 ? (
-                      getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
+              {uniqueSortedProducts.map((uniqueProduct) => (
+                <tr key={uniqueProduct.kg}>
+                  {uniqueProduct.kg === 0 ? (
+                    <a href={`/pricecompare?name=${encodeURIComponent(product.name)}&kg=${uniqueProduct.kg}`}>
+                      {getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
                         <>
                           {getPrice(product.name, uniqueProduct.kg)}원
                           <input type="checkbox" />
                         </>
-                      )
-                    ) : getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
-                      <>
-                        {uniqueProduct.kg}kg {getPrice(product.name, uniqueProduct.kg)}원
-                        <input type="checkbox" />
-                      </>
-                    )}
-                  </tr>
-                ))}
+                      )}
+                    </a>
+                  ) : (
+                    <a href={`/pricecompare?name=${encodeURIComponent(product.name)}&kg=${uniqueProduct.kg}`}>
+                      {getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
+                        <>
+                          {uniqueProduct.kg}kg {getPrice(product.name, uniqueProduct.kg)}원
+                          <input type="checkbox" />
+                        </>
+                      )}
+                    </a>
+                  )}
+                </tr>
+              ))}
               </td>
               <td onClick={() => {
                 handleFavoriteClick(product.id);
@@ -145,70 +151,3 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
 };
 
 export default ProductList;
-                
-// import { useEffect, useState } from 'react';
-// import React from 'react';
-// import ProductData from '../ProductData';
-
-// const ProductList = ({productData, addCart}) => {
-
-
-
-//   const [products, setProducts] = useState(ProductData);
-
-//   const formatter = new Intl.NumberFormat('ko-KR', {
-//     style: 'currency',
-//     currency: 'KRW'
-//   });
-
-//   // category
-
-//   useEffect(() => {
-//     setProducts(productData);
-//   }, [productData]);
-
-//   const handleFavoriteClick = (id) => {
-//     const newProducts = products.map((product) => {
-//       if (product.id === id) {
-//         return {
-//           ...product,
-//           isFavorited: !product.isFavorited,
-//         };
-//       } else {
-//         return product;
-//       }
-//     });
-
-//     setProducts(newProducts);
-//   };
-
-
-//   return (
-//     <div className="ProductList">
-
-//       <table>
-//         <tbody>
-//         {products.map((product, index) => (
-//           <React.Fragment key={index}>
-//             <tr>
-//               <td rowSpan="2" style={{ width: "150px", height: "150px" }}><img src={process.env.PUBLIC_URL + product.image} alt={product.name} width="120" height="100"/></td>
-//               <td rowSpan="2" style={{ width: "200px", height: "150px" }}>{product.name}</td>
-//               <td rowSpan="2" style={{ width: "100px", height: "150px" }}>{formatter.format(product.price)}</td>
-//               <td className="cart" style={{ width: "150px", height: "75px" }}><button onClick={()=>addCart(product)}>카트에 담기</button></td>
-//               <td rowSpan="2" onClick={() => handleFavoriteClick(product.id)} style={{ width: "100px", height: "75px", cursor: "pointer" }}>
-//                   {product.isFavorited ? '❤️' : '🤍'}
-//               </td>
-//             </tr>
-//             <tr>
-//               <td className="compare" style={{ width: "150", height: "75px" }}><button>가격 비교</button></td>
-//             </tr>
-//           </React.Fragment>
-//         ))}
-//         </tbody>
-//       </table>
-
-//     </div>
-//   );
-// };
-
-// export default ProductList;

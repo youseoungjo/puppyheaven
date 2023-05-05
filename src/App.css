@@ -448,3 +448,14 @@
     text-align: center;
     position: relative;
 }
+
+/* 하이퍼링크 */
+
+a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
