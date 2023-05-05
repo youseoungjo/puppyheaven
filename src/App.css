@@ -424,4 +424,24 @@
     cursor: pointer;
 }
 
+.Logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    align-items: center;
+}
 
+.Logo .logo-image {
+    align-self: center;
+    width: 250px;
+}
+
+.product-compare-list {
+    background-color: white;
+    width: 22vw;
+    height: 74vh;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+}

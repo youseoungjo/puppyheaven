@@ -85,9 +85,9 @@ const Shop = ({ wishItem, setWishItem }) => {
   return (
     <div className="Shop">
 
-        {/* <div className="Logo">
+        <div className="Logo">
           <img src="shortlogo.png" alt="로고 이미지" className="logo-image"></img>
-        </div> */}
+        </div>
 
         <div className="Shop-content">
           <div className="Category">
@@ -148,11 +148,11 @@ const Shop = ({ wishItem, setWishItem }) => {
           wishItem={wishItem}
         />
       </div>
-      {/* <div className="product-compare-list">
+      <div className="product-compare-list">
 
               <ProductCompareList />
 
-      </div> */}
+      </div>
     </div>
   );
 };
