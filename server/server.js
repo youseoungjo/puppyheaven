@@ -18,6 +18,10 @@ app.get('/coupang', productRouter);
 app.get('/gmarket', productRouter);
 app.get('/eleven', productRouter);
 
+//위시리스트 추가 삭제
+app.post('/wishlist', productRouter);
+app.get('/delete', productRouter);
+
 app.listen(3001, () => {
   console.log('서버가 시작되었습니다. 3001');
 });

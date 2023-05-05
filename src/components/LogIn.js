@@ -66,7 +66,7 @@ const LogIn = () => {
 
   return (
     <div className="LogIn">
-        <p>애견헤븐</p>
+        <img src="shortlogo.png" alt="로고 이미지"></img>
 
         <div className="form_wrap">
         

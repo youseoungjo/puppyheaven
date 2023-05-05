@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
-const App = () => {
+const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRemoveWish, wishItem }) => {
   const [coupangs, setCoupangs] = useState([]);
   const [gmarkets, setGmarkets] = useState([]);
   const [elevens, setElevens] = useState([]);
-  const [productdatas, setProductdatas] = useState([]);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const getProductdatas = async () => {
-      const response = await axios.get('http://localhost:3001/productdata');
-      setProductdatas(response.data);
-    };
-    getProductdatas();
-
     const getCoupangs = async () => {
       const response = await axios.get('http://localhost:3001/coupang');
       setCoupangs(response.data);
@@ -32,13 +26,15 @@ const App = () => {
       setElevens(response.data);
     };
     getElevens();
-  }, []);
+
+    setProducts(productData);
+  }, [productData]);
 
   const sortedCoupangs = [...coupangs].sort((a, b) => a.price - b.price);
   const sortedGmarkets = [...gmarkets].sort((a, b) => a.price - b.price);
   const sortedElevens = [...elevens].sort((a, b) => a.price - b.price);
   const sortedProducts = [...sortedCoupangs, ...sortedGmarkets, ...sortedElevens];
-  
+
   const uniqueProducts = {};
   sortedProducts.forEach((product) => {
     if (!uniqueProducts[product.kg]) {
@@ -47,23 +43,29 @@ const App = () => {
       uniqueProducts[product.kg] = product;
     }
   });
-  
+
   const uniqueSortedProducts = Object.values(uniqueProducts).sort((a, b) => a.price - b.price);
 
-  const handleFavoriteClick = (id) => {
-    const newProducts = products.map((product) => {
-      if (product.id === id) {
-        return {
-          ...product,
-          isFavorited: !product.isFavorited,
-        };
-      } else {
-        return product;
-      }
-    });
+  // const saveToLocalStorage = (key, value) => {
+  //   localStorage.setItem(key, JSON.stringify(value));
+  // };
 
-    setProducts(newProducts);
-  };
+  // const handleFavoriteClick = (id) => {
+  //   const newProducts = products.map((product) => {
+  //     if (product.id === id) {
+  //       return {
+  //         ...product,
+  //         isFavorited: !product.isFavorited,
+  //       };
+  //     } else {
+  //       return product;
+  //     }
+  //   });
+  
+  //   setProducts(newProducts);
+  //   saveToLocalStorage('products', newProducts); // 로컬 스토리지에 상품 데이터 저장
+  // };
+
   const getPrice = (name, kg) => {
     let minPrice = Infinity;
 
@@ -91,34 +93,59 @@ const App = () => {
     return minPrice;
   };
 
+  const navigate = useNavigate();
+
+  const handlePriceCompare = (productName, productKg) => {
+    navigate(`/pricecompare?name=${productName}&kg=${productKg}`);
+  };
+
   return (
     <div className="ProductList">
       <table>
         <tbody>
-        {productdatas.map((productdata) => (
-          <tr>
-            <td><img src={productdata.image} alt={productdata.name} width="120" height="100" /></td>
-            <td><a href="/price">{productdata.name}</a></td>
-            <td>
-            {uniqueSortedProducts.map((product) => (
-            <tr>
-              {product.kg === 0 ? (
-                getPrice(productdata.name, product.kg) === Infinity ? null : <a href="/price">{getPrice(productdata.name, product.kg)}원<input type="checkbox"/></a>
-              ) : (
-                getPrice(productdata.name, product.kg) === Infinity ? null : <a href="/price">{product.kg}kg {getPrice(productdata.name, product.kg)}원<input type="checkbox"/></a>
-              )}
+          {products.map((product) => (
+            <tr key={product.id}>
+              <td>
+                <img src={product.image} alt={product.name} width="120" height="100" />
+              </td>
+              <td>
+                {product.name}
+              </td>
+              <td>
+                {uniqueSortedProducts.map((uniqueProduct) => (
+                  <tr onClick={() => handlePriceCompare(product.name, uniqueProduct.kg)}>
+                    {uniqueProduct.kg === 0 ? (
+                      getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
+                        <>
+                          {getPrice(product.name, uniqueProduct.kg)}원
+                          <input type="checkbox" />
+                        </>
+                      )
+                    ) : getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
+                      <>
+                        {uniqueProduct.kg}kg {getPrice(product.name, uniqueProduct.kg)}원
+                        <input type="checkbox" />
+                      </>
+                    )}
+                  </tr>
+                ))}
+              </td>
+              <td onClick={() => {
+                handleFavoriteClick(product.id);
+                product.isFavorited ? handleRemoveWish(product) : handleAddWish(product);
+                }} style={{ cursor: 'pointer' , color: wishItem.some((item) => item.id === product.id) ? 'red' : 'black'}}>
+                  {wishItem.some((item) => item.id === product.id) ? '❤️' : '🤍'}
+              </td>
             </tr>
-            ))}
-            </td>
-            <td onClick={() => handleFavoriteClick(productdata.id)} style={{cursor: "pointer" }}>{productdata.isFavorited ? '❤️' : '🤍'}</td>
-          </tr>
-        ))}
+          ))}
         </tbody>
       </table>
     </div>
-    );
-}; 
-export default App;
+  );
+};
+
+export default ProductList;
+                
 // import { useEffect, useState } from 'react';
 // import React from 'react';
 // import ProductData from '../ProductData';
