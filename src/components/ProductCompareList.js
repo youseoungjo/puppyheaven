@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import PriceCompare from './ProductCompare';
 
 const ProductCompareList = ({ selectedProducts }) => {
 
+  const navigate = useNavigate();
+
+  const handleCompareClick = () => {
+    navigate('/productcompare');
+    return <PriceCompare selectedProducts={selectedProducts} />;
+  };
 
   return (
     <div className="ProductCompareList">
@@ -18,7 +26,7 @@ const ProductCompareList = ({ selectedProducts }) => {
         ))}
       </div>
     )}
-    <button>상품 비교</button>
+    <button onClick={handleCompareClick}>상품 비교</button>
   </div>
   );
 };
