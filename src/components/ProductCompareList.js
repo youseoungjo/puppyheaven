@@ -12,13 +12,17 @@ const ProductCompareList = ({ selectedProduct }) => {
 
   return (
     <div className="ProductCompareList">
-       <div>
-      <img src={selectedProduct.image} alt={selectedProduct.name} />
-      <p>{selectedProduct.name}</p>
-      <p>{selectedProduct.price}원</p>
-    </div>
-      <button onClick={handleCompareClick}>상품 비교</button>
-    </div>
+    {selectedProduct ? (
+      <div>
+        <img src={selectedProduct.image} alt={selectedProduct.name} />
+        <p>{selectedProduct.name}</p>
+        <p>{selectedProduct.price}원</p>
+      </div>
+    ) : (
+      <p>선택된 상품이 없습니다.</p>
+    )}
+    <button onClick={handleCompareClick}>상품 비교</button>
+  </div>
   );
 };
 

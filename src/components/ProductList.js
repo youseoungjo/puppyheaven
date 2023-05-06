@@ -7,6 +7,7 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
   const [gmarkets, setGmarkets] = useState([]);
   const [elevens, setElevens] = useState([]);
   const [products, setProducts] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -76,8 +77,18 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
 
   //상품 비교 리스트
   const handleCheck = (image, name, kg) => {
-    // 이미지, 이름, 가격을 props로 전달하는 함수 호출
-    handleProductSelect(image, name, getPrice(name, kg));
+    const price = getPrice(name, kg);
+    const product = { image, name, price, kg };
+      
+    setSelectedProduct(prevSelectedProduct => {
+      if (prevSelectedProduct && prevSelectedProduct.name === name && prevSelectedProduct.kg === kg) {
+        handleProductSelect(null);
+        return null;
+      } else {
+        handleProductSelect(product);
+        return product;
+      }
+    });
   };
 
   return (

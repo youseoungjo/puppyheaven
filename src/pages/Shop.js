@@ -6,7 +6,7 @@ import ProductCompareList from '../components/ProductCompareList';
 
 const Shop = ({ wishItem, setWishItem }) => {
   const [productdatas, setProductdatas] = useState([]);
-  const [selectedProduct, setSelectedProduct] = useState({});
+  const [selectedProduct, setSelectedProduct] =  useState([]);
 
   const navigate = useNavigate();
 
@@ -65,6 +65,7 @@ const Shop = ({ wishItem, setWishItem }) => {
     saveToLocalStorage('productdatas', newProductdatas); // 로컬 스토리지에 상품 데이터 저장
     setWishItem(newProductdatas.filter((productdata) => productdata.isFavorited)); // 위시리스트 업데이트
   };
+
   const handleAddWish = (product) => {
     const isDuplicated = wishItem.some((item) => item.id === product.id);
   
@@ -84,8 +85,8 @@ const Shop = ({ wishItem, setWishItem }) => {
   };
 
   //체크된 상품 비교 페이지로
-  const handleProductSelect = (image, name, price) => {
-    setSelectedProduct({ image, name, price });
+  const handleProductSelect = (product) => {
+    setSelectedProduct(product);
   };
 
   return (
