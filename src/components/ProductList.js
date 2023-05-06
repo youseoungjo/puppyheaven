@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
-const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRemoveWish, wishItem, handleProductSelect  }) => {
+const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRemoveWish, wishItem, onCheck  }) => {
   const [coupangs, setCoupangs] = useState([]);
   const [gmarkets, setGmarkets] = useState([]);
   const [elevens, setElevens] = useState([]);
   const [products, setProducts] = useState([]);
-  const [selectedProduct, setSelectedProduct] = useState([]);
+  const [selectedProducts, setSelectedProducts] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -79,16 +79,22 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
   const handleCheck = (image, name, kg) => {
     const price = getPrice(name, kg);
     const product = { image, name, price, kg };
-      
-    setSelectedProduct(prevSelectedProduct => {
-      if (prevSelectedProduct && prevSelectedProduct.name === name && prevSelectedProduct.kg === kg) {
-        handleProductSelect(null);
-        return null;
-      } else {
-        handleProductSelect(product);
-        return product;
-      }
-    });
+  
+    const index = selectedProducts.findIndex(
+      (p) => p.name === product.name && p.kg === product.kg
+    );
+  
+    let newSelectedProducts = [...selectedProducts];
+  
+    if (index >= 0) {
+      newSelectedProducts.splice(index, 1);
+    } else {
+      newSelectedProducts.push(product);
+    }
+  
+    onCheck(newSelectedProducts); // 부모 컴포넌트로 선택된 상품들을 보냄
+  
+    setSelectedProducts(newSelectedProducts);
   };
 
   return (

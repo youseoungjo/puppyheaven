@@ -6,7 +6,7 @@ import ProductCompareList from '../components/ProductCompareList';
 
 const Shop = ({ wishItem, setWishItem }) => {
   const [productdatas, setProductdatas] = useState([]);
-  const [selectedProduct, setSelectedProduct] =  useState([]);
+  const [selectedProducts, setSelectedProducts] =  useState([]);
 
   const navigate = useNavigate();
 
@@ -85,9 +85,11 @@ const Shop = ({ wishItem, setWishItem }) => {
   };
 
   //체크된 상품 비교 페이지로
-  const handleProductSelect = (product) => {
-    setSelectedProduct(product);
+  
+  const handleSelectedProducts = (newSelectedProducts) => {
+    setSelectedProducts(newSelectedProducts);
   };
+  
 
   return (
     <div className="Shop">
@@ -149,14 +151,16 @@ const Shop = ({ wishItem, setWishItem }) => {
                 handleAddWish={handleAddWish}
                 handleRemoveWish={handleRemoveWish}
                 wishItem={wishItem}
-                handleProductSelect={handleProductSelect}
+                selectedProducts={selectedProducts}
+                onCheck={handleSelectedProducts}
               />
+
           </div>
 
           <div className="product-compare-list">
 
               <ProductCompareList 
-                selectedProduct={selectedProduct}
+                selectedProducts={selectedProducts}
               />
 
           </div>
