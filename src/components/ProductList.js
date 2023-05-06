@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
-const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRemoveWish, wishItem }) => {
+const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRemoveWish, handleCheckboxClick, wishItem }) => {
   const [coupangs, setCoupangs] = useState([]);
   const [gmarkets, setGmarkets] = useState([]);
   const [elevens, setElevens] = useState([]);
@@ -30,6 +30,7 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
     setProducts(productData);
   }, [productData]);
 
+
   const sortedCoupangs = [...coupangs].sort((a, b) => a.price - b.price);
   const sortedGmarkets = [...gmarkets].sort((a, b) => a.price - b.price);
   const sortedElevens = [...elevens].sort((a, b) => a.price - b.price);
@@ -45,26 +46,6 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
   });
 
   const uniqueSortedProducts = Object.values(uniqueProducts).sort((a, b) => a.price - b.price);
-
-  // const saveToLocalStorage = (key, value) => {
-  //   localStorage.setItem(key, JSON.stringify(value));
-  // };
-
-  // const handleFavoriteClick = (id) => {
-  //   const newProducts = products.map((product) => {
-  //     if (product.id === id) {
-  //       return {
-  //         ...product,
-  //         isFavorited: !product.isFavorited,
-  //       };
-  //     } else {
-  //       return product;
-  //     }
-  //   });
-  
-  //   setProducts(newProducts);
-  //   saveToLocalStorage('products', newProducts); // 로컬 스토리지에 상품 데이터 저장
-  // };
 
   const getPrice = (name, kg) => {
     let minPrice = Infinity;
@@ -93,11 +74,14 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
     return minPrice;
   };
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  // const handlePriceCompare = (productName, productKg) => {
-  //   navigate(`/pricecompare?name=${productName}&kg=${productKg}`);
-  // };
+  // // const handlePriceCompare = (productName, productKg) => {
+  // //   navigate(`/pricecompare?name=${productName}&kg=${productKg}`);
+  // // };
+
+
+  
 
   return (
     <div className="ProductList">
@@ -106,10 +90,10 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
           {products.map((product) => (
             <tr key={product.id}>
               <td>
-                  <img src={product.image} alt={product.name} width="120" height="100" />
+                <img src={product.image} alt={product.name} width="120" height="100" />
               </td>
               <td>
-                  {product.name}
+                {product.name}<input type="checkbox" onClick={() => handleCheckboxClick(product)} />
               </td>
               <td>
               {uniqueSortedProducts.map((uniqueProduct) => (
@@ -119,7 +103,6 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
                       {getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
                         <>
                           {getPrice(product.name, uniqueProduct.kg)}원
-                          <input type="checkbox" />
                         </>
                       )}
                     </a>
@@ -128,7 +111,6 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
                       {getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
                         <>
                           {uniqueProduct.kg}kg {getPrice(product.name, uniqueProduct.kg)}원
-                          <input type="checkbox" />
                         </>
                       )}
                     </a>

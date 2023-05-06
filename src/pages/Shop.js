@@ -82,6 +82,21 @@ const Shop = ({ wishItem, setWishItem }) => {
     saveToLocalStorage('wishItem', newWishItem); // 로컬 스토리지에 위시리스트 데이터 저장
   };
 
+  const [selectedProducts, setSelectedProducts] = useState([]);
+  const handleCheckboxClick = (product) => {
+    if (selectedProducts.some((selectedProduct) => selectedProduct.id === product.id)) {
+      // 이미 선택된 상품인 경우, 선택 해제
+      const newSelectedProducts = selectedProducts.filter((selectedProduct) => selectedProduct.id !== product.id);
+      setSelectedProducts(newSelectedProducts);
+      localStorage.setItem('selectedProducts', JSON.stringify(newSelectedProducts));
+    } else {
+      // 선택되지 않은 상품인 경우, 선택
+      const newSelectedProducts = [...selectedProducts, product];
+      setSelectedProducts(newSelectedProducts);
+      localStorage.setItem('selectedProducts', JSON.stringify(newSelectedProducts));
+    }
+  };
+
   return (
     <div className="Shop">
 
@@ -141,6 +156,7 @@ const Shop = ({ wishItem, setWishItem }) => {
                 handleFavoriteClick={handleFavoriteClick}
                 handleAddWish={handleAddWish}
                 handleRemoveWish={handleRemoveWish}
+                handleCheckboxClick={handleCheckboxClick}
                 wishItem={wishItem}
               />
 
@@ -148,7 +164,9 @@ const Shop = ({ wishItem, setWishItem }) => {
 
           <div className="product-compare-list">
 
-            <ProductCompareList />
+            <ProductCompareList
+              selectedProducts={selectedProducts}
+            />
 
           </div>
       </div>
