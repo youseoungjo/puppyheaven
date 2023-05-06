@@ -74,14 +74,6 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
     return minPrice;
   };
 
-  // const navigate = useNavigate();
-
-  // // const handlePriceCompare = (productName, productKg) => {
-  // //   navigate(`/pricecompare?name=${productName}&kg=${productKg}`);
-  // // };
-
-
-  
 
   return (
     <div className="ProductList">
