@@ -12,6 +12,7 @@ const PriceCompare = () => {
   const [gmarkets, setGmarkets] = useState([]);
   const [elevens, setElevens] = useState([]);
   const [lowestPriceUrl, setLowestPriceUrl] = useState('');
+  const [includeDelivery, setIncludeDelivery] = useState(false);
 
   useEffect(() => {
     console.log('name:', productName);
@@ -22,19 +23,19 @@ const PriceCompare = () => {
       setProductdata(response.data.filter((productdata) => productdata.name===productName));
     };
     getProductdata();
-    
+
     const getCoupangs = async () => {
       const response = await axios.get('http://localhost:3001/coupang');
       setCoupangs(response.data.filter((coupang) => coupang.name===productName && parseInt(coupang.kg)===parseInt(productKg)));
     };
     getCoupangs();
-  
+
     const getGmarkets = async () => {
       const response = await axios.get('http://localhost:3001/gmarket');
       setGmarkets(response.data.filter((gmarket) => gmarket.name===productName && parseInt(gmarket.kg)===parseInt(productKg)));
     };
     getGmarkets();
-  
+
     const getElevens = async () => {
       const response = await axios.get('http://localhost:3001/eleven');
       setElevens(response.data.filter((eleven) => eleven.name===productName && parseInt(eleven.kg)===parseInt(productKg)));
@@ -57,6 +58,13 @@ const PriceCompare = () => {
     setLowestPriceUrl(lowestPriceProductUrl);
   }, [lowestPriceProductUrl]);
 
+  const getTotalPrice = () => {
+    let totalPrice = lowestPrice;
+    if (includeDelivery && lowestPriceProduct) {
+      totalPrice += lowestPriceProduct.deliveryFee;
+    }
+    return totalPrice;
+  }
 
   return (
     <div className="PriceCompare">
@@ -66,13 +74,18 @@ const PriceCompare = () => {
         </div>
         ))}
       <div>
-      <h2>최저가:<a href={lowestPriceUrl}>{lowestPrice}원</a></h2>
+      <h2>최저가:<a href={lowestPriceUrl}>{getTotalPrice()}원</a></h2>
+      <label>
+        <input type="checkbox" checked={includeDelivery} onChange={() => setIncludeDelivery(!includeDelivery)} />
+        배송비 포함
+      </label>
       <button onClick={() => {if(lowestPriceUrl){window.location.href=lowestPriceUrl;}}}>최저가 구매하기</button>
       {sortedProducts.map((product) => (
         <table>
             <tr>
               <td><img src={product.image} alt="쇼핑몰 로고"/></td>
-              <td><a href={product.url}>{product.price}원</a></td>
+              <td>{includeDelivery ? <a href={product.url}>{product.price + product.deliveryFee}원</a> : <a href={product.url}>{product.price}원</a>}</td>
+              <td>{product.deliveryFee}원</td>
             </tr>
         </table>
         ))}
@@ -80,22 +93,5 @@ const PriceCompare = () => {
     </div>
   );
 };
-// return (
-//   <div>
-//     <h2>최저가:<a href={lowestPriceUrl}>{lowestPrice}원</a></h2>
-//     <button onClick={() => {if(lowestPriceUrl){window.location.href=lowestPriceUrl;}}}>최저가 구매하기</button>
-//     {/* <input type='checkbox' onChange={() => setIncludeDeliveryFee(!includeDeliveryFee)}/> */}
-//     {sortedProducts.map((product) => (
-//       <div>
-//         <div key={product.productId}>
-//           <img src={product.image} alt="쇼핑몰 로고"/>
-//           {/* <a href={product.url}>{getPriceWithDeliveryFee(product)}원</a> */}
-//           <a href={product.url}>{product.price+product.deliveryFee}원</a>
-//           <p>{product.deliveryFee}</p>
-//         </div>
-//       </div>
-//     ))}
-//   </div>
-// );
-// };
+
 export default PriceCompare;

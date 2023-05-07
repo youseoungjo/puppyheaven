@@ -6,7 +6,7 @@ import ProductCompareList from '../components/ProductCompareList';
 
 const Shop = ({ wishItem, setWishItem }) => {
   const [productdatas, setProductdatas] = useState([]);
-  const [selectedProducts, setSelectedProducts] =  useState([]);
+  const [originalProductdatas, setOriginalProductdatas] = useState([]);
 
   const navigate = useNavigate();
 
@@ -14,6 +14,7 @@ const Shop = ({ wishItem, setWishItem }) => {
     const getProductdatas = async () => {
       const response = await axios.get('http://localhost:3001/productdata');
       setProductdatas(response.data);
+      setOriginalProductdatas(response.data);
     };
     getProductdatas();
   }, []);
@@ -39,12 +40,12 @@ const Shop = ({ wishItem, setWishItem }) => {
       setWishItem(savedWishItem);
     }
   }, []);
-
+  
   const categoryFilterResult = (category) => {
     if (category === 'all') {
-      setProductdatas(productdatas);
+      setProductdatas(originalProductdatas);
     } else {
-      const filteredProducts = productdatas.filter((productdata) => productdata.categoryid === category);
+      const filteredProducts = originalProductdatas.filter((productdata) => productdata.categoryid === parseInt(category));
       setProductdatas(filteredProducts);
     }
   };
@@ -84,12 +85,20 @@ const Shop = ({ wishItem, setWishItem }) => {
     saveToLocalStorage('wishItem', newWishItem); // 로컬 스토리지에 위시리스트 데이터 저장
   };
 
-  //체크된 상품 비교 페이지로
-  
-  const handleSelectedProducts = (newSelectedProducts) => {
-    setSelectedProducts(newSelectedProducts);
+  const [selectedProducts, setSelectedProducts] = useState([]);
+  const handleCheckboxClick = (product) => {
+    if (selectedProducts.some((selectedProduct) => selectedProduct.id === product.id)) {
+      // 이미 선택된 상품인 경우, 선택 해제
+      const newSelectedProducts = selectedProducts.filter((selectedProduct) => selectedProduct.id !== product.id);
+      setSelectedProducts(newSelectedProducts);
+      localStorage.setItem('selectedProducts', JSON.stringify(newSelectedProducts));
+    } else {
+      // 선택되지 않은 상품인 경우, 선택
+      const newSelectedProducts = [...selectedProducts, product];
+      setSelectedProducts(newSelectedProducts);
+      localStorage.setItem('selectedProducts', JSON.stringify(newSelectedProducts));
+    }
   };
-  
 
   return (
     <div className="Shop">
@@ -123,7 +132,7 @@ const Shop = ({ wishItem, setWishItem }) => {
                       애견 장난감
                       </button>
                     </div>
-                    <div className="list-group-item">
+                    {/* <div className="list-group-item">
                       <button className="cate_btn" onClick={() => categoryFilterResult('3')}>
                       카테고리3
                       </button>
@@ -137,7 +146,7 @@ const Shop = ({ wishItem, setWishItem }) => {
                       <button className="cate_btn" onClick={() => categoryFilterResult('5')}>
                       카테고리5
                       </button>
-                    </div>
+                    </div> */}
                 </section>
             </div>
           </div>
@@ -150,6 +159,7 @@ const Shop = ({ wishItem, setWishItem }) => {
                 handleFavoriteClick={handleFavoriteClick}
                 handleAddWish={handleAddWish}
                 handleRemoveWish={handleRemoveWish}
+                handleCheckboxClick={handleCheckboxClick}
                 wishItem={wishItem}
                 selectedProducts={selectedProducts}
                 onCheck={handleSelectedProducts}
@@ -159,9 +169,9 @@ const Shop = ({ wishItem, setWishItem }) => {
 
           <div className="product-compare-list">
 
-              <ProductCompareList 
-                selectedProducts={selectedProducts}
-              />
+            <ProductCompareList
+              selectedProducts={selectedProducts}
+            />
 
           </div>
       </div>

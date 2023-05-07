@@ -40,21 +40,23 @@ const LogIn = () => {
   
 
   const onClickLoginButton = async () => {
-    // try {
-    //   const response = await axios.post("http://localhost:3001/login", {
-    //     id: inputId,
-    //     pw: inputPw,
-    //   });
-    //   if (response.data.success) {
-    //     alert("로그인에 성공했습니다.");
-    //     navigate("/main");
-    //   } else {
-    //     alert("회원 정보가 없습니다.");
-    //   }
-    // } catch (error) {
-    //   console.log('error');
-    //   alert("서버와의 통신에 실패했습니다.");
-    // }
+    //회원가입 후 로그인
+    try {
+      const response = await axios.post("http://localhost:3001/login", {
+        id: inputId,
+        pw: inputPw,
+      });
+      if (response.data.success) {
+        alert("로그인에 성공했습니다.");
+        navigate("/main");
+      } else {
+        alert("회원 정보가 없습니다.");
+      }
+    } catch (error) {
+      console.log('error');
+      alert("서버와의 통신에 실패했습니다.");
+    }
+    //User로그인
     if(inputId === User.id && inputPw === User.pw){
       alert('로그인에 성공했습니다.');
       navigate("/main");

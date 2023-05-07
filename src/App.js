@@ -13,6 +13,7 @@ import Video from './pages/Video';
 
 import ProductData from './ProductData';
 import PriceCompare from './components/PriceCompare';
+import ProductCompare from './components/ProductCompare';
 
 function App() {
   
@@ -33,6 +34,7 @@ function App() {
           <Route path='/wish' element={<WishList wishItem={wishItem} setWishItem={setWishItem} />}/>
           <Route path='/video' element={<Video/>}/>
           <Route path='/pricecompare' element={<PriceCompare/>}/>
+          <Route path='/productcompare' element={<ProductCompare/>}/>
         </Routes>
       </div>
     </BrowserRouter>
