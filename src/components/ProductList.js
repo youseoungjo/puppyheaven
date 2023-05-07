@@ -8,7 +8,7 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
   const [elevens, setElevens] = useState([]);
   const [products, setProducts] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const getCoupangs = async () => {
@@ -87,28 +87,28 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
                 <img src={product.image} alt={product.name} width="120" height="100" />
               </td>
               <td>
-                {product.name}<input type="checkbox" onClick={() => handleCheckboxClick(product)} />
+                {product.name}
               </td>
               <td>
               {uniqueSortedProducts.map((uniqueProduct) => (
                 <tr key={uniqueProduct.kg}>
-                  {uniqueProduct.kg === 0 ? (
-                    <a href={`/pricecompare?name=${encodeURIComponent(product.name)}&kg=${uniqueProduct.kg}`}>
-                      {getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
-                        <>
-                          {getPrice(product.name, uniqueProduct.kg)}원
-                        </>
-                      )}
-                    </a>
-                  ) : (
-                    <a href={`/pricecompare?name=${encodeURIComponent(product.name)}&kg=${uniqueProduct.kg}`}>
-                      {getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
-                        <>
-                          {uniqueProduct.kg}kg {getPrice(product.name, uniqueProduct.kg)}원
-                        </>
-                      )}
-                    </a>
-                  )}
+                    {uniqueProduct.kg === 0 ? (
+                      <a href={`/pricecompare?name=${encodeURIComponent(product.name)}&kg=${uniqueProduct.kg}`}>
+                        {getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
+                          <>
+                            {getPrice(product.name, uniqueProduct.kg)}원
+                          </>
+                        )}
+                      </a>
+                    ) : (
+                      <a href={`/pricecompare?name=${encodeURIComponent(product.name)}&kg=${uniqueProduct.kg}`}>
+                        {getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
+                          <>
+                            {uniqueProduct.kg}kg {getPrice(product.name, uniqueProduct.kg)}원
+                          </>
+                        )}
+                      </a>
+                    )}
                 </tr>
               ))}
               </td>
@@ -118,6 +118,7 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
                 }} style={{ cursor: 'pointer' , color: wishItem.some((item) => item.id === product.id) ? 'red' : 'black'}}>
                   {wishItem.some((item) => item.id === product.id) ? '❤️' : '🤍'}
               </td>
+              <td><input type="checkbox" onClick={() => handleCheckboxClick(product)} /></td>
             </tr>
           ))}
         </tbody>

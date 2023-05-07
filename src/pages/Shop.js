@@ -115,8 +115,13 @@ const Shop = ({ wishItem, setWishItem }) => {
                   <button type="button" className="list-group-item" onClick={() => navigate('/main')}>메인화면</button>
                   <button type="button" className="list-group-item" onClick={() => navigate('/shop')}>계속 쇼핑하기</button>
                   <button type="button" className="list-group-item" onClick={() => navigate('/wish')}>위시리스트</button>
-                <div style={{margin: "30px"}}/>
-                <section>
+                  <div style={{margin: "30px"}}/>
+                  <section>
+                    <button type="button" className="list-group-item" onClick={() => categoryFilterResult('all')}>All</button>
+                    <button type="button" className="list-group-item" onClick={() => categoryFilterResult('1')}>애견 사료</button>
+                    <button type="button" className="list-group-item" onClick={() => categoryFilterResult('2')}>애견 장난감</button>
+                  </section>
+                  {/* <section>
                     <div className="list-group-item">
                       <button className="cate_btn" onClick={() => categoryFilterResult('all')}>
                       all
@@ -132,7 +137,7 @@ const Shop = ({ wishItem, setWishItem }) => {
                       애견 장난감
                       </button>
                     </div>
-                    {/* <div className="list-group-item">
+                    <div className="list-group-item">
                       <button className="cate_btn" onClick={() => categoryFilterResult('3')}>
                       카테고리3
                       </button>
@@ -146,8 +151,8 @@ const Shop = ({ wishItem, setWishItem }) => {
                       <button className="cate_btn" onClick={() => categoryFilterResult('5')}>
                       카테고리5
                       </button>
-                    </div> */}
-                </section>
+                    </div>
+                  </section> */}
             </div>
           </div>
 
@@ -162,7 +167,6 @@ const Shop = ({ wishItem, setWishItem }) => {
                 handleCheckboxClick={handleCheckboxClick}
                 wishItem={wishItem}
                 selectedProducts={selectedProducts}
-                onCheck={handleSelectedProducts}
               />
 
           </div>
