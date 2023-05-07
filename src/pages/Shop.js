@@ -6,6 +6,7 @@ import ProductCompareList from '../components/ProductCompareList';
 
 const Shop = ({ wishItem, setWishItem }) => {
   const [productdatas, setProductdatas] = useState([]);
+  const [originalProductdatas, setOriginalProductdatas] = useState([]);
 
   const navigate = useNavigate();
 
@@ -13,6 +14,7 @@ const Shop = ({ wishItem, setWishItem }) => {
     const getProductdatas = async () => {
       const response = await axios.get('http://localhost:3001/productdata');
       setProductdatas(response.data);
+      setOriginalProductdatas(response.data);
     };
     getProductdatas();
   }, []);
@@ -38,12 +40,12 @@ const Shop = ({ wishItem, setWishItem }) => {
       setWishItem(savedWishItem);
     }
   }, []);
-
+  
   const categoryFilterResult = (category) => {
     if (category === 'all') {
-      setProductdatas(productdatas);
+      setProductdatas(originalProductdatas);
     } else {
-      const filteredProducts = productdatas.filter((productdata) => productdata.categoryid === category);
+      const filteredProducts = originalProductdatas.filter((productdata) => productdata.categoryid === parseInt(category));
       setProductdatas(filteredProducts);
     }
   };
@@ -129,7 +131,7 @@ const Shop = ({ wishItem, setWishItem }) => {
                       애견 장난감
                       </button>
                     </div>
-                    <div className="list-group-item">
+                    {/* <div className="list-group-item">
                       <button className="cate_btn" onClick={() => categoryFilterResult('3')}>
                       카테고리3
                       </button>
@@ -143,7 +145,7 @@ const Shop = ({ wishItem, setWishItem }) => {
                       <button className="cate_btn" onClick={() => categoryFilterResult('5')}>
                       카테고리5
                       </button>
-                    </div>
+                    </div> */}
                 </section>
             </div>
           </div>
