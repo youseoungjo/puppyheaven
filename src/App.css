@@ -431,14 +431,38 @@
     overflow: auto;
 }
 
+.ProductList table {
+    width: 100%;
+    table-layout: fixed;
+  }
+
 .ProductList td {
     text-align: center;
     padding: 30px;
 }
 
-.ProductList a {
+.Product-img {
+    width: 200px;
+}
+
+.Product-name {
+    width: 270px;
+}
+
+.Product-button {
+    width: 100px;
+}
+
+.Product-price {
+    width: 240px;
+}
+
+.Product-price a {
     font-family: "Regular";
     font-size: 17px;
+    display: block;
+    width: 200px; /* 원하는 너비값으로 변경 */
+    margin: 0 auto;  
 }
 
 /* logo */
