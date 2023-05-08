@@ -121,38 +121,7 @@ const Shop = ({ wishItem, setWishItem }) => {
                     <button type="button" className="list-group-item" onClick={() => categoryFilterResult('1')}>애견 사료</button>
                     <button type="button" className="list-group-item" onClick={() => categoryFilterResult('2')}>애견 장난감</button>
                   </section>
-                  {/* <section>
-                    <div className="list-group-item">
-                      <button className="cate_btn" onClick={() => categoryFilterResult('all')}>
-                      all
-                      </button>
-                    </div>
-                    <div className="list-group-item">
-                      <button className="cate_btn" onClick={() => categoryFilterResult('1')}>
-                      애견 사료
-                      </button>
-                    </div>
-                    <div className="list-group-item">
-                      <button className="cate_btn" onClick={() => categoryFilterResult('2')}>
-                      애견 장난감
-                      </button>
-                    </div>
-                    <div className="list-group-item">
-                      <button className="cate_btn" onClick={() => categoryFilterResult('3')}>
-                      카테고리3
-                      </button>
-                    </div>
-                    <div className="list-group-item">
-                      <button className="cate_btn" onClick={() => categoryFilterResult('4')}>
-                      카테고리4
-                      </button>
-                    </div>
-                    <div className="list-group-item">
-                      <button className="cate_btn" onClick={() => categoryFilterResult('5')}>
-                      카테고리5
-                      </button>
-                    </div>
-                  </section> */}
+                
             </div>
           </div>
 

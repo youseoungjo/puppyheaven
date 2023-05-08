@@ -501,3 +501,82 @@ a {
     text-decoration: underline;
   }
 
+
+/* 가격비교 */
+.price-compare {
+    background-color: white;
+    width: 75vw;
+    height: 74vh;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    font-family: "Light";
+    font-size: 17px;
+    overflow: auto;
+}
+
+.compare-title {
+    margin-top: 50px;
+    margin-bottom: 40px;
+    margin-left: 80px;
+    text-align: left;
+    font-family: "Regular";
+    font-size: 35px;
+}
+
+.price-compare .compare-left {
+    float: left;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 200px;
+}
+
+.compare-left .compare-img {
+    width: 400px;
+    height: 400px;
+}
+
+.price-compare .compare-right {
+    float: right;
+    margin-top: 20px;
+    margin-right: 250px;
+}
+
+.compare-right table {
+    border-collapse: separate;
+    border-spacing: 20px;
+  }
+
+.compare-right .row-price-title {
+    font-family: "Regular";
+    font-size: 25px;
+    margin-right: 125px;
+}
+
+.compare-right .row-price {
+    font-family: "Regular";
+    font-size: 25px;
+    margin-right: 125px;
+}
+
+.compare-right .row-price a{
+    font-family: "Bold";
+    color: #2070EB;
+    margin-right: 25px;
+}
+
+.compare-right .row-price-btn {
+    background-color: black;
+    color: white;
+    padding: 4px;
+}
+
+.compare-right .deliveryfee {
+    background-color: lightgray;
+    text-align: left;
+}
+
+.compare-right .shop-img{
+    text-align: left;
+}
