@@ -1,3 +1,27 @@
+/* font */
+
+@font-face {
+    font-family: 'Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Regular.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Light.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+
 /* Login */
 
 .LogIn {
@@ -301,6 +325,8 @@
     border-radius: 10px;
     text-align: center;
     position: relative;
+    font-family: "Regular";
+    font-size: 20px;
 }
 
 .Category .list-group list-group-flush {
@@ -319,6 +345,13 @@
     text-align: left;
 }
 
+.Category button:hover {
+    color: #B6CDEF;
+    font-family: "Bold";
+    font-size: 23px;
+  }
+
+  
 /* Cart */
 
 
@@ -382,14 +415,6 @@
     margin-right: 40px;
 }
 
-.Shop .cate_btn {
-    background-color: white;
-    border: none;
-    width: 100%;
-    margin-left: 1px;
-    margin-right: 1px;
-}
-
 /* ProductList */
 
 .product-list {
@@ -399,34 +424,49 @@
     border-radius: 10px;
     position: relative;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    font-family: "Light";
+    font-size: 17px;
+    overflow: auto;
 }
+
+.ProductList table {
+    width: 100%;
+    table-layout: fixed;
+  }
 
 .ProductList td {
     text-align: center;
-    align-items: center;
+    padding: 30px;
 }
 
-.ProductList .cart button {
-    background-color: white;
-    margin: 10px;
-    width: 100px;
-    height: 30px;
-    border-radius: 20px;
-    border: solid 2px lightgray;
-    cursor: pointer;
+.Product-img {
+    width: 200px;
 }
 
-.ProductList .compare button {
-    background-color: white;
-    margin: 10px;
+.Product-name {
+    width: 270px;
+}
+
+.Product-button {
     width: 100px;
-    height: 30px;
-    border-radius: 20px;
-    border: solid 2px lightgray;
-    cursor: pointer;
+}
+
+.Product-price {
+    width: 240px;
+}
+
+.Product-price a {
+    font-family: "Regular";
+    font-size: 17px;
+    display: block;
+    width: 200px; /* 원하는 너비값으로 변경 */
+    margin: 0 auto;  
 }
 
 /* logo */
+
 .Logo {
     display: flex;
     justify-content: center;
@@ -454,6 +494,7 @@
 a {
     text-decoration: none;
     color: black;
+    text-align: center;
   }
   
   a:hover {

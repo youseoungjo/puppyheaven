@@ -81,41 +81,42 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
         <tbody>
           {products.map((product) => (
             <tr key={product.id}>
-              <td>
+              <td className="Product-img">
                 <img src={product.image} alt={product.name} width="120" height="100" />
               </td>
-              <td>
-                {product.name}<input type="checkbox" onClick={() => handleCheckboxClick(product)} />
+              <td className="Product-name">
+                {product.name}
               </td>
-              <td>
+              <td className="Product-price">
               {uniqueSortedProducts.map((uniqueProduct) => (
                 <tr key={uniqueProduct.kg}>
-                  {uniqueProduct.kg === 0 ? (
-                    <a href={`/pricecompare?name=${encodeURIComponent(product.name)}&kg=${uniqueProduct.kg}`}>
-                      {getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
-                        <>
-                          {getPrice(product.name, uniqueProduct.kg)}원
-                        </>
-                      )}
-                    </a>
-                  ) : (
-                    <a href={`/pricecompare?name=${encodeURIComponent(product.name)}&kg=${uniqueProduct.kg}`}>
-                      {getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
-                        <>
-                          {uniqueProduct.kg}kg {getPrice(product.name, uniqueProduct.kg)}원
-                        </>
-                      )}
-                    </a>
-                  )}
+                    {uniqueProduct.kg === 0 ? (
+                      <a href={`/pricecompare?name=${encodeURIComponent(product.name)}&kg=${uniqueProduct.kg}`}>
+                        {getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
+                          <>
+                            {getPrice(product.name, uniqueProduct.kg)}원
+                          </>
+                        )}
+                      </a>
+                    ) : (
+                      <a href={`/pricecompare?name=${encodeURIComponent(product.name)}&kg=${uniqueProduct.kg}`}>
+                        {getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
+                          <>
+                            {uniqueProduct.kg}kg {getPrice(product.name, uniqueProduct.kg)}원
+                          </>
+                        )}
+                      </a>
+                    )}
                 </tr>
               ))}
               </td>
-              <td onClick={() => {
+              <td className="Product-button" onClick={() => {
                 handleFavoriteClick(product.id);
                 product.isFavorited ? handleRemoveWish(product) : handleAddWish(product);
                 }} style={{ cursor: 'pointer' , color: wishItem.some((item) => item.id === product.id) ? 'red' : 'black'}}>
                   {wishItem.some((item) => item.id === product.id) ? '❤️' : '🤍'}
               </td>
+              <td className="Product-button"><input type="checkbox" onClick={() => handleCheckboxClick(product)} /></td>
             </tr>
           ))}
         </tbody>
