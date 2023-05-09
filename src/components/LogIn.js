@@ -46,8 +46,8 @@ const LogIn = () => {
         pw: inputPw,
       });
       if (response.data.success) {
-        // 로그인 성공 시, 쿠키에 토큰을 저장합니다.
-        document.cookie = `token=${response.data.token}; path=/`;
+        //토큰을 localStorage에 저장
+        localStorage.setItem('token', response.data.token);
         alert("로그인에 성공했습니다.");
         navigate("/main");
       } else {

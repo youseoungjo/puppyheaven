@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const ProductCompare = () => {
   const [coupangs, setCoupangs] = useState([]);
   const [gmarkets, setGmarkets] = useState([]);
   const [elevens, setElevens] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getCoupangs = async () => {
@@ -79,44 +82,63 @@ const ProductCompare = () => {
   };
 
   return (
-    <div className="ProductCompare">
-      <h4>상품 비교</h4>
+    <div className="Shop">
 
-      {selectedProducts && selectedProducts.length > 0 && (
-        <table>
-          <tbody>
-          {selectedProducts.map((product) => (
-            <td>
-              <tr><img src={product.image} alt={product.name} width="120" height="100"/></tr>
-              <tr>{product.name}</tr>
-              {uniqueSortedProducts.map((uniqueProduct) => (
-                <tr key={uniqueProduct.kg}>
-                  {uniqueProduct.kg === 0 ? (
-                    <a href={`/pricecompare?name=${encodeURIComponent(product.name)}&kg=${uniqueProduct.kg}`}>
-                      {getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
-                        <>
-                          {getPrice(product.name, uniqueProduct.kg)}원
-                        </>
-                      )}
-                    </a>
-                  ) : (
-                    <a href={`/pricecompare?name=${encodeURIComponent(product.name)}&kg=${uniqueProduct.kg}`}>
-                      {getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
-                        <>
-                          {uniqueProduct.kg}kg {getPrice(product.name, uniqueProduct.kg)}원
-                        </>
-                      )}
-                    </a>
-                  )}
-                </tr>
-              ))}
-              <tr>{product.age}</tr>
-              <tr>{product.maker}</tr>
-            </td>
-          ))}
-          </tbody>
-        </table>
-      )}
+      <div className="Logo">
+        <img src="shortlogo.png" alt="로고 이미지" className="logo-image"></img>
+      </div>
+
+      <div className="Shop-content">
+          <div className="Category">
+            <div className="list-group list-group-flush">
+              <div style={{margin: "10px"}}/>
+              <button type="button" className="list-group-item" onClick={() => navigate('/main')}>메인화면</button>
+              <button type="button" className="list-group-item" onClick={() => navigate('/shop')}>계속 쇼핑하기</button>
+              <button type="button" className="list-group-item" onClick={() => navigate('/wish')}>위시리스트</button>
+              <div style={{margin: "30px"}}/>
+            </div>
+          </div>
+
+          <div className="product-compare">
+            <h4>상품 비교</h4>
+
+            {selectedProducts && selectedProducts.length > 0 && (
+              <table>
+                <tbody>
+                {selectedProducts.map((product) => (
+                  <td>
+                    <tr><img src={product.image} alt={product.name} width="120" height="100"/></tr>
+                    <tr>{product.name}</tr>
+                    {uniqueSortedProducts.map((uniqueProduct) => (
+                      <tr key={uniqueProduct.kg}>
+                        {uniqueProduct.kg === 0 ? (
+                          <a href={`/pricecompare?name=${encodeURIComponent(product.name)}&kg=${uniqueProduct.kg}`}>
+                            {getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
+                              <>
+                                {getPrice(product.name, uniqueProduct.kg)}원
+                              </>
+                            )}
+                          </a>
+                        ) : (
+                          <a href={`/pricecompare?name=${encodeURIComponent(product.name)}&kg=${uniqueProduct.kg}`}>
+                            {getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
+                              <>
+                                {uniqueProduct.kg}kg {getPrice(product.name, uniqueProduct.kg)}원
+                              </>
+                            )}
+                          </a>
+                        )}
+                      </tr>
+                    ))}
+                    <tr>{product.age}</tr>
+                    <tr>{product.maker}</tr>
+                  </td>
+                ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+      </div>
     </div>
   );
 };

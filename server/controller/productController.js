@@ -36,6 +36,10 @@ const getElevens = async (req, res, next) => {
   }
 };
 
+const getWishLists = async (req, res, next) => {
+  
+};
+
 module.exports = {
-  getProducts, getCoupangs, getGmarkets, getElevens
+  getProducts, getCoupangs, getGmarkets, getElevens, getWishLists
 };

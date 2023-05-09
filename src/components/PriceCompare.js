@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const PriceCompare = () => {
   const location = useLocation();
@@ -13,6 +14,8 @@ const PriceCompare = () => {
   const [elevens, setElevens] = useState([]);
   const [lowestPriceUrl, setLowestPriceUrl] = useState('');
   const [includeDelivery, setIncludeDelivery] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log('name:', productName);
@@ -67,28 +70,67 @@ const PriceCompare = () => {
   }
 
   return (
-    <div className="PriceCompare">
-        {productdata.map((product) => (
-        <div key={product.id}>
-          <img src={product.image} alt={product.name} width="400" height="400" />
+    <div className="Shop">
+
+      <div className="Logo">
+        <img src="shortlogo.png" alt="로고 이미지" className="logo-image"></img>
+      </div>
+
+      <div className="Shop-content">
+          <div className="Category">
+            <div className="list-group list-group-flush">
+                <div style={{margin: "10px"}}/>
+                  <button type="button" className="list-group-item" onClick={() => navigate('/main')}>메인화면</button>
+                  <button type="button" className="list-group-item" onClick={() => navigate('/shop')}>계속 쇼핑하기</button>
+                  <button type="button" className="list-group-item" onClick={() => navigate('/wish')}>위시리스트</button>
+                  <div style={{margin: "30px"}}/>
+            </div>
+          </div>
+
+          <div className="price-compare">
+
+                  {productdata.map((product) => (
+                    <div key={product.id}>
+                      <div className="compare-title">{product.name}</div>
+                      <div className="compare-left">
+                        <img src={product.image} alt={product.name} className="compare-img" />
+                      </div>
+                    </div>
+                    ))}
+
+                  <div className="compare-right">
+
+                    <table>
+                      <tr>
+                        <td>
+                          <span className="row-price-title">최저가</span>
+                        </td>
+                        <td className="row-price">
+                          <a href={lowestPriceUrl}>{getTotalPrice()}원</a>
+                        </td>
+                        <td>
+                          <button className="row-price-btn" onClick={() => {if(lowestPriceUrl){window.location.href=lowestPriceUrl;}}}>최저가 구매하기</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="deliveryfee" colSpan={"3"}>
+                          <label>
+                            &nbsp;<input type="checkbox" checked={includeDelivery} onChange={() => setIncludeDelivery(!includeDelivery)} />&nbsp;
+                            배송비 포함
+                          </label>
+                        </td>
+                      </tr>
+                      {sortedProducts.map((product) => (
+                      <tr>
+                        <td className="shop-img"><img src={product.image} alt="쇼핑몰 로고"/></td>
+                        <td>{includeDelivery ? <a href={product.url}>{product.price + product.deliveryFee}원</a> : <a href={product.url}>{product.price}원</a>}</td>
+                        <td>{product.deliveryFee}원</td>
+                      </tr>
+                      ))}
+                    </table>
+
+                  </div>    
         </div>
-        ))}
-      <div>
-      <h2>최저가:<a href={lowestPriceUrl}>{getTotalPrice()}원</a></h2>
-      <label>
-        <input type="checkbox" checked={includeDelivery} onChange={() => setIncludeDelivery(!includeDelivery)} />
-        배송비 포함
-      </label>
-      <button onClick={() => {if(lowestPriceUrl){window.location.href=lowestPriceUrl;}}}>최저가 구매하기</button>
-      {sortedProducts.map((product) => (
-        <table>
-            <tr>
-              <td><img src={product.image} alt="쇼핑몰 로고"/></td>
-              <td>{includeDelivery ? <a href={product.url}>{product.price + product.deliveryFee}원</a> : <a href={product.url}>{product.price}원</a>}</td>
-              <td>{product.deliveryFee}원</td>
-            </tr>
-        </table>
-        ))}
       </div>
     </div>
   );

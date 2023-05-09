@@ -62,20 +62,20 @@ const Shop = ({ wishItem, setWishItem }) => {
       }
     });
 
-    setProductdatas(newProductdatas);
-    saveToLocalStorage('productdatas', newProductdatas); // 로컬 스토리지에 상품 데이터 저장
-    setWishItem(newProductdatas.filter((productdata) => productdata.isFavorited)); // 위시리스트 업데이트
+    setProductdatas(newProductdatas, () => {
+      setWishItem(newProductdatas.filter((productdata) => productdata.isFavorited));
+    });
   };
   const handleAddWish = (product) => {
-    const isDuplicated = wishItem.some((item) => item.id === product.id);
-  
-    if (isDuplicated) {
-      return;
-    } else {
-      const newWishItem = [...wishItem, product];
-      setWishItem(newWishItem);
-      saveToLocalStorage('wishItem', newWishItem); // 로컬 스토리지에 위시리스트 데이터 저장
-    }
+    const newWishItem = [...wishItem, product];
+    setWishItem(newWishItem);
+    axios.post('/wishlist', newWishItem)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
   
   const handleRemoveWish = (product) => {

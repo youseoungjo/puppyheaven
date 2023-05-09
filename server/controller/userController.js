@@ -26,16 +26,17 @@ exports.signup = async (req, res) => {
 
 exports.login = async (req, res) => {
 const { id } = req.body;
-try {
-const user = await User.findOne({ where : { id } });
-if (!user) {
-return res.status(404).json({ success: false, message: '일치하는 회원 정보가 없습니다.' });
-}
-const token = user.generateToken();
-res.status(200).json({ success: true, token });
-} catch (error) {
-console.error(error);
-res.status(500).json({ success: false, message: '로그인에 실패했습니다.' });
-}
+    try {
+        const user = await User.findOne({ where : { id } });
+        if (!user) {
+            return res.status(404).json({ success: false, message: '일치하는 회원 정보가 없습니다.' });
+        }
+        const token = user.generateToken();
+        res.status(200).json({ success: true, token });
+    } 
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: '로그인에 실패했습니다.' });
+    }
 };
 
