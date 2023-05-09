@@ -480,15 +480,6 @@
     width: 250px;
 }
 
-.product-compare-list {
-    background-color: white;
-    width: 22vw;
-    height: 74vh;
-    border-radius: 10px;
-    text-align: center;
-    position: relative;
-}
-
 /* 하이퍼링크 */
 
 a {
@@ -581,6 +572,70 @@ a {
     text-align: left;
 }
 
+/* 상품 비교 리스트 */
+
+.product-compare-list {
+    background-color: white;
+    width: 22vw;
+    height: 74vh;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    overflow: auto;
+    font-family: "Light";
+    font-size: 18px;
+}
+
+.ProductCompareList {
+    height: calc(100% - 40px);
+    position: relative;
+    padding-bottom: 30px;
+    overflow: auto;
+}
+
+.ProductCompareList .pcl-title {
+    text-align: center;
+    font-family: "Regular";
+    font-size: 25px;
+    margin: 20px;
+}
+
+.ProductCompareList .check-image {
+    width: 100px;
+    height: 100px;
+    margin-top: 140px;
+    margin-bottom: 20px;
+}
+
+.ProductCompareList .pcl-product {
+    max-height: calc(100% - 110px);
+    overflow-y: auto;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.pcl-btn-box {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-top: 10px;
+    z-index: 1;
+  }
+
+.ProductCompareList .pcl-btn {
+    background-color: lightgray;
+    margin-top: 30px;
+    width: 150px;
+    height: 30px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-family: "Regular";
+    font-size: 20px;
+}
+
 /* 상품 비교 */
 
 .product-compare {
@@ -594,4 +649,9 @@ a {
     font-family: "Light";
     font-size: 17px;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
 }
+
+
+  
