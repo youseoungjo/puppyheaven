@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Map = () => {
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     const loadScript = () => {
       if (window.kakao && window.kakao.maps) {
@@ -18,7 +22,7 @@ const Map = () => {
     const script = document.createElement("script");
     script.async = true;
     script.defer = true;
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=API_KEY&libraries=services,clusterer,drawing&autoload=false`;
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=83a7ee6331002d90e4eaff2f51a4747a&libraries=services,clusterer,drawing&autoload=false`;
     script.onload = loadScript;
     document.head.appendChild(script);
 
@@ -32,15 +36,22 @@ const Map = () => {
 
       <div className="search_wrapper">
 
-        <div className="btn-group-lg" role="group">
-          <div type="radio" className="btn-check" id="btn1" autocomplete="off" checked />
-          <label className="btn btn-outline-dark" for="btn1">산책코스</label>
+        <div className="btn-toolbar" role="toolbar">
+          <div>
+            <div type="button" className="main_button" onClick={() => navigate('/main')} />
+            <label className="btn btn-outline-dark">메인화면</label>
+          </div>
 
-          <div type="radio" className="btn-check" id="btn1" autocomplete="off" checked />
-          <label className="btn btn-outline-dark" for="btn1">동물병원</label>
+          <div className="btn-group-md" role="group">
+            <div type="radio" className="btn-check" id="btn1" autocomplete="off" checked/>
+            <label className="btn btn-outline-dark" for="btn1">산책코스</label>
 
-          <div type="radio" className="btn-check" id="btn1" autocomplete="off" checked />
-          <label className="btn btn-outline-dark" for="btn1">부동산</label>
+            <div type="radio" className="btn-check" id="btn2" autocomplete="off" />
+            <label className="btn btn-outline-dark" for="btn2">동물병원</label>
+
+            <div type="radio" className="btn-check" id="btn3" autocomplete="off" />
+            <label className="btn btn-outline-dark" for="btn3">부동산</label>
+          </div>
         </div>
 
         <div className="search_bar">
