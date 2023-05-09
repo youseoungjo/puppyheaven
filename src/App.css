@@ -500,3 +500,76 @@ a {
   a:hover {
     text-decoration: underline;
   }
+
+/* Map */
+
+.Map {
+    display: flex;
+
+    width: 100%;
+    height: 100vh; 
+
+    background-color: #B6CDEF;
+}
+
+.Map .search_wrapper {
+    background-color: white;
+    width: 22vw;
+    height: 94vh;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 5vh;
+    margin-right: 15px;
+    border-radius: 10px;
+    align-items: center;
+    position: absolute;
+}
+
+.Map .search_wrapper .btn-group-lg  {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.Map .search_wrapper .btn {
+    margin-left: 10px;
+}
+
+.Map .search_wrapper .search_bar {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.Map .search_wrapper .searchBar {
+    width: 80%;
+    height: 35px;
+    font-size: 26px;
+    border-radius: 20px;
+    border: 1px solid gray;
+}
+
+.Map .search_wrapper .searchBtn {
+    margin-left: 5px;
+    margin-bottom: 5px;
+    height: 32px;
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid gray;
+}
+
+
+.Map .map_wrapper {
+    background-color: white;
+    width: 70vw;
+    height: 94vh;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 55vh;
+    margin-right: 15px;
+    border-radius: 10px;
+    position: absolute;
+}
+
+.Map .map {
+    margin-left: 20px;
+}
+
