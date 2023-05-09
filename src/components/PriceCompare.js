@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import ProductList from '../components/ProductList';
 
 const PriceCompare = () => {
   const location = useLocation();
@@ -113,12 +112,6 @@ const PriceCompare = () => {
                   <button type="button" className="list-group-item" onClick={() => navigate('/shop')}>계속 쇼핑하기</button>
                   <button type="button" className="list-group-item" onClick={() => navigate('/wish')}>위시리스트</button>
                   <div style={{margin: "30px"}}/>
-                  <section>
-                    <button type="button" className="list-group-item" onClick={() => categoryFilterResult('all')}>All</button>
-                    <button type="button" className="list-group-item" onClick={() => categoryFilterResult('1')}>애견 사료</button>
-                    <button type="button" className="list-group-item" onClick={() => categoryFilterResult('2')}>애견 장난감</button>
-                  </section>
-                
             </div>
           </div>
 

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -40,13 +40,14 @@ const LogIn = () => {
   
 
   const onClickLoginButton = async () => {
-    //회원가입 후 로그인
     try {
       const response = await axios.post("http://localhost:3001/login", {
         id: inputId,
         pw: inputPw,
       });
       if (response.data.success) {
+        //토큰을 localStorage에 저장
+        localStorage.setItem('token', response.data.token);
         alert("로그인에 성공했습니다.");
         navigate("/main");
       } else {

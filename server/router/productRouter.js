@@ -9,5 +9,6 @@ router.get('/gmarket', productController.getGmarkets);
 router.get('/eleven', productController.getElevens);
 
 //위시리스트
-router.post('/wishlist', productController.getElevens);
+router.post('/wishlist', productController.getWishLists);
+
 module.exports = router;

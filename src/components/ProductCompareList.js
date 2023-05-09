@@ -15,7 +15,7 @@ const ProductCompareList = ({ selectedProducts }) => {
       <div className="pcl-title">상품 비교</div>
 
       <div className="pcl-product">
-        {selectedProducts.length == 0 && (
+        {selectedProducts.length === 0 && (
           <div className="product-zero">
             <img src="checkv2.png" alt="발바닥" className="check-image"/>
             <div>체크박스를 눌러서 상품 비교를 해주세요</div>

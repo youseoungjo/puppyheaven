@@ -593,6 +593,115 @@ a {
     overflow: auto;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+/* 가격비교 */
+.price-compare {
+    background-color: white;
+    width: 75vw;
+    height: 74vh;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    font-family: "Light";
+    font-size: 17px;
+    overflow: auto;
+}
+
+.compare-title {
+    margin-top: 50px;
+    margin-bottom: 40px;
+    margin-left: 210px;
+    text-align: left;
+    font-family: "Regular";
+    font-size: 35px;
+}
+
+.price-compare .compare-left {
+    float: left;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 200px;
+}
+
+.compare-left .compare-img {
+    width: 400px;
+    height: 400px;
+}
+
+.price-compare .compare-right {
+    float: right;
+    margin-top: 20px;
+    margin-right: 250px;
+}
+
+.compare-right table {
+    border-collapse: separate;
+    border-spacing: 20px;
+  }
+
+.compare-right .row-price-title {
+    font-family: "Regular";
+    font-size: 25px;
+    margin-right: 125px;
+}
+
+.compare-right .row-price {
+    font-family: "Regular";
+    font-size: 25px;
+    margin-right: 125px;
+}
+
+.compare-right .row-price a{
+    font-family: "Bold";
+    color: #2070EB;
+    margin-right: 25px;
+}
+
+.compare-right .row-price-btn {
+    background-color: black;
+    color: white;
+    padding: 4px;
+}
+
+.compare-right .deliveryfee {
+    background-color: lightgray;
+    text-align: left;
+}
+
+.compare-right .shop-img{
+    text-align: left;
+}
+
+/* 상품 비교 리스트 */
+
+.product-compare-list {
+    background-color: white;
+    width: 22vw;
+    height: 74vh;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    overflow: auto;
+    font-family: "Light";
+    font-size: 18px;
+}
+
+.ProductCompareList {
+    height: calc(100% - 40px);
+    position: relative;
+    padding-bottom: 30px;
+    overflow: auto;
+}
+
 .ProductCompareList .pcl-title {
     text-align: center;
     font-family: "Regular";
@@ -653,5 +762,80 @@ a {
     flex-direction: column;
 }
 
+/* Map */
 
-  
+.Map {
+    display: flex;
+
+    width: 100%;
+    height: 100vh; 
+
+    background-color: #B6CDEF;
+}
+
+.Map .search_wrapper {
+    background-color: white;
+    width: 22vw;
+    height: 94vh;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 5vh;
+    margin-right: 15px;
+    border-radius: 10px;
+    align-items: center;
+    position: absolute;
+}
+
+.Map .search_wrapper .main_button {
+    margin-top: 20px;
+}
+
+.Map .search_wrapper .btn-group-md  {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.Map .search_wrapper .btn {
+    margin-left: 10px;
+}
+
+.Map .search_wrapper .search_bar {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.Map .search_wrapper .searchBar {
+    width: 80%;
+    height: 35px;
+    font-size: 26px;
+    border-radius: 20px;
+    border: 1px solid gray;
+}
+
+.Map .search_wrapper .searchBtn {
+    margin-left: 5px;
+    margin-bottom: 5px;
+    height: 32px;
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid gray;
+}
+
+
+.Map .map_wrapper {
+    background-color: white;
+    width: 70vw;
+    height: 94vh;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 55vh;
+    margin-right: 15px;
+    border-radius: 10px;
+    position: absolute;
+}
+
+.Map .map {
+    margin-left: 20px;
+}
+
+
