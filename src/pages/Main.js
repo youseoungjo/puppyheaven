@@ -12,13 +12,20 @@ const Main = () => {
         navigate("/");
     };
     return (
-        <div>
-            <div><button onClick={handleLogout}>로그 아웃</button></div>
-            <div className="Main">
-                <button onClick={()=>navigate('/map')}>지도 보기</button>
-                <button onClick={()=>navigate('/shop')}>상점 보기</button>
+      <div className="Main">
+          <div className="main-logo">
+            <img src="shortlogo.png" alt="로고 이미지" className="logo-image"/>
+            <div className="logout-btn" onClick={handleLogout}>
+              <img src="logoutv2.png" alt="로그아웃" className="logout-img" />
+              <span>로그 아웃</span>
             </div>
-        </div>
+          </div>
+      
+          <div>
+            <button className="main-btn" onClick={()=>navigate('/map')}>지도 보기</button>
+            <button className="main-btn" onClick={()=>navigate('/shop')}>상점 보기</button>
+          </div>
+      </div>
     );
 };
 
