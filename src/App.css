@@ -642,6 +642,7 @@ a {
   a:hover {
     text-decoration: underline;
   }
+
 /* 가격비교 */
 .price-compare {
     background-color: white;
@@ -801,6 +802,36 @@ a {
     display: flex;
     flex-direction: column;
     margin-left: 10px;
+}
+
+.product-compare .pc-title {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-family: "Regular";
+    font-size: 30px;
+    margin: 20px;
+}
+
+.product-compare .pc-img {
+    width: 100px;
+    height: 100px;
+}
+
+.product-compare table {
+    margin: 0 auto;
+    width: 90%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+
+.product-compare .pc-info {
+    display: inline-block;
+    width: 200px;
+    margin: 20px;
 }
 
 /* Map */
