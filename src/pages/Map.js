@@ -1,25 +1,28 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Map = () => {
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     const loadScript = () => {
-      const intervalId = setInterval(() => {
-        if (window.kakao && window.kakao.maps) {
-          clearInterval(intervalId);
-          const container = document.getElementById("map");
-          const options = {
-            center: new window.kakao.maps.LatLng(37.5832206, 127.0103893),
-            level: 3,
-          };
-          const map = new window.kakao.maps.Map(container, options);
-        }
-      }, 100);
+      if (window.kakao && window.kakao.maps) {
+        const container = document.getElementById("map");
+        const options = {
+          center: new window.kakao.maps.LatLng(37.5832206, 127.0103893),
+          level: 3,
+        };
+        const map = new window.kakao.maps.Map(container, options);
+      } else {
+        setTimeout(loadScript, 100);
+      }
     };
 
     const script = document.createElement("script");
     script.async = true;
     script.defer = true;
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=d83083b50f9507f8339837fca3e0149f&libraries=services,clusterer,drawing&autoload=false`;
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=83a7ee6331002d90e4eaff2f51a4747a&libraries=services,clusterer,drawing&autoload=false`;
     script.onload = loadScript;
     document.head.appendChild(script);
 
@@ -30,16 +33,25 @@ const Map = () => {
 
   return (
     <div className="Map">
+
       <div className="search_wrapper">
-        <div className="btn-group-lg" role="group">
-          <div type="radio" className="btn-check" id="btn1" autoComplete="off" checked />
-          <label className="btn btn-outline-dark" htmlFor="btn1">산책코스</label>
 
-          <div type="radio" className="btn-check" id="btn2" autoComplete="off" />
-          <label className="btn btn-outline-dark" htmlFor="btn2">동물병원</label>
+        <div className="btn-toolbar" role="toolbar">
+          <div>
+            <div type="button" className="main_button" onClick={() => navigate('/main')} />
+            <label className="btn btn-outline-dark">메인화면</label>
+          </div>
 
-          <div type="radio" className="btn-check" id="btn3" autoComplete="off" />
-          <label className="btn btn-outline-dark" htmlFor="btn3">부동산</label>
+          <div className="btn-group-md" role="group">
+            <div type="radio" className="btn-check" id="btn1" autocomplete="off" checked/>
+            <label className="btn btn-outline-dark" for="btn1">산책코스</label>
+
+            <div type="radio" className="btn-check" id="btn2" autocomplete="off" />
+            <label className="btn btn-outline-dark" for="btn2">동물병원</label>
+
+            <div type="radio" className="btn-check" id="btn3" autocomplete="off" />
+            <label className="btn btn-outline-dark" for="btn3">부동산</label>
+          </div>
         </div>
 
         <div className="search_bar">
@@ -49,14 +61,19 @@ const Map = () => {
 
         <div className="search_results">
           <div>
-            {/* 검색 결과를 표시할 컴포넌트 */}
+
           </div>
         </div>
+
       </div>
 
       <div className="map_wrapper">
         <div id="map" style={{ width: "90%", height: "90%", marginLeft: "60px", marginTop: "45px" }}/>
       </div>
+
+
+
+
     </div>
   );
 };
