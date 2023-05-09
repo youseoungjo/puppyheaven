@@ -525,7 +525,11 @@ a {
     position: absolute;
 }
 
-.Map .search_wrapper .btn-group-lg  {
+.Map .search_wrapper .main_button {
+    margin-top: 20px;
+}
+
+.Map .search_wrapper .btn-group-md  {
     margin-top: 20px;
     margin-left: 20px;
 }
@@ -572,4 +576,6 @@ a {
 .Map .map {
     margin-left: 20px;
 }
+
+
 
