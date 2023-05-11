@@ -48,24 +48,6 @@ const ProductCompare = () => {
     getProductdatas();
   }, []);
 
-  const saveToLocalStorage = (key, value) => {
-    localStorage.setItem(key, JSON.stringify(value));
-  };
-
-  const loadFromLocalStorage = (key) => {
-    const value = localStorage.getItem(key);
-    return value ? JSON.parse(value) : null;
-  };
-
-  const categoryFilterResult = (category) => {
-    if (category === 'all') {
-      setProductdatas(originalProductdatas);
-    } else {
-      const filteredProducts = originalProductdatas.filter((productdata) => productdata.categoryid === parseInt(category));
-      setProductdatas(filteredProducts);
-    }
-  };
-
   const sortedCoupangs = [...coupangs].sort((a, b) => a.price - b.price);
   const sortedGmarkets = [...gmarkets].sort((a, b) => a.price - b.price);
   const sortedElevens = [...elevens].sort((a, b) => a.price - b.price);

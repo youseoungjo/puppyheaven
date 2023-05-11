@@ -27,24 +27,6 @@ const PriceCompare = () => {
     getProductdatas();
   }, []);
 
-  const saveToLocalStorage = (key, value) => {
-    localStorage.setItem(key, JSON.stringify(value));
-  };
-
-  const loadFromLocalStorage = (key) => {
-    const value = localStorage.getItem(key);
-    return value ? JSON.parse(value) : null;
-  };
-
-  const categoryFilterResult = (category) => {
-    if (category === 'all') {
-      setProductdatas(originalProductdatas);
-    } else {
-      const filteredProducts = originalProductdatas.filter((productdata) => productdata.categoryid === parseInt(category));
-      setProductdatas(filteredProducts);
-    }
-  };
-
   useEffect(() => {
     console.log('name:', productName);
     console.log('kg:', productKg);
