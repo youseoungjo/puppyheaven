@@ -1,11 +1,11 @@
 const WishList = require('../model/wishlistModel');
 
 class WishListDao {
-  static async create(token, productId) {
+  static async create(userId, productId) {
     try {
       const existingWishList = await WishList.findOne({
         where: {
-          token,
+          userId,
           productId,
         },
       });
@@ -13,7 +13,7 @@ class WishListDao {
         return existingWishList;
       }
       const wishList = await WishList.create({
-        token,
+        userId,
         productId,
       });
       return wishList;
@@ -23,14 +23,14 @@ class WishListDao {
     }
   }
 
-  static async delete(token, productId) {
+  static async delete(userId, productId) {
     try {
-      if (!token) { // token 값이 undefined인 경우, 오류를 발생시키지 않습니다.
+      if (!userId) { // userId 값이 undefined인 경우, 오류를 발생시키지 않습니다.
         return null;
       }
       const result = await WishList.destroy({
         where: {
-          token,
+          userId,
           productId,
         },
       });

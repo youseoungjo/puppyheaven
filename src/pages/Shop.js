@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import ProductList from '../components/ProductList';
 import ProductCompareList from '../components/ProductCompareList';
+import jwt_decode from 'jwt-decode';
 
-const Shop = ({ wishItem, setWishItem }) => {
+const Shop = () => {
   const [productdatas, setProductdatas] = useState([]);
   const [originalProductdatas, setOriginalProductdatas] = useState([]);
   const [wishItems, setWishItems] = useState([]);
@@ -58,8 +59,11 @@ const Shop = ({ wishItem, setWishItem }) => {
 
   const handleAddWish = (id) => {
     const token = localStorage.getItem('token');
+    const decodedToken = jwt_decode(token);
+    const userId = decodedToken.id;
+
     const productId = id;
-    axios.post('http://localhost:3001/wishlist', { token, productId })
+    axios.post('http://localhost:3001/wishlist', { userId, productId })
     .then((response) => {
       console.log(response.data);
       setWishItems([...wishItems, response.data]);
@@ -83,8 +87,11 @@ const Shop = ({ wishItem, setWishItem }) => {
   
   const handleRemoveWish = (id) => {
     const token = localStorage.getItem('token');
+    const decodedToken = jwt_decode(token);
+    const userId = decodedToken.id;
+
     const productId = id;
-    axios.post('http://localhost:3001/delete', { token, productId })
+    axios.post('http://localhost:3001/delete', { userId, productId })
     .then((response) => {
       console.log(response.data);
       setWishItems(wishItems.filter((wishitem) => wishitem.productId !== productId));

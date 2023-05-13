@@ -15,7 +15,7 @@ const sequelize = new Sequelize('mydb', 'root', 'csedbadmin', {
   });
 
 const WishList = sequelize.define('wishlist', {
-  token: {
+  userId: {
     type: Sequelize.STRING,
     allowNull: false,
     primaryKey: true,
@@ -28,11 +28,11 @@ const WishList = sequelize.define('wishlist', {
 });
 
 // 위시리스트 삭제 함수
-WishList.deleteWishList = async (token, productId) => {
+WishList.deleteWishList = async (userId, productId) => {
   try {
     const result = await WishList.destroy({
       where: {
-        token,
+        userId,
         productId,
       },
     });

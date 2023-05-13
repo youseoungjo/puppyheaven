@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import jwt_decode from 'jwt-decode';
 
 const WishList = () => {
 
@@ -16,7 +17,9 @@ const WishList = () => {
         const getWishItems = async () => {
           const response = await axios.get('http://localhost:3001/wishitem');
           const token = localStorage.getItem('token');
-          setWishItems(response.data.filter((wishitem) => wishitem.token===token));
+          const decodedToken = jwt_decode(token);
+          const userId = decodedToken.id;
+          setWishItems(response.data.filter((wishitem) => wishitem.userId===userId));
         };
         getWishItems();
 
@@ -96,8 +99,11 @@ const WishList = () => {
     
     const handleRemoveWish = (id) => {
       const token = localStorage.getItem('token');
+      const decodedToken = jwt_decode(token);
+      const userId = decodedToken.id;
+
       const productId = id;
-      axios.post('http://localhost:3001/delete', { token, productId })
+      axios.post('http://localhost:3001/delete', { userId, productId })
       .then((response) => {
         console.log(response.data);
         setWishItems(wishItems.filter((wishitem) => wishitem.productId !== productId));

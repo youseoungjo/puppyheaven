@@ -147,7 +147,7 @@ const Eleven = sequelize.define('eleven', {
 });
 
 const WishList = sequelize.define('wishlist', {
-  token: {
+  userId: {
     type: Sequelize.STRING,
     allowNull: false,
     primaryKey: true,
