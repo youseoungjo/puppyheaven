@@ -407,10 +407,10 @@
   }
 
   
-/* Cart */
+/* WishList */
 
 
-.Cart {
+.WishList {
     display: flex;
 
     width: 100%;
@@ -420,7 +420,7 @@
 }
 
 
-.Cart .edit_cart{
+.WishList .edit_wish{
     background-color: white;
     width: 50vw;
     height: 94vh;
@@ -433,23 +433,25 @@
     text-align: center;
 }
 
-.Cart .card_wrapper{
+.WishList .card_wrapper{
     margin-left: 30px;
     margin-right: 30px;
     max-width: 95%;
 }
 
-.Cart .row {
+.WishList .row {
     margin-left: 10px;
 }
 
-.Cart .cate_btn {
+.WishList .cate_btn {
     background-color: white;
     border: none;
     width: 100%;
     margin-left: 1px;
     margin-right: 1px;
 }
+
+/* Shop */
 
 .Shop {
     display: flex;
