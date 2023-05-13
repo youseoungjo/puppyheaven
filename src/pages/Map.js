@@ -43,7 +43,7 @@ const Map = () => {
         <div className="btn-toolbar" role="toolbar">
           <div>
             <div type="button" className="main_button" onClick={() => navigate('/main')} />
-            <label className="btn btn-outline-dark">메인화면</label>
+            <label className="btn btn-outline-dark">Main</label>
           </div>
 
           <div className="btn-group-md" role="group">
