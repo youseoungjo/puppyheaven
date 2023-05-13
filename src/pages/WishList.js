@@ -152,7 +152,7 @@ const WishList = () => {
 
 
     return (
-        <div className="Cart">
+        <div className="WishList">
 
             <div className="Category">
                 <div className="list-group list-group-flush">
@@ -163,7 +163,7 @@ const WishList = () => {
                 </div>
             </div>
 
-            <div className="edit_cart">
+            <div className="edit_wish">
                 <header style={{margin:"15px"}}>위시리스트</header>
 
 
