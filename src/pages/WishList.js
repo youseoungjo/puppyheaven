@@ -154,6 +154,10 @@ const WishList = () => {
     return (
         <div className="WishList">
 
+          <div className="Logo">
+            <img src="shortlogo.png" alt="로고 이미지" className="logo-image"></img>
+          </div>
+
             <div className="Category">
                 <div className="list-group list-group-flush">
                     <div style={{margin: "10px"}}/>
