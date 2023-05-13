@@ -34,6 +34,10 @@ const Map = () => {
   return (
     <div className="Map">
 
+      <div className="Logo">
+        <img src="shortlogo.png" alt="로고 이미지" className="logo-image"></img>
+      </div>
+
       <div className="search_wrapper">
 
         <div className="btn-toolbar" role="toolbar">
@@ -49,8 +53,6 @@ const Map = () => {
             <div type="radio" className="btn-check" id="btn2" autocomplete="off" />
             <label className="btn btn-outline-dark" for="btn2">동물병원</label>
 
-            {/* <div type="radio" className="btn-check" id="btn3" autocomplete="off" />
-            <label className="btn btn-outline-dark" for="btn3">부동산</label> */}
           </div>
         </div>
 
