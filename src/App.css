@@ -844,7 +844,6 @@ a {
 
 /* Map */
 
-
 .Map {
     display: flex;
     flex-direction: column;
@@ -882,14 +881,16 @@ a {
 
 .Map .search_wrapper .main_button {
     position: relative;
+    font-family: "Bold";
     margin-left: 10px;
     margin-top: 20px;
 }
 
 .Map .search_wrapper .btn-group-md  {
     position: relative;
+    font-family: "Bold";
     margin-top: 20px;
-    margin-left: 60px;
+    margin-left: 140px;
     z-index: 1;
 }
 
@@ -917,6 +918,7 @@ a {
     margin-bottom: 5px;
     height: 32px;
     background-color: white;
+    font-family: "Light";
     border-radius: 20px;
     border: 1px solid gray;
 }
@@ -938,4 +940,5 @@ a {
 .Map .map {
     margin-right: 20px;
 }
+
 
