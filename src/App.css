@@ -371,7 +371,7 @@
   margin-bottom: 5px;
 }
 
-/* Categoryxx */
+/* Category */
 
 .Category {
     background-color: white;
@@ -412,25 +412,26 @@
 
 .WishList {
     display: flex;
+    flex-direction: column;
+    position: relative;
 
     width: 100%;
     height: 100vh; 
 
-    background-color: lightblue;
+    background-color: #B6CDEF;
 }
 
 
 .WishList .edit_wish{
     background-color: white;
-    width: 50vw;
-    height: 94vh;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-left: 38vh;
-    margin-right: 15px;
+    margin-top: 22.7vh;
+    margin-left: 50vh;
+    width: 73vw;
+    height: 74vh;
     border-radius: 10px;
     position: absolute;
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .WishList .card_wrapper{
@@ -441,6 +442,10 @@
 
 .WishList .row {
     margin-left: 10px;
+}
+
+.WishList .Category {
+    margin-left: 2vw;
 }
 
 .WishList .cate_btn {
@@ -644,6 +649,8 @@ a {
   a:hover {
     text-decoration: underline;
   }
+
+  
 /* 가격비교 */
 .price-compare {
     background-color: white;
@@ -837,8 +844,11 @@ a {
 
 /* Map */
 
+
 .Map {
     display: flex;
+    flex-direction: column;
+    position: relative;
 
     width: 100%;
     height: 100vh; 
@@ -846,34 +856,51 @@ a {
     background-color: #B6CDEF;
 }
 
+.Map .Logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    align-items: center;
+  }
+  
+.Map .Logo .logo-image {
+    width: 250px;
+  }
+
+
 .Map .search_wrapper {
     background-color: white;
-    width: 22vw;
-    height: 94vh;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 22.7vh;
     margin-left: 5vh;
-    margin-right: 15px;
+    width: 22vw;
+    height: 74vh;
     border-radius: 10px;
-    align-items: center;
     position: absolute;
+    justify-content: center;
 }
 
 .Map .search_wrapper .main_button {
+    position: relative;
+    margin-left: 10px;
     margin-top: 20px;
 }
 
 .Map .search_wrapper .btn-group-md  {
+    position: relative;
     margin-top: 20px;
-    margin-left: 20px;
+    margin-left: 60px;
+    z-index: 1;
 }
 
 .Map .search_wrapper .btn {
+    position: relative;
     margin-left: 10px;
 }
 
 .Map .search_wrapper .search_bar {
-    margin-top: 20px;
+    position: relative;
+    margin-top: 15px;
     margin-left: 20px;
 }
 
@@ -897,17 +924,18 @@ a {
 
 .Map .map_wrapper {
     background-color: white;
-    width: 70vw;
-    height: 94vh;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 22.7vh;
     margin-left: 55vh;
-    margin-right: 15px;
+    width: 70vw;
+    height: 74vh;
     border-radius: 10px;
     position: absolute;
+    display: flex;
+    justify-content: center;
+ 
 }
 
 .Map .map {
-    margin-left: 20px;
+    margin-right: 20px;
 }
 
