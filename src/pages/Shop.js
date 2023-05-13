@@ -7,6 +7,7 @@ import ProductCompareList from '../components/ProductCompareList';
 const Shop = ({ wishItem, setWishItem }) => {
   const [productdatas, setProductdatas] = useState([]);
   const [originalProductdatas, setOriginalProductdatas] = useState([]);
+  const [wishItems, setWishItems] = useState([]);
 
   const navigate = useNavigate();
 
@@ -17,28 +18,13 @@ const Shop = ({ wishItem, setWishItem }) => {
       setOriginalProductdatas(response.data);
     };
     getProductdatas();
-  }, []);
 
-  const saveToLocalStorage = (key, value) => {
-    localStorage.setItem(key, JSON.stringify(value));
-  };
-
-  const loadFromLocalStorage = (key) => {
-    const value = localStorage.getItem(key);
-    return value ? JSON.parse(value) : null;
-  };
-
-  useEffect(() => {
-    const savedProducts = loadFromLocalStorage('productdatas');
-    const savedWishItem = loadFromLocalStorage('wishItem');
-  
-    if (savedProducts) {
-      setProductdatas(savedProducts);
-    }
-  
-    if (savedWishItem) {
-      setWishItem(savedWishItem);
-    }
+    const getWishItems = async () => {
+      const response = await axios.get('http://localhost:3001/wishitem');
+      const token = localStorage.getItem('token');
+      setWishItems(response.data.filter((wishitem) => String(wishitem.token)===String(token)));
+    };
+    getWishItems();
   }, []);
   
   const categoryFilterResult = (category) => {
@@ -53,37 +39,73 @@ const Shop = ({ wishItem, setWishItem }) => {
   const handleFavoriteClick = (id) => {
     const newProductdatas = productdatas.map((productdata) => {
       if (productdata.id === id) {
+        const isFavorited = !productdata.isFavorited;
+        if (isFavorited) {
+          handleAddWish(id);
+        } else {
+          handleRemoveWish(id);
+        }
         return {
           ...productdata,
-          isFavorited: !productdata.isFavorited,
+          isFavorited,
         };
       } else {
         return productdata;
       }
     });
+    setProductdatas(newProductdatas);
+  };
 
-    setProductdatas(newProductdatas, () => {
-      setWishItem(newProductdatas.filter((productdata) => productdata.isFavorited));
+  const handleAddWish = (id) => {
+    const token = localStorage.getItem('token');
+    const productId = id;
+    axios.post('http://localhost:3001/wishlist', { token, productId })
+    .then((response) => {
+      console.log(response.data);
+      setWishItems([...wishItems, response.data]);
+      // 해당 상품의 isFavorited 값을 true로 설정
+      const newProductdatas = productdatas.map((productdata) => {
+        if (productdata.id === id) {
+          return {
+            ...productdata,
+            isFavorited: true,
+          };
+        } else {
+          return productdata;
+        }
+      });
+      setProductdatas(newProductdatas);
+    })
+    .catch((error) => {
+      console.error("error");
     });
   };
-  const handleAddWish = (product) => {
-    const newWishItem = [...wishItem, product];
-    setWishItem(newWishItem);
-    axios.post('/wishlist', newWishItem)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
+  
+  const handleRemoveWish = (id) => {
+    const token = localStorage.getItem('token');
+    const productId = id;
+    axios.post('http://localhost:3001/delete', { token, productId })
+    .then((response) => {
+      console.log(response.data);
+      setWishItems(wishItems.filter((wishitem) => wishitem.productId !== productId));
+      // 해당 상품의 isFavorited 값을 false로 설정
+      const newProductdatas = productdatas.map((productdata) => {
+        if (productdata.id === id) {
+          return {
+            ...productdata,
+            isFavorited: false,
+          };
+        } else {
+          return productdata;
+        }
       });
+      setProductdatas(newProductdatas);
+    })
+    .catch((error) => {
+      console.error("error");
+    });
   };
   
-  const handleRemoveWish = (product) => {
-    const newWishItem = wishItem.filter((item) => item.id !== product.id);
-    setWishItem(newWishItem);
-    saveToLocalStorage('wishItem', newWishItem); // 로컬 스토리지에 위시리스트 데이터 저장
-  };
-
   const [selectedProducts, setSelectedProducts] = useState([]);
   const handleCheckboxClick = (product) => {
     if (selectedProducts.some((selectedProduct) => selectedProduct.id === product.id)) {
@@ -130,10 +152,7 @@ const Shop = ({ wishItem, setWishItem }) => {
               <ProductList
                 productData={productdatas}
                 handleFavoriteClick={handleFavoriteClick}
-                handleAddWish={handleAddWish}
-                handleRemoveWish={handleRemoveWish}
                 handleCheckboxClick={handleCheckboxClick}
-                wishItem={wishItem}
               />
 
           </div>

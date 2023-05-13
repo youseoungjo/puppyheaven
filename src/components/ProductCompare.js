@@ -100,14 +100,22 @@ const ProductCompare = () => {
           </div>
 
           <div className="product-compare">
-            <h4>상품 비교</h4>
+            <div className="pc-title">상품 비교</div>
 
             {selectedProducts && selectedProducts.length > 0 && (
               <table>
                 <tbody>
-                {selectedProducts.map((product) => (
                   <td>
-                    <tr><img src={product.image} alt={product.name} width="120" height="100"/></tr>
+                    <tr>이미지</tr>
+                    <tr>상품명</tr>
+                    <tr>가격</tr>
+                    <tr>연령</tr>
+                    <tr>제조사</tr>
+                  </td>
+                {selectedProducts.map((product) => (
+                  <div className="pc-info">
+                  <td>
+                    <tr><img src={product.image} alt={product.name} className="pc-img"/></tr>
                     <tr>{product.name}</tr>
                     {uniqueSortedProducts.map((uniqueProduct) => (
                       <tr key={uniqueProduct.kg}>
@@ -133,6 +141,7 @@ const ProductCompare = () => {
                     <tr>{product.age}</tr>
                     <tr>{product.maker}</tr>
                   </td>
+                  </div>
                 ))}
                 </tbody>
               </table>

@@ -2,15 +2,30 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
-const WishList = ({wishItem, setWishItem}) => {
+const WishList = () => {
 
     const navigate = useNavigate();
 
     const [coupangs, setCoupangs] = useState([]);
     const [gmarkets, setGmarkets] = useState([]);
     const [elevens, setElevens] = useState([]);
+    const [wishItems, setWishItems] = useState([]);
+    const [productdatas, setProductdatas] = useState([]);
 
     useEffect(() => {
+        const getWishItems = async () => {
+          const response = await axios.get('http://localhost:3001/wishitem');
+          const token = localStorage.getItem('token');
+          setWishItems(response.data.filter((wishitem) => wishitem.token===token));
+        };
+        getWishItems();
+
+        const getProductdatas = async () => {
+          const response = await axios.get('http://localhost:3001/productdata');
+          setProductdatas(response.data);
+        };
+        getProductdatas();
+
         const getCoupangs = async () => {
           const response = await axios.get('http://localhost:3001/coupang');
           setCoupangs(response.data);
@@ -74,16 +89,27 @@ const WishList = ({wishItem, setWishItem}) => {
     
         return minPrice;
       };
-    
-    const handleRemoveWish = (product) => {
-        const newWishItem = wishItem.filter(item => item.id !== product.id);
-        setWishItem(newWishItem);
-    }
-    console.log(wishItem);
 
+    const matchedItems = productdatas.filter((product) => {
+      return wishItems.some((wishitem) => wishitem.productId === product.id);
+    });
+    
+    const handleRemoveWish = (id) => {
+      const token = localStorage.getItem('token');
+      const productId = id;
+      axios.post('http://localhost:3001/delete', { token, productId })
+      .then((response) => {
+        console.log(response.data);
+        setWishItems(wishItems.filter((wishitem) => wishitem.productId !== productId));
+      })
+      .catch((error) => {
+        console.error("error");
+      });
+    };
+  
 
     const showWishItem = () => {
-        return wishItem.map(item => (
+        return matchedItems.map(item => (
 
               <React.Fragment key={item.id}>
                 <tr>
@@ -112,7 +138,7 @@ const WishList = ({wishItem, setWishItem}) => {
                         </tr>
                     ))}
                   </td>
-                  <td className="cart" style={{ width: "150px", height: "75px" }}><button onClick={()=>handleRemoveWish(item)}>제거</button></td>
+                  <td className="cart" style={{ width: "150px", height: "75px" }}><button onClick={()=>handleRemoveWish(item.id)}>제거</button></td>
                 </tr>
               </React.Fragment>
             ))
@@ -140,7 +166,7 @@ const WishList = ({wishItem, setWishItem}) => {
                 <div className="col-md-9">
                     <div className="row">
 
-                        {wishItem.length > 0 ? showWishItem() : <p>비어있음</p>}
+                        {matchedItems.length > 0 ? showWishItem() : <p>비어있음</p>}
 
 
                     </div>

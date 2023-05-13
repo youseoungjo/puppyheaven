@@ -7,8 +7,7 @@ router.get('/productdata', productController.getProducts);
 router.get('/coupang', productController.getCoupangs);
 router.get('/gmarket', productController.getGmarkets);
 router.get('/eleven', productController.getElevens);
+router.get('/wishitem', productController.getWishItems);
 
-//위시리스트
-router.post('/wishlist', productController.getWishLists);
 
 module.exports = router;

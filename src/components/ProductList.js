@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 // import { useNavigate } from "react-router-dom";
 
-const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRemoveWish, handleCheckboxClick, wishItem }) => {
+const ProductList = ({ productData, handleFavoriteClick, handleCheckboxClick }) => {
   const [coupangs, setCoupangs] = useState([]);
   const [gmarkets, setGmarkets] = useState([]);
   const [elevens, setElevens] = useState([]);
   const [products, setProducts] = useState([]);
+
+
 
   useEffect(() => {
     const getCoupangs = async () => {
@@ -29,7 +31,6 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
 
     setProducts(productData);
   }, [productData]);
-
 
   const sortedCoupangs = [...coupangs].sort((a, b) => a.price - b.price);
   const sortedGmarkets = [...gmarkets].sort((a, b) => a.price - b.price);
@@ -110,11 +111,8 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
                 </tr>
               ))}
               </td>
-              <td className="Product-button" onClick={() => {
-                handleFavoriteClick(product.id);
-                product.isFavorited ? handleRemoveWish(product) : handleAddWish(product);
-                }} style={{ cursor: 'pointer' , color: wishItem.some((item) => item.id === product.id) ? 'red' : 'black'}}>
-                  {wishItem.some((item) => item.id === product.id) ? '❤️' : '🤍'}
+              <td className="Product-button" onClick={() => handleFavoriteClick(product.id)} style={{ cursor: "pointer", color: product.isFavorited ? "red" : "black", }}>
+                {product.isFavorited ? "❤️" : "🤍"}
               </td>
               <td className="Product-button"><input type="checkbox" onClick={() => handleCheckboxClick(product)} /></td>
             </tr>

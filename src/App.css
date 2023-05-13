@@ -292,19 +292,52 @@
     color: red;
     font-size: 11px;
 }
+
+/* logo */
+
+.Logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.Logo .logo-image {
+  width: 250px;
+}
+
 /* Main */
 
 .Main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100vh; 
-
-    background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh; 
+  background-color: #B6CDEF;
+  position: relative;
 }
 
-.Main button {
+.Main .main-logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  align-items: center;
+  height: 20%;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+}
+
+.main-logo .logo-image {
+  width: 250px;
+}
+
+.Main .main-btn {
     background-color: white;
     margin-top: 30px;
     margin-left: 20px;
@@ -316,7 +349,29 @@
     cursor: pointer;
 }
 
-/* Category */
+.Main .logout-btn {
+  position: absolute; 
+  top: 70px; 
+  right: 50px;
+  font-family: "Regular";
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.Main .logout-btn:hover {
+  font-family: "Bold";
+  font-size: 27px;
+  color: white;
+}
+
+.Main .logout-img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+/* Categoryxx */
 
 .Category {
     background-color: white;
@@ -465,20 +520,99 @@
     margin: 0 auto;  
 }
 
-/* logo */
+/* 하이퍼링크 */
 
-.Logo {
-    display: flex;
+a {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+
+
+/* 가격비교 */
+.price-compare {
+    background-color: white;
+    width: 75vw;
+    height: 74vh;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
     justify-content: center;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    align-items: center;
+    font-family: "Light";
+    font-size: 17px;
+    overflow: auto;
 }
 
-.Logo .logo-image {
-    align-self: center;
-    width: 250px;
+.compare-title {
+    margin-top: 50px;
+    margin-bottom: 40px;
+    margin-left: 210px;
+    text-align: left;
+    font-family: "Regular";
+    font-size: 35px;
 }
+
+.price-compare .compare-left {
+    float: left;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 200px;
+}
+
+.compare-left .compare-img {
+    width: 400px;
+    height: 400px;
+}
+
+.price-compare .compare-right {
+    float: right;
+    margin-top: 20px;
+    margin-right: 250px;
+}
+
+.compare-right table {
+    border-collapse: separate;
+    border-spacing: 20px;
+  }
+
+.compare-right .row-price-title {
+    font-family: "Regular";
+    font-size: 25px;
+    margin-right: 125px;
+}
+
+.compare-right .row-price {
+    font-family: "Regular";
+    font-size: 25px;
+    margin-right: 125px;
+}
+
+.compare-right .row-price a{
+    font-family: "Bold";
+    color: #2070EB;
+    margin-right: 25px;
+}
+
+.compare-right .row-price-btn {
+    background-color: black;
+    color: white;
+    padding: 4px;
+}
+
+.compare-right .deliveryfee {
+    background-color: lightgray;
+    text-align: left;
+}
+
+.compare-right .shop-img{
+    text-align: left;
+}
+
+/* 상품 비교 리스트 */
 
 .product-compare-list {
     background-color: white;
@@ -487,9 +621,17 @@
     border-radius: 10px;
     text-align: center;
     position: relative;
+    overflow: auto;
+    font-family: "Light";
+    font-size: 18px;
 }
 
-/* 하이퍼링크 */
+.ProductCompareList {
+    height: calc(100% - 40px);
+    position: relative;
+    padding-bottom: 30px;
+    overflow: auto;
+}
 
 a {
     text-decoration: none;
@@ -658,6 +800,37 @@ a {
     overflow: auto;
     display: flex;
     flex-direction: column;
+    margin-left: 10px;
+}
+
+.product-compare .pc-title {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-family: "Regular";
+    font-size: 30px;
+    margin: 20px;
+}
+
+.product-compare .pc-img {
+    width: 100px;
+    height: 100px;
+}
+
+.product-compare table {
+    margin: 0 auto;
+    width: 90%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+
+.product-compare .pc-info {
+    display: inline-block;
+    width: 200px;
+    margin: 20px;
 }
 
 /* Map */
@@ -735,5 +908,4 @@ a {
 .Map .map {
     margin-left: 20px;
 }
-
 
