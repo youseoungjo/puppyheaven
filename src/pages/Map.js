@@ -22,7 +22,7 @@ const Map = () => {
     const script = document.createElement("script");
     script.async = true;
     script.defer = true;
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=83a7ee6331002d90e4eaff2f51a4747a&libraries=services,clusterer,drawing&autoload=false`;
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=APP_KEY&libraries=services,clusterer,drawing&autoload=false`;
     script.onload = loadScript;
     document.head.appendChild(script);
 
