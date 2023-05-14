@@ -890,19 +890,18 @@ a {
     justify-content: center;
 }
 
-.Map .search_wrapper .main_button {
-    position: relative;
-    font-family: "Bold";
-    margin-left: 10px;
-    margin-top: 20px;
-}
 
 .Map .search_wrapper .btn-group-md  {
     position: relative;
     font-family: "Bold";
     margin-top: 20px;
-    margin-left: 140px;
+    margin-left: 20px;
     z-index: 1;
+}
+
+.Map .search_wrapper .main_btn {
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .Map .search_wrapper .btn {
@@ -951,4 +950,6 @@ a {
 .Map .map {
     margin-right: 20px;
 }
+
+
 
