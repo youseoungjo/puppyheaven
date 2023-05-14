@@ -371,7 +371,7 @@
   margin-bottom: 5px;
 }
 
-/* Categoryxx */
+/* Category */
 
 .Category {
     background-color: white;
@@ -407,49 +407,56 @@
   }
 
   
-/* Cart */
+/* WishList */
 
 
-.Cart {
+.WishList {
     display: flex;
+    flex-direction: column;
+    position: relative;
 
     width: 100%;
     height: 100vh; 
 
-    background-color: lightblue;
+    background-color: #B6CDEF;
 }
 
 
-.Cart .edit_cart{
+.WishList .edit_wish{
     background-color: white;
-    width: 50vw;
-    height: 94vh;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-left: 38vh;
-    margin-right: 15px;
+    margin-top: 22.7vh;
+    margin-left: 50vh;
+    width: 73vw;
+    height: 74vh;
     border-radius: 10px;
     position: absolute;
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
-.Cart .card_wrapper{
+.WishList .card_wrapper{
     margin-left: 30px;
     margin-right: 30px;
     max-width: 95%;
 }
 
-.Cart .row {
+.WishList .row {
     margin-left: 10px;
 }
 
-.Cart .cate_btn {
+.WishList .Category {
+    margin-left: 2vw;
+}
+
+.WishList .cate_btn {
     background-color: white;
     border: none;
     width: 100%;
     margin-left: 1px;
     margin-right: 1px;
 }
+
+/* Shop */
 
 .Shop {
     display: flex;
@@ -642,6 +649,8 @@ a {
   a:hover {
     text-decoration: underline;
   }
+
+  
 /* 가격비교 */
 .price-compare {
     background-color: white;
@@ -837,6 +846,8 @@ a {
 
 .Map {
     display: flex;
+    flex-direction: column;
+    position: relative;
 
     width: 100%;
     height: 100vh; 
@@ -844,34 +855,53 @@ a {
     background-color: #B6CDEF;
 }
 
+.Map .Logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    align-items: center;
+  }
+  
+.Map .Logo .logo-image {
+    width: 250px;
+  }
+
+
 .Map .search_wrapper {
     background-color: white;
-    width: 22vw;
-    height: 94vh;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 22.7vh;
     margin-left: 5vh;
-    margin-right: 15px;
+    width: 22vw;
+    height: 74vh;
     border-radius: 10px;
-    align-items: center;
     position: absolute;
+    justify-content: center;
 }
 
 .Map .search_wrapper .main_button {
+    position: relative;
+    font-family: "Bold";
+    margin-left: 10px;
     margin-top: 20px;
 }
 
 .Map .search_wrapper .btn-group-md  {
+    position: relative;
+    font-family: "Bold";
     margin-top: 20px;
-    margin-left: 20px;
+    margin-left: 140px;
+    z-index: 1;
 }
 
 .Map .search_wrapper .btn {
+    position: relative;
     margin-left: 10px;
 }
 
 .Map .search_wrapper .search_bar {
-    margin-top: 20px;
+    position: relative;
+    margin-top: 15px;
     margin-left: 20px;
 }
 
@@ -888,6 +918,7 @@ a {
     margin-bottom: 5px;
     height: 32px;
     background-color: white;
+    font-family: "Light";
     border-radius: 20px;
     border: 1px solid gray;
 }
@@ -895,17 +926,19 @@ a {
 
 .Map .map_wrapper {
     background-color: white;
-    width: 70vw;
-    height: 94vh;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 22.7vh;
     margin-left: 55vh;
-    margin-right: 15px;
+    width: 70vw;
+    height: 74vh;
     border-radius: 10px;
     position: absolute;
+    display: flex;
+    justify-content: center;
+ 
 }
 
 .Map .map {
-    margin-left: 20px;
+    margin-right: 20px;
 }
+
 
