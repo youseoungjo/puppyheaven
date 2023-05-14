@@ -157,6 +157,10 @@ const WishList = sequelize.define('wishlist', {
     allowNull: false,
     primaryKey: true
   },
+  isFavorited: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
 });
 
 const productModel = {

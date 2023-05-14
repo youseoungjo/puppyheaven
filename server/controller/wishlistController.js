@@ -1,13 +1,13 @@
 const WishListDao = require('../dao/wishlistDao');
 
 const getWishLists = async (req, res) => {
-  const { userId, productId } = req.body;
+  const { userId, productId, isFavorited } = req.body;
   console.log(req.body);
-  if (!userId || !productId) {
+  if (!userId || !productId || !isFavorited) {
     return res.status(400).json({ message: 'Invalid input' });
   }
   try {
-    const wishList = await WishListDao.create(userId, productId);
+    const wishList = await WishListDao.create(userId, productId, isFavorited);
     res.status(201).json(wishList);
   } catch (err) {
     console.error(err);

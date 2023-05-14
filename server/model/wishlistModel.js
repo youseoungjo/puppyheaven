@@ -25,6 +25,10 @@ const WishList = sequelize.define('wishlist', {
     allowNull: false,
     primaryKey: true
   },
+  isFavorited: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
 });
 
 // 위시리스트 삭제 함수

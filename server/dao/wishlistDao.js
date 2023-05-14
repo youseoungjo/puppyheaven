@@ -1,12 +1,13 @@
 const WishList = require('../model/wishlistModel');
 
 class WishListDao {
-  static async create(userId, productId) {
+  static async create(userId, productId, isFavorited) {
     try {
       const existingWishList = await WishList.findOne({
         where: {
           userId,
           productId,
+          isFavorited
         },
       });
       if (existingWishList) {
@@ -15,6 +16,7 @@ class WishListDao {
       const wishList = await WishList.create({
         userId,
         productId,
+        isFavorited
       });
       return wishList;
     } catch (err) {

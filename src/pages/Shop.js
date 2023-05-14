@@ -37,14 +37,14 @@ const Shop = () => {
     }
   };
 
-  const handleFavoriteClick = (id) => {
-    const newProductdatas = productdatas.map((productdata) => {
+  const handleFavoriteClick = async (id) => {
+    const newProductdatas = productdatas.map(async (productdata) => {
       if (productdata.id === id) {
         const isFavorited = !productdata.isFavorited;
         if (isFavorited) {
-          handleAddWish(id);
+          await handleAddWish(id, isFavorited);
         } else {
-          handleRemoveWish(id);
+          await handleRemoveWish(id);
         }
         return {
           ...productdata,
@@ -54,64 +54,64 @@ const Shop = () => {
         return productdata;
       }
     });
+    const updatedProductdatas = await Promise.all(newProductdatas);
+    setProductdatas(updatedProductdatas);
+  };
+
+const handleAddWish = async (id, isFavorited) => {
+  const token = localStorage.getItem('token');
+  const decodedToken = jwt_decode(token);
+  const userId = decodedToken.id;
+
+  const productId = id;
+  console.log(isFavorited)
+  try {
+    const response = await axios.post('http://localhost:3001/wishlist', { userId, productId, isFavorited });
+    console.log(response.data);
+    setWishItems([...wishItems, response.data]);
+    // 해당 상품의 isFavorited 값을 true로 설정
+    const newProductdatas = productdatas.map((productdata) => {
+      if (productdata.id === id) {
+        return {
+          ...productdata,
+          isFavorited: true,
+        };
+      } else {
+        return productdata;
+      }
+    });
     setProductdatas(newProductdatas);
-  };
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-  const handleAddWish = (id) => {
-    const token = localStorage.getItem('token');
-    const decodedToken = jwt_decode(token);
-    const userId = decodedToken.id;
+const handleRemoveWish = async (id) => {
+  const token = localStorage.getItem('token');
+  const decodedToken = jwt_decode(token);
+  const userId = decodedToken.id;
 
-    const productId = id;
-    axios.post('http://localhost:3001/wishlist', { userId, productId })
-    .then((response) => {
-      console.log(response.data);
-      setWishItems([...wishItems, response.data]);
-      // 해당 상품의 isFavorited 값을 true로 설정
-      const newProductdatas = productdatas.map((productdata) => {
-        if (productdata.id === id) {
-          return {
-            ...productdata,
-            isFavorited: true,
-          };
-        } else {
-          return productdata;
-        }
-      });
-      setProductdatas(newProductdatas);
-    })
-    .catch((error) => {
-      console.error("error");
+  const productId = id;
+  try {
+    const response = await axios.post('http://localhost:3001/delete', { userId, productId });
+    console.log(response.data);
+    setWishItems(wishItems.filter((wishitem) => wishitem.productId !== productId));
+    // 해당 상품의 isFavorited 값을 false로 설정
+    const newProductdatas = productdatas.map((productdata) => {
+      if (productdata.id === id) {
+        return {
+          ...productdata,
+          isFavorited: false,
+        };
+      } else {
+        return productdata;
+      }
     });
-  };
-  
-  const handleRemoveWish = (id) => {
-    const token = localStorage.getItem('token');
-    const decodedToken = jwt_decode(token);
-    const userId = decodedToken.id;
-
-    const productId = id;
-    axios.post('http://localhost:3001/delete', { userId, productId })
-    .then((response) => {
-      console.log(response.data);
-      setWishItems(wishItems.filter((wishitem) => wishitem.productId !== productId));
-      // 해당 상품의 isFavorited 값을 false로 설정
-      const newProductdatas = productdatas.map((productdata) => {
-        if (productdata.id === id) {
-          return {
-            ...productdata,
-            isFavorited: false,
-          };
-        } else {
-          return productdata;
-        }
-      });
-      setProductdatas(newProductdatas);
-    })
-    .catch((error) => {
-      console.error("error");
-    });
-  };
+    setProductdatas(newProductdatas);
+  } catch (error) {
+    console.error(error);
+  }
+};
   
   const [selectedProducts, setSelectedProducts] = useState([]);
   const handleCheckboxClick = (product) => {
