@@ -6,6 +6,8 @@ const Map = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+
+
     const loadScript = () => {
       if (window.kakao && window.kakao.maps) {
         const container = document.getElementById("map");
@@ -28,6 +30,7 @@ const Map = () => {
 
     return () => {
       document.head.removeChild(script);
+      // document.cookie = "cookieName=cookieValue; SameSite=Strict; Secure";
     };
   }, []);
 
@@ -40,24 +43,22 @@ const Map = () => {
 
       <div className="search_wrapper">
 
-        <div className="btn-toolbar" role="toolbar">
-          <div>
-            <div type="button" className="main_button" onClick={() => navigate('/main')} />
-            <label className="btn btn-outline-dark">Main</label>
-          </div>
+        {/* <div className="btn-toolbar" role="toolbar"> */}
 
-          <div className="btn-group-md" role="group">
-            <div type="radio" className="btn-check" id="btn1" autocomplete="off" checked/>
-            <label className="btn btn-outline-dark" for="btn1">산책코스</label>
-
-            <div type="radio" className="btn-check" id="btn2" autocomplete="off" />
-            <label className="btn btn-outline-dark" for="btn2">동물병원</label>
-
-          </div>
+        <div className="btn-group-md" role="group">
+          <input type="radio" className="btn-check" id="mainbtn" autoComplete="off"/>
+            <label className="btn btn-outline-dark" htmlFor="mainbtn" onClick={() => navigate('/main')}>
+              Main
+            </label>
+          <input type="radio" className="btn-check" id="btn1" name="options" autoComplete="off" defaultChecked />
+          <label className="btn btn-outline-dark" htmlFor="btn1">동물병원</label>
+          <input type="radio" className="btn-check" id="btn2" name="options" autoComplete="off" />
+          <label className="btn btn-outline-dark" htmlFor="btn2">산책로</label>
         </div>
+        {/* </div> */}
 
         <div className="search_bar">
-          <input type="text" className="searchBar"/>
+          <input type="text" autoComplete="off" className="searchBar"/>
           <button className="searchBtn">검색</button>
         </div>
 
@@ -70,7 +71,7 @@ const Map = () => {
       </div>
 
       <div className="map_wrapper">
-        <div id="map" style={{ width: "90%", height: "90%", marginLeft: "60px", marginTop: "45px" }}/>
+        <div id="map" style={{ width: "92%", height: "90%", marginLeft: "60px", marginTop: "45px" }}/>
       </div>
 
 
