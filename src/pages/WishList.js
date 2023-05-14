@@ -113,6 +113,7 @@ const WishList = () => {
       });
     };
   
+
     const showWishItem = () => {
         return matchedItems.map(item => (
 
@@ -157,6 +158,8 @@ const WishList = () => {
             <img src="shortlogo.png" alt="로고 이미지" className="logo-image"></img>
           </div>
 
+          <div className="wish_content">
+
             <div className="Category">
                 <div className="list-group list-group-flush">
                     <div style={{margin: "10px"}}/>
@@ -180,6 +183,8 @@ const WishList = () => {
 
                     </div>
                 </div>
+
+            </div>
 
             </div>
         </div>
