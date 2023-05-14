@@ -421,17 +421,27 @@
     background-color: #B6CDEF;
 }
 
+.WishList .wish_content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
 
 .WishList .edit_wish{
     background-color: white;
-    margin-top: 22.7vh;
-    margin-left: 50vh;
     width: 73vw;
     height: 74vh;
     border-radius: 10px;
-    position: absolute;
-    display: flex;
+    position: relative;
+    text-align: center;
     justify-content: center;
+    font-family: "Light";
+    font-size: 17px;
+    overflow: auto;
 }
 
 .WishList .card_wrapper{
@@ -844,6 +854,7 @@ a {
 
 /* Map */
 
+
 .Map {
     display: flex;
     flex-direction: column;
@@ -940,5 +951,4 @@ a {
 .Map .map {
     margin-right: 20px;
 }
-
 
