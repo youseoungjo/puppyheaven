@@ -7,6 +7,7 @@ const Map = () => {
   const [scriptLoaded, setScriptLoaded] = useState(false);
   const [map, setMap] = useState(null);
   const [marker, setMarker] = useState(null);
+  const [searchPlaces, setSearchPlaces] = useState([]);
 
   useEffect(() => {
     const loadScript = () => {
@@ -37,59 +38,49 @@ const Map = () => {
     };
   }, []);
 
-  const searchAddress = () => {
-    if (!map || !address) return;
-  
-    const geocoder = new window.kakao.maps.services.Geocoder();
-    geocoder.addressSearch(address, (result, status) => {
-      if (status === window.kakao.maps.services.Status.OK) {
-        const coordinates = new window.kakao.maps.LatLng(result[0].y, result[0].x);
-  
-        if (map) {
-          map.setCenter(coordinates);
-          
-          // 이전 마커를 삭제합니다.
-          if (marker) {
-            marker.setMap(null);
-          }
-  
-          // 새로운 마커를 추가하고 상태를 업데이트합니다.
-          const newMarker = new window.kakao.maps.Marker({ position: coordinates });
-          newMarker.setMap(map);
-          setMarker(newMarker);
-  
-          console.log("검색된 좌표: ", coordinates);
-        } else {
-          alert("지도를 로드할 수 없습니다. 다시 시도해 주세요.");
-        }
-      } else {
-        alert("검색 결과를 찾을 수 없습니다. 다른 주소를 입력해 주세요.");
-      }
-    });
-  };
-  let e = [1, 2, 3];
-  let result = e.map(function(num) {
-    return num * 2;
-  }); 
-  function handleAddressChange(e) {
-    setAddress(e.target.value);
-  }
+  const displayPlaces = (places) => {
+    removeAllMarkers();
 
+    const bounds = new window.kakao.maps.LatLngBounds();
+    places.forEach((place) => {
+      const marker = new window.kakao.maps.Marker({
+        position: new window.kakao.maps.LatLng(place.y, place.x),
+      });
+      marker.setMap(map);
+      bounds.extend(marker.getPosition());
+
+      setSearchPlaces((prevPlaces) => [...prevPlaces, marker]);
+    });
+
+    map.setBounds(bounds);
+  };
+
+  const removeAllMarkers = () => {
+    searchPlaces.forEach((marker) => {
+      marker.setMap(null);
+    });
+    setSearchPlaces([]);
+  };
+
+  const handleAddressChange = (e) => {
+    setAddress(e.target.value);
+  };
 
   const handleAddressSearch = (e) => {
     e.preventDefault();
-  
-    console.log("입력한 주소: ", address);
-  
-    const searchWithDelay = () => {
-      if (window.kakao && window.kakao.maps && window.kakao.maps.services) {
-        searchAddress();
+    if (!window.kakao || !window.kakao.maps || !window.kakao.maps.services) {
+      alert('지도를 로드 중입니다. 잠시 후 다시 시도해주세요.');
+      return;
+    }
+    
+    const places = new window.kakao.maps.services.Places(map);
+    places.keywordSearch(address, (result, status) => {
+      if (status === window.kakao.maps.services.Status.OK) {
+        displayPlaces(result);
       } else {
-        setTimeout(searchWithDelay, 1000);
+        alert("검색 결과를 찾을 수 없습니다. 다른 키워드를 입력해 주세요.");
       }
-    };
-  
-    searchWithDelay();
+    });
   };
 
   return (
@@ -141,18 +132,20 @@ const Map = () => {
         </div>
 
         <div className="search_bar">
-          <form onSubmit={handleAddressSearch}>
-            <input
-              type="text"
-              value={address}
-              onChange={handleAddressChange}
-              autoComplete="off"
-              className="searchBar"
-              placeholder="주소 검색"
-            />
-            <button type="submit" className="searchBtn">검색</button>
-          </form>
-        </div>
+        <form onSubmit={handleAddressSearch}>
+          <input
+            type="text"
+            value={address}
+            onChange={handleAddressChange}
+            autoComplete="off"
+            className="searchBar"
+            placeholder="키워드 검색"
+          />
+          <button type="submit" className="searchBtn">
+            검색
+          </button>
+        </form>
+      </div>
 
         <div className="search_results">
           <div></div>
@@ -162,7 +155,12 @@ const Map = () => {
       <div className="map_wrapper">
         <div
           id="map"
-          style={{ width: "92%", height: "90%", marginLeft: "60px", marginTop: "45px" }}
+          style={{
+            width: "92%",
+            height: "90%",
+            marginLeft: "60px",
+            marginTop: "45px",
+          }}
         />
       </div>
     </div>
