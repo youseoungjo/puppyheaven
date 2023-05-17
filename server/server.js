@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const userRouter = require('./router/userRouter');
 const productRouter = require('./router/productRouter');
 const wishlistRouter = require('./router/wishlistRouter');
+// const { saveDataToFile } = require('./saveDataToFile');
 
 const app = express();
 app.use(cors());
@@ -24,6 +25,9 @@ app.get('/wishitem', productRouter);
 app.post('/wishlist', wishlistRouter);
 app.post('/delete', wishlistRouter);
 
-app.listen(3001, () => {
+app.listen(3001, async () => {
   console.log('서버가 시작되었습니다. 3001');
+
+  // // 데이터 저장
+  // await saveDataToFile.saveDataToFile();
 });

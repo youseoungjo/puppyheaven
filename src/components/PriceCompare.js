@@ -124,7 +124,7 @@ const PriceCompare = () => {
                       <tr>
                         <td className="shop-img"><img src={product.image} alt="쇼핑몰 로고"/></td>
                         <td>{includeDelivery ? <a href={product.url}>{product.price + product.deliveryFee}원</a> : <a href={product.url}>{product.price}원</a>}</td>
-                        <td>{product.deliveryFee}원</td>
+                        <td>{product.deliveryFee === 0 ? '무료배송' : `${product.deliveryFee}원`}</td>
                       </tr>
                       ))}
                     </table>

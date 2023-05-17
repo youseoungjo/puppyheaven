@@ -105,13 +105,6 @@ const ProductCompare = () => {
             {selectedProducts && selectedProducts.length > 0 && (
               <table>
                 <tbody>
-                  <td>
-                    <tr>이미지</tr>
-                    <tr>상품명</tr>
-                    <tr>가격</tr>
-                    <tr>연령</tr>
-                    <tr>제조사</tr>
-                  </td>
                 {selectedProducts.map((product) => (
                   <div className="pc-info">
                   <td>
