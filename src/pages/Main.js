@@ -22,8 +22,8 @@ const Main = () => {
           </div>
       
           <div>
-            <button className="main-btn" onClick={()=>navigate('/map')}>지도 보기</button>
-            <button className="main-btn" onClick={()=>navigate('/shop')}>상점 보기</button>
+            <button className="main-btn" onClick={()=>navigate('/map')}> <img src="map.gif" alt="map" /> <span>PUPPY MAP</span> </button>
+            <button className="main-btn" onClick={()=>navigate('/shop')}> <img src="shop.gif" alt="GIF 이미지" /> <span>PUPPY SHOP</span></button>
           </div>
       </div>
     );

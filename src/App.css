@@ -343,8 +343,8 @@
     margin-left: 20px;
     margin-right: 20px;
     width: 250px;
-    height: 300px;
-    border-radius: 20px;
+    height: 200px;
+    border-radius: 50px;
     border: none;
     cursor: pointer;
 }
@@ -352,24 +352,39 @@
 .Main .logout-btn {
   position: absolute; 
   top: 70px; 
-  right: 50px;
+  right: 150px;
   font-family: "Regular";
-  font-size: 25px;
+  font-size: 23px;
   cursor: pointer;
 }
 
 .Main .logout-btn:hover {
-  font-family: "Bold";
-  font-size: 27px;
-  color: white;
+    font-family: "Bold";
+    font-size: 25px;
+    color: white;
+  }
+  
+  .Main .logout-img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    margin-bottom: 5px;
 }
 
-.Main .logout-img {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-  margin-bottom: 5px;
+.main-btn span {
+    font-family: "Regular";
+    font-size: 17px;
+    color: black;
+    transition: color 0.3s ease;
+    margin: 10px;
 }
+
+
+.main-btn:hover span {
+    font-family: "Bold";
+    font-size: 20px;
+    color: #B6CDEF;
+  }
 
 /* Category */
 
