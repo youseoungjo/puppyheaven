@@ -820,36 +820,60 @@ a {
     display: flex;
     flex-direction: column;
     margin-left: 10px;
+    align-items: center;
 }
 
 .product-compare .pc-title {
-    position: absolute;
-    top: 20px;
+    top: 10px;
     left: 50%;
-    transform: translateX(-50%);
     text-align: center;
     font-family: "Regular";
     font-size: 30px;
     margin: 20px;
 }
 
+.product-compare .pc-product {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 75vw;
+    height: 750px;
+    overflow: auto;
+    margin-bottom: 60px;
+}
+
+.product-compare .pc-img-box {
+    height: 110px;
+}
+
+
 .product-compare .pc-img {
     width: 100px;
     height: 100px;
 }
 
-.product-compare table {
-    margin: 0 auto;
-    width: 90%;
-    border-collapse: separate;
-    border-spacing: 0 10px;
-}
-
 
 .product-compare .pc-info {
     display: inline-block;
-    width: 200px;
+    width: 250px;
     margin: 20px;
+    align-items: center; 
+}
+
+.pc-info .pc-name {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pc-info .pc-price-box {
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /*  */
