@@ -876,6 +876,13 @@ a {
     align-items: center;
 }
 
+.product-compare .pc-age {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /*  */
 
 .Map {
