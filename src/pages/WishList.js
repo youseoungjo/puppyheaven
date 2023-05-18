@@ -120,34 +120,38 @@ const WishList = ({wishItem, setWishItem}) => {
 
 
     return (
-        <div className="Cart">
+      <div className="Shop">
 
-            <div className="Category">
-                <div className="list-group list-group-flush">
-                    <div style={{margin: "10px"}}/>
-                    <button type="button" className="list-group-item" onClick={()=>navigate('/main')}>메인화면</button>
-                    <button type="button" className="list-group-item" onClick={()=>navigate('/shop')}>계속 쇼핑하기</button>
-                    <div style={{margin: "30px"}}/>
-                </div>
+      <div className="Logo">
+        <img src="shortlogo.png" alt="로고 이미지" className="logo-image"></img>
+      </div>
+
+      <div className="Shop-content">
+
+          <div className="Category">
+            <div className="list-group list-group-flush">
+                <div style={{margin: "10px"}}/>
+                  <button type="button" className="list-group-item" onClick={() => navigate('/main')}>메인화면</button>
+                  <button type="button" className="list-group-item" onClick={() => navigate('/shop')}>계속 쇼핑하기</button>
+                  <button type="button" className="list-group-item" onClick={() => navigate('/wish')}>위시리스트</button>
+                  <div style={{margin: "30px"}}/>
             </div>
+          </div>
 
-            <div className="edit_cart">
-                <header style={{margin:"15px"}}>위시리스트</header>
+          <div className="Cart">
+              <header style={{margin:"15px"}}>위시리스트</header>
+              <div className="col-md-9">
+                  <div className="row">
 
+                      {wishItem.length > 0 ? showWishItem() : <p>비어있음</p>}
 
-                
+                  </div>
+              </div>
+          </div>
 
-                <div className="col-md-9">
-                    <div className="row">
-
-                        {wishItem.length > 0 ? showWishItem() : <p>비어있음</p>}
-
-
-                    </div>
-                </div>
-
-            </div>
         </div>
+
+      </div>
     )
 }
 
