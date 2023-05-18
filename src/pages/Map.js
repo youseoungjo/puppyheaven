@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import MapContainer from '../components/MapContainer'
-import MapSearchResults from '../components/MapSearchResults'
+import MapSearchResults from '../components/MapSearchResults';
 
 function Map() {
   const [InputText, setInputText] = useState('')
@@ -70,8 +70,8 @@ function Map() {
         <div className="search_bar">
           <>
             <form className="inputForm" onSubmit={handleSubmit}>
-              <input placeholder="검색어를 입력하세요" onChange={onChange} value={InputText} />
-              <button type="submit">검색</button>
+              <input className='search_input' placeholder=" 검색어를 입력하세요" onChange={onChange} value={InputText} />
+              <button className='searchBtn' type="submit">검색</button>
             </form>
           </>
         </div>
@@ -88,5 +88,4 @@ function Map() {
   );
 }
 
-export default Map
-
+export default Map;
