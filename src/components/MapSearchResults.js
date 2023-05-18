@@ -84,7 +84,7 @@ const MapSearchResults = ({ searchPlace }) => {
   return (
 
     <div>
-      <div className="search_results" style={{ maxHeight: '500px', overflowY: 'auto'}}>
+      <div className="search_results" style={{ maxHeight: '550px', overflowY: 'auto'}}>
         {Places.map((item, i) => (
           <div key={i} style={{ marginTop: '20px' }}>
             <span>{i + 1}</span>
