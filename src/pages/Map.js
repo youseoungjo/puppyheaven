@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import MapContainer from '../components/MapContainer'
+import MapSearchResults from '../components/MapSearchResults'
 
 function Map() {
   const [InputText, setInputText] = useState('')
@@ -76,7 +77,7 @@ function Map() {
         </div>
 
         <div className="search_results">
-          <div></div>
+          <MapSearchResults searchPlace={Place} />
         </div>
       </div>
 
