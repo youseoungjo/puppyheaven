@@ -852,8 +852,7 @@ a {
     margin: 20px;
 }
 
-/* Map */
-
+/*  */
 
 .Map {
     display: flex;
@@ -915,10 +914,10 @@ a {
     margin-left: 20px;
 }
 
-.Map .search_wrapper .searchBar {
+.Map .search_wrapper .search_input {
     width: 80%;
     height: 35px;
-    font-size: 26px;
+    font-size: 15px;
     border-radius: 20px;
     border: 1px solid gray;
 }
@@ -931,6 +930,14 @@ a {
     font-family: "Light";
     border-radius: 20px;
     border: 1px solid gray;
+}
+
+.Map .search_wrapper .search_results {
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: "Light";
+    font-size: small;
 }
 
 
@@ -950,6 +957,7 @@ a {
 .Map .map {
     margin-right: 20px;
 }
+
 
 
 
