@@ -16,7 +16,6 @@ const Main = () => {
           <div className="main-logo-box">
             <div className="main-logo">
               <img src="shortlogo.png" alt="로고 이미지" className="logo-image"/>
-              <div className="logo-txt">PUPPY HEAVEN</div>
             </div>
 
             <div className="logout-btn" onClick={handleLogout}>

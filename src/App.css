@@ -1,4 +1,24 @@
 /* font */
+@font-face {
+    font-family: 'Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Regular.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Light.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
 
 @font-face {
     font-family: 'GL';
@@ -361,15 +381,15 @@
 }
 
 .main-logo .logo-image {
-  width: 80px;
-  height: 80px;
+  width: 369px;
+  height: 90px;
 }
 
-.main-logo .logo-txt {
+/* .main-logo .logo-txt {
   margin-top: 10px;
-  font-family: "AR";
-  font-size: 30px;
-}
+  font-family: "Regular";
+  font-size: 25px;
+} */
 
 .Main .logout-btn {
   position: absolute; 
