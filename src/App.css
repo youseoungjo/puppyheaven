@@ -381,8 +381,9 @@
 }
 
 .main-logo .logo-image {
-  width: 369px;
-  height: 90px;
+  width: 339px;
+  height: 89px;
+  margin-left: 10px;
 }
 
 /* .main-logo .logo-txt {
