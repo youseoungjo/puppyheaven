@@ -366,7 +366,7 @@
 }
 
 .main-logo .logo-txt {
-  margin-top: 40px;
+  margin-top: 10px;
   font-family: "AR";
   font-size: 30px;
 }
@@ -432,7 +432,7 @@
     width: 250px;
     height: 100px;
     border-radius: 50px;
-    border: 4px solid #f7ce59;
+    border: 4px solid #B6CDEF;
     cursor: pointer;
 }
 
@@ -448,7 +448,7 @@
 .main-btn:hover span {
     font-family: "AB";
     font-size: 20px;
-    color: #f7ce59;
+    color: #B6CDEF;
   }
 
 /* Category */
