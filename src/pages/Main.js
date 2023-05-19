@@ -21,7 +21,7 @@ const Main = () => {
 
             <div className="logout-btn" onClick={handleLogout}>
               <img src="logout.png" alt="로그아웃" className="logout-img" />
-              <div>로그 아웃</div>
+              <div className="logout-txt">로그아웃</div>
             </div>
           </div>
 

@@ -377,14 +377,18 @@
   margin-top: 25px;
   justify-content: right;
   right: 150px;
-  font-family: "AR";
-  font-size: 30px;
+  font-family: "GR";
+  font-size: 20px;
   cursor: pointer;
 }
 
+.Main .logout-btn .logout-txt{
+    margin-top: 7px;
+  }
+
 .Main .logout-btn:hover {
-    font-family: "AB";
-    font-size: 35px;
+    font-family: "GB";
+    font-size: 25px;
     color: white;
 }
   
@@ -404,13 +408,13 @@
   }
 
 .Main .main-text span {
-  font-family: "AB";
+  font-family: "GB";
   font-size: 50px;
 }
 
 .Main .main-text .korean {
-    font-family: "AL";
-    font-size: 30px;
+    font-family: "GR";
+    font-size: 25px;
   }
 
 .main-btn-box {
@@ -433,7 +437,7 @@
 }
 
 .main-btn span {
-    font-family: "AR";
+    font-family: "GR";
     font-size: 17px;
     color: black;
     transition: color 0.3s ease;
