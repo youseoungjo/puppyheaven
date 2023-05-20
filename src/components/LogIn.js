@@ -16,6 +16,9 @@ const LogIn = () => {
   const [pwValid, setPwValid] = useState(false);
 
   const navigate = useNavigate();
+  const logoOnClick = () => {
+    navigate('/');
+  };
 
   const handleInputId = (e) => {
     setInputId(e.target.value);
@@ -60,7 +63,7 @@ const LogIn = () => {
     //User로그인
     if(inputId === User.id && inputPw === User.pw){
       alert('로그인에 성공했습니다.');
-      navigate("/main");
+      navigate("/");
     } else {
       alert('회원 정보가 없습니다.');
     }
@@ -69,7 +72,10 @@ const LogIn = () => {
 
   return (
     <div className="LogIn">
-        <img src="shortlogo.png" alt="로고 이미지"></img>
+
+      <div onClick={logoOnClick}>
+        <img src="shortlogo.png" alt="로고 이미지" />
+      </div>
 
         <div className="form_wrap">
         
@@ -97,9 +103,9 @@ const LogIn = () => {
             </div>
           </div>
           
-          <div>
+          {/* <div>
           <a href="/find" class="link-light">아이디/비밀번호 찾기</a>
-          </div>
+          </div> */}
 
           <div>
           <button onClick={onClickLoginButton}>로그인</button>
