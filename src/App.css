@@ -78,11 +78,6 @@
     
 }
 
-.LogIn p {
-    font-family: 'Jua', sans-serif;
-    font-size: 40px;
-}
-
 .LogIn .form_wrap {
     display: flex;
     flex-direction: column;
@@ -127,15 +122,20 @@
     height: 30px;
 }
 
+.LogIn label {
+    font-family: 'Light';
+}
+
 .LogIn .inputError {
     margin-top: 5px;
     color: red;
+    font-family: 'Light';
     font-size: 11px;
 }
 
 
 .LogIn button {
-    background-color: lightgray;
+    background-color: white;
     margin-top: 30px;
     margin-left: 5px;
     margin-right: 5px;
@@ -144,11 +144,13 @@
     border-radius: 20px;
     border: none;
     cursor: pointer;
+    font-family: 'Light';
 }
 
 .LogIn .btn-form {
     margin-bottom: 50px;
 }
+
 
 /* SignUp */
 .SignUp {
