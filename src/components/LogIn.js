@@ -52,7 +52,7 @@ const LogIn = () => {
         //토큰을 localStorage에 저장
         localStorage.setItem('token', response.data.token);
         alert("로그인에 성공했습니다.");
-        navigate("/main");
+        navigate("/");
       } else {
         alert("회원 정보가 없습니다.");
       }

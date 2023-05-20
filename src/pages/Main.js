@@ -7,11 +7,13 @@ const Main = () => {
 
     const isLoggedIn = !!localStorage.getItem('token');
 
-      const handleLogout = () => {
-        // localStorage에서 token 삭제
+    const handleLogout = () => {
+      const confirmed = window.confirm("로그아웃 하시겠습니까?");
+      
+      if (confirmed) {
         localStorage.removeItem('token');
-        // 로그인 페이지로 이동합니다.
         navigate("/");
+      }
     };
     return (
       <div className="Main">
@@ -28,8 +30,8 @@ const Main = () => {
               </div>
             ) : (
               // 비로그인 상태: 로그인 버튼 표시
-              <div className="login-btn" onClick={() => navigate('/')}>
-                <img src="login.png" alt="로그인" className="logout-img" />
+              <div className="login-btn" onClick={() => navigate('/login')}>
+                <img src="login.png" alt="로그인" className="login-img" />
                 <div className="login-txt">로그인</div>
               </div>
             )}
