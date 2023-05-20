@@ -21,10 +21,10 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path='/' element={<Home />}/>
+          <Route path='/' element={<Main />}/>
           <Route path='/join' element={<Join/>}/>
           <Route path='/find' element={<FindIdPw/>}/>
-          <Route path='/main' element={<Main/>}/>
+          <Route path='/login' element={<Home/>}/>
           <Route path='/map' element={<Map/>}/>
           <Route path='/shop' element={<Shop wishItem={wishItem} setWishItem={setWishItem} />}/>
           <Route path='/wish' element={<WishList wishItem={wishItem} setWishItem={setWishItem} />}/>
