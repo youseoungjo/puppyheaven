@@ -3,6 +3,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const userRouter = require('./router/userRouter');
 const productRouter = require('./router/productRouter');
+const wishlistRouter = require('./router/wishlistRouter');
+// const { saveDataToFile } = require('./saveDataToFile');
 
 const app = express();
 app.use(cors());
@@ -17,11 +19,15 @@ app.get('/productdata', productRouter);
 app.get('/coupang', productRouter);
 app.get('/gmarket', productRouter);
 app.get('/eleven', productRouter);
+app.get('/wishitem', productRouter);
 
-//위시리스트 추가 삭제
-app.post('/wishlist', productRouter);
-app.get('/delete', productRouter);
+//위시리스트 create delete
+app.post('/wishlist', wishlistRouter);
+app.post('/delete', wishlistRouter);
 
-app.listen(3001, () => {
+app.listen(3001, async () => {
   console.log('서버가 시작되었습니다. 3001');
+
+  // // 데이터 저장
+  // await saveDataToFile.saveDataToFile();
 });

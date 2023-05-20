@@ -1,16 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import jwt_decode from 'jwt-decode';
 // import { useNavigate } from "react-router-dom";
 
-const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRemoveWish, handleCheckboxClick, wishItem }) => {
+const ProductList = ({ productData, handleFavoriteClick, handleCheckboxClick }) => {
   const [coupangs, setCoupangs] = useState([]);
   const [gmarkets, setGmarkets] = useState([]);
   const [elevens, setElevens] = useState([]);
   const [products, setProducts] = useState([]);
-  const [selectedProducts, setSelectedProducts] = useState([]);
-  // const navigate = useNavigate();
+  const [wishItems, setWishItems] = useState([]);
+
+
 
   useEffect(() => {
+    const getWishItems = async () => {
+      const response = await axios.get('http://localhost:3001/wishitem');
+      const token = localStorage.getItem('token');
+      const decodedToken = jwt_decode(token);
+      const userId = decodedToken.id;
+      setWishItems(response.data.filter((wishitem) => wishitem.userId===userId));
+    };
+    getWishItems();
+
     const getCoupangs = async () => {
       const response = await axios.get('http://localhost:3001/coupang');
       setCoupangs(response.data);
@@ -31,7 +42,6 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
 
     setProducts(productData);
   }, [productData]);
-
 
   const sortedCoupangs = [...coupangs].sort((a, b) => a.price - b.price);
   const sortedGmarkets = [...gmarkets].sort((a, b) => a.price - b.price);
@@ -76,12 +86,14 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
     return minPrice;
   };
 
-
-  return (
-    <div className="ProductList">
-      <table>
-        <tbody>
-          {products.map((product) => (
+return (
+  <div className="ProductList">
+    <table>
+      <tbody>
+        {products.map((product) => {
+          const wishItem = wishItems.find((item) => item.productId === product.id);
+          const isFavorited = wishItem ? true : false;
+          return (
             <tr key={product.id}>
               <td className="Product-img">
                 <img src={product.image} alt={product.name} width="120" height="100" />
@@ -90,8 +102,8 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
                 {product.name}
               </td>
               <td className="Product-price">
-              {uniqueSortedProducts.map((uniqueProduct) => (
-                <tr key={uniqueProduct.kg}>
+                {uniqueSortedProducts.map((uniqueProduct) => (
+                  <tr key={uniqueProduct.kg}>
                     {uniqueProduct.kg === 0 ? (
                       <a href={`/pricecompare?name=${encodeURIComponent(product.name)}&kg=${uniqueProduct.kg}`}>
                         {getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
@@ -109,22 +121,20 @@ const ProductList = ({ productData, handleFavoriteClick, handleAddWish, handleRe
                         )}
                       </a>
                     )}
-                </tr>
-              ))}
+                  </tr>
+                ))}
               </td>
-              <td className="Product-button" onClick={() => {
-                handleFavoriteClick(product.id);
-                product.isFavorited ? handleRemoveWish(product) : handleAddWish(product);
-                }} style={{ cursor: 'pointer' , color: wishItem.some((item) => item.id === product.id) ? 'red' : 'black'}}>
-                  {wishItem.some((item) => item.id === product.id) ? '❤️' : '🤍'}
+              <td className="Product-button" onClick={() => handleFavoriteClick(product.id)} style={{ cursor: "pointer", color: isFavorited ? "red" : "black", }}>
+                {isFavorited ? "❤️" : "🤍"}
               </td>
               <td className="Product-button"><input type="checkbox" onClick={() => handleCheckboxClick(product)} /></td>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+);
 };
 
 export default ProductList;

@@ -146,14 +146,32 @@ const Eleven = sequelize.define('eleven', {
   },
 });
 
+const WishList = sequelize.define('wishlist', {
+  userId: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    primaryKey: true,
+  },
+  productId: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    primaryKey: true
+  },
+  isFavorited: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+});
+
 const productModel = {
   findAll: async () => {
     const productProducts = await Product.findAll();
     const coupangProducts = await Coupang.findAll();
     const gmarketProducts = await Gmarket.findAll();
     const elevenProducts = await Eleven.findAll();
-    return [productProducts, coupangProducts, gmarketProducts, elevenProducts];
+    const wishProducts = await WishList.findAll();
+    return [productProducts, coupangProducts, gmarketProducts, elevenProducts, wishProducts];
     }
 };
 
-module.exports = {Product, Coupang, Gmarket, Eleven, productModel};
+module.exports = {Product, Coupang, Gmarket, Eleven, WishList, productModel};

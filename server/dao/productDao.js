@@ -40,6 +40,16 @@ const getElevens = async () => {
   }
 };
 
+const getWishItems = async () => {
+  try {
+    const wishitems = await productModel.WishList.findAll();
+    return wishitems;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
 module.exports = {
-  getProducts, getCoupangs, getGmarkets, getElevens
+  getProducts, getCoupangs, getGmarkets, getElevens, getWishItems
 };

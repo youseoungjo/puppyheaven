@@ -1,5 +1,4 @@
 /* font */
-
 @font-face {
     font-family: 'Bold';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Bold.woff2') format('woff2');
@@ -17,6 +16,48 @@
 @font-face {
     font-family: 'Light';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Light.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroL.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroM.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
     font-weight: 700;
     font-style: normal;
 }
@@ -316,25 +357,92 @@
   align-items: center;
   width: 100%;
   height: 100vh; 
-  background-color: #B6CDEF;
+  background-image: url('../public/puppy.png');
+  background-size: 65%;
+  background-repeat: no-repeat;
+  background-position: right; 
   position: relative;
 }
 
-.Main .main-logo {
+.Main .main-logo-box {
   display: flex;
-  justify-content: center;
   margin-top: 15px;
+  margin-left: 15px;
   margin-bottom: 15px;
-  align-items: center;
-  height: 20%;
   position: absolute;
-  top: 50px;
+  top: 0;
   left: 0;
   right: 0;
 }
 
+.main-logo {
+    cursor: pointer;
+    display: flex;
+}
+
 .main-logo .logo-image {
-  width: 250px;
+  width: 294;
+  height: 70px;
+  margin-left: 10px;
+}
+
+/* .main-logo .logo-txt {
+  margin-top: 10px;
+  font-family: "Regular";
+  font-size: 25px;
+} */
+
+.Main .logout-btn {
+  position: absolute; 
+  display: flex;
+  margin-top: 13px;
+  justify-content: right;
+  right: 150px;
+  font-family: "GR";
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.Main .logout-btn .logout-txt{
+    margin-top: 7px;
+  }
+
+.Main .logout-btn:hover {
+    font-family: "GB";
+    font-size: 25px;
+    color: white;
+}
+  
+.Main .logout-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+
+.Main .main-text {
+    position: absolute;
+    top: 35%;
+    left: 18.5%;
+    transform: translate(-35%, -18.5%);
+    text-align: left;
+  }
+
+.Main .main-text span {
+  font-family: "GB";
+  font-size: 50px;
+}
+
+.Main .main-text .korean {
+    font-family: "GR";
+    font-size: 25px;
+  }
+
+.main-btn-box {
+    position: absolute;
+    top: 55%;
+    left: 22.5%;
+    transform: translate(-55%, -22.5%);
 }
 
 .Main .main-btn {
@@ -343,35 +451,28 @@
     margin-left: 20px;
     margin-right: 20px;
     width: 250px;
-    height: 300px;
-    border-radius: 20px;
-    border: none;
+    height: 100px;
+    border-radius: 50px;
+    border: 3px solid;
     cursor: pointer;
 }
 
-.Main .logout-btn {
-  position: absolute; 
-  top: 70px; 
-  right: 50px;
-  font-family: "Regular";
-  font-size: 25px;
-  cursor: pointer;
+.main-btn span {
+    font-family: "GR";
+    font-size: 17px;
+    color: black;
+    transition: color 0.3s ease;
+    margin: 10px;
 }
 
-.Main .logout-btn:hover {
-  font-family: "Bold";
-  font-size: 27px;
-  color: white;
-}
 
-.Main .logout-img {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-  margin-bottom: 5px;
-}
+.main-btn:hover span {
+    font-family: "GB";
+    font-size: 20px;
+    color: #A1BFEB;
+  }
 
-/* Categoryxx */
+/* Category */
 
 .Category {
     background-color: white;
@@ -401,18 +502,38 @@
 }
 
 .Category button:hover {
-    color: #B6CDEF;
     font-family: "Bold";
     font-size: 23px;
   }
 
   
-/* Cart */
+/* WishList */
 
 
-.Cart {
+.WishList {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    width: 100%;
+    height: 100vh; 
+
+    background-color: #B6CDEF;
+}
+
+.WishList .wish_content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+
+.WishList .edit_wish{
     background-color: white;
-    width: 75vw;
+    width: 73vw;
     height: 74vh;
     border-radius: 10px;
     position: relative;
@@ -423,17 +544,21 @@
     overflow: auto;
 }
 
-.Cart .card_wrapper {
+.WishList .card_wrapper{
     margin-left: 30px;
     margin-right: 30px;
     max-width: 95%;
 }
 
-.Cart .row {
+.WishList .row {
     margin-left: 10px;
 }
 
-.Cart .cate_btn {
+.WishList .Category {
+    margin-left: 2vw;
+}
+
+.WishList .cate_btn {
     background-color: white;
     border: none;
     width: 100%;
@@ -635,6 +760,7 @@ a {
     text-decoration: underline;
   }
 
+  
 /* 가격비교 */
 .price-compare {
     background-color: white;
@@ -794,42 +920,75 @@ a {
     display: flex;
     flex-direction: column;
     margin-left: 10px;
+    align-items: center;
 }
 
 .product-compare .pc-title {
-    position: absolute;
-    top: 20px;
+    top: 10px;
     left: 50%;
-    transform: translateX(-50%);
     text-align: center;
     font-family: "Regular";
     font-size: 30px;
     margin: 20px;
 }
 
+.product-compare .pc-product {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 75vw;
+    height: 750px;
+    overflow: auto;
+    margin-bottom: 60px;
+}
+
+.product-compare .pc-img-box {
+    height: 110px;
+}
+
+
 .product-compare .pc-img {
     width: 100px;
     height: 100px;
 }
 
-.product-compare table {
-    margin: 0 auto;
-    width: 90%;
-    border-collapse: separate;
-    border-spacing: 0 10px;
-}
-
 
 .product-compare .pc-info {
     display: inline-block;
-    width: 200px;
+    width: 250px;
     margin: 20px;
+    align-items: center; 
 }
 
-/* Map */
+.pc-info .pc-name {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pc-info .pc-price-box {
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-compare .pc-age {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*  */
 
 .Map {
     display: flex;
+    flex-direction: column;
+    position: relative;
 
     width: 100%;
     height: 100vh; 
@@ -837,41 +996,59 @@ a {
     background-color: #B6CDEF;
 }
 
+.Map .Logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    align-items: center;
+  }
+  
+.Map .Logo .logo-image {
+    width: 250px;
+  }
+
+
 .Map .search_wrapper {
     background-color: white;
-    width: 22vw;
-    height: 94vh;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 22.7vh;
     margin-left: 5vh;
-    margin-right: 15px;
+    width: 22vw;
+    height: 74vh;
     border-radius: 10px;
-    align-items: center;
     position: absolute;
+    justify-content: center;
 }
 
-.Map .search_wrapper .main_button {
-    margin-top: 20px;
-}
 
 .Map .search_wrapper .btn-group-md  {
+    position: relative;
+    font-family: "Bold";
     margin-top: 20px;
     margin-left: 20px;
+    z-index: 1;
+}
+
+.Map .search_wrapper .main_btn {
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .Map .search_wrapper .btn {
+    position: relative;
     margin-left: 10px;
 }
 
 .Map .search_wrapper .search_bar {
-    margin-top: 20px;
+    position: relative;
+    margin-top: 15px;
     margin-left: 20px;
 }
 
-.Map .search_wrapper .searchBar {
+.Map .search_wrapper .search_input {
     width: 80%;
     height: 35px;
-    font-size: 26px;
+    font-size: 15px;
     border-radius: 20px;
     border: 1px solid gray;
 }
@@ -881,25 +1058,37 @@ a {
     margin-bottom: 5px;
     height: 32px;
     background-color: white;
+    font-family: "Light";
     border-radius: 20px;
     border: 1px solid gray;
+}
+
+.Map .search_wrapper .search_results {
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: "Light";
+    font-size: small;
 }
 
 
 .Map .map_wrapper {
     background-color: white;
-    width: 70vw;
-    height: 94vh;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 22.7vh;
     margin-left: 55vh;
-    margin-right: 15px;
+    width: 70vw;
+    height: 74vh;
     border-radius: 10px;
     position: absolute;
+    display: flex;
+    justify-content: center;
+ 
 }
 
 .Map .map {
-    margin-left: 20px;
+    margin-right: 20px;
 }
+
+
 
 

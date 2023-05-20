@@ -108,47 +108,37 @@ const ProductCompare = () => {
               <div style={{margin: "30px"}}/>
             </div>
           </div>
-
           <div className="product-compare">
             <div className="pc-title">상품 비교</div>
-
-            {selectedProducts && selectedProducts.length > 0 && (
-              <table>
-                <tbody>
-                {selectedProducts.map((product) => (
-                  <div className="pc-info">
-                  <td>
-                    <tr><img src={product.image} alt={product.name} className="pc-img"/></tr>
-                    <tr>{product.name}</tr>
+            <div className="pc-product">
+              {selectedProducts.map((product) => (
+                <div className="pc-info" key={product.name}>
+                    <div className="pc-img-box"><img src={product.image} alt={product.name} className="pc-img" /></div>
+                    <div className="pc-name">{product.name}</div>
+                    <div className="pc-price-box">
                     {uniqueSortedProducts.map((uniqueProduct) => (
-                      <tr key={uniqueProduct.kg}>
+                      <div key={uniqueProduct.kg} className="pc-price">
                         {uniqueProduct.kg === 0 ? (
                           <a href={`/pricecompare?name=${encodeURIComponent(product.name)}&kg=${uniqueProduct.kg}`}>
                             {getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
-                              <>
-                                {getPrice(product.name, uniqueProduct.kg)}원
-                              </>
+                              <>{getPrice(product.name, uniqueProduct.kg)}원</>
                             )}
                           </a>
                         ) : (
                           <a href={`/pricecompare?name=${encodeURIComponent(product.name)}&kg=${uniqueProduct.kg}`}>
                             {getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
-                              <>
-                                {uniqueProduct.kg}kg {getPrice(product.name, uniqueProduct.kg)}원
-                              </>
+                              <>{uniqueProduct.kg}kg {getPrice(product.name, uniqueProduct.kg)}원</>
                             )}
                           </a>
                         )}
-                      </tr>
+                      </div>
                     ))}
-                    <tr>{product.age}</tr>
-                    <tr>{product.maker}</tr>
-                  </td>
+                    </div>
+                    <div div className="pc-age">{product.age}</div>
+                    <div div className="pc-maker">{product.maker}</div>
                   </div>
-                ))}
-                </tbody>
-              </table>
-            )}
+              ))}
+            </div>         
           </div>
       </div>
     </div>

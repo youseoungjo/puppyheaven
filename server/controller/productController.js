@@ -36,10 +36,15 @@ const getElevens = async (req, res, next) => {
   }
 };
 
-const getWishLists = async (req, res, next) => {
-  
+const getWishItems = async (req, res, next) => {
+  try {
+    const wishitems = await productDao.getWishItems();
+    res.json(wishitems);
+  } catch (error) {
+    next(error);
+  }
 };
 
 module.exports = {
-  getProducts, getCoupangs, getGmarkets, getElevens, getWishLists
+  getProducts, getCoupangs, getGmarkets, getElevens, getWishItems
 };

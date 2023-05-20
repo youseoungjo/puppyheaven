@@ -1,16 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import jwt_decode from 'jwt-decode';
 
-const WishList = ({wishItem, setWishItem}) => {
+const WishList = () => {
 
     const navigate = useNavigate();
 
     const [coupangs, setCoupangs] = useState([]);
     const [gmarkets, setGmarkets] = useState([]);
     const [elevens, setElevens] = useState([]);
+    const [wishItems, setWishItems] = useState([]);
+    const [productdatas, setProductdatas] = useState([]);
 
     useEffect(() => {
+        const getWishItems = async () => {
+          const response = await axios.get('http://localhost:3001/wishitem');
+          const token = localStorage.getItem('token');
+          const decodedToken = jwt_decode(token);
+          const userId = decodedToken.id;
+          setWishItems(response.data.filter((wishitem) => wishitem.userId===userId));
+        };
+        getWishItems();
+
+        const getProductdatas = async () => {
+          const response = await axios.get('http://localhost:3001/productdata');
+          setProductdatas(response.data);
+        };
+        getProductdatas();
+
         const getCoupangs = async () => {
           const response = await axios.get('http://localhost:3001/coupang');
           setCoupangs(response.data);
@@ -74,16 +92,30 @@ const WishList = ({wishItem, setWishItem}) => {
     
         return minPrice;
       };
-    
-    const handleRemoveWish = (product) => {
-        const newWishItem = wishItem.filter(item => item.id !== product.id);
-        setWishItem(newWishItem);
-    }
-    console.log(wishItem);
 
+    const matchedItems = productdatas.filter((product) => {
+      return wishItems.some((wishitem) => wishitem.productId === product.id);
+    });
+    
+    const handleRemoveWish = (id) => {
+      const token = localStorage.getItem('token');
+      const decodedToken = jwt_decode(token);
+      const userId = decodedToken.id;
+
+      const productId = id;
+      axios.post('http://localhost:3001/delete', { userId, productId })
+      .then((response) => {
+        console.log(response.data);
+        setWishItems(wishItems.filter((wishitem) => wishitem.productId !== productId));
+      })
+      .catch((error) => {
+        console.error("error");
+      });
+    };
+  
 
     const showWishItem = () => {
-        return wishItem.map(item => (
+        return matchedItems.map(item => (
 
               <React.Fragment key={item.id}>
                 <tr>
@@ -112,7 +144,7 @@ const WishList = ({wishItem, setWishItem}) => {
                         </tr>
                     ))}
                   </td>
-                  <td className="cart" style={{ width: "150px", height: "75px" }}><button onClick={()=>handleRemoveWish(item)}>제거</button></td>
+                  <td className="cart" style={{ width: "150px", height: "75px" }}><button onClick={()=>handleRemoveWish(item.id)}>제거</button></td>
                 </tr>
               </React.Fragment>
             ))
@@ -120,38 +152,43 @@ const WishList = ({wishItem, setWishItem}) => {
 
 
     return (
-      <div className="Shop">
+        <div className="WishList">
 
-      <div className="Logo">
-        <img src="shortlogo.png" alt="로고 이미지" className="logo-image"></img>
-      </div>
-
-      <div className="Shop-content">
-
-          <div className="Category">
-            <div className="list-group list-group-flush">
-                <div style={{margin: "10px"}}/>
-                  <button type="button" className="list-group-item" onClick={() => navigate('/main')}>메인화면</button>
-                  <button type="button" className="list-group-item" onClick={() => navigate('/shop')}>계속 쇼핑하기</button>
-                  <button type="button" className="list-group-item" onClick={() => navigate('/wish')}>위시리스트</button>
-                  <div style={{margin: "30px"}}/>
+            <div className="Logo">
+              <img src="shortlogo.png" alt="로고 이미지" className="logo-image"></img>
             </div>
-          </div>
 
-          <div className="Cart">
-              <header style={{margin:"15px"}}>위시리스트</header>
-              <div className="col-md-9">
-                  <div className="row">
+            <div className="wish_content">
 
-                      {wishItem.length > 0 ? showWishItem() : <p>비어있음</p>}
-
-                  </div>
+              <div className="Logo">
+                <img src="shortlogo.png" alt="로고 이미지" className="logo-image"></img>
               </div>
+
+            <div className="Shop-content">
+
+                <div className="Category">
+                  <div className="list-group list-group-flush">
+                      <div style={{margin: "10px"}}/>
+                        <button type="button" className="list-group-item" onClick={() => navigate('/main')}>메인화면</button>
+                        <button type="button" className="list-group-item" onClick={() => navigate('/shop')}>계속 쇼핑하기</button>
+                        <button type="button" className="list-group-item" onClick={() => navigate('/wish')}>위시리스트</button>
+                        <div style={{margin: "30px"}}/>
+                  </div>
+                </div>
+
+                <div className="edit_wish">
+                  <header style={{margin:"15px"}}>위시리스트</header>
+
+                        {wishItem.length > 0 ? showWishItem() : <p>비어있음</p>}
+
+                </div>
+                    
+            </div>
+
           </div>
 
         </div>
 
-      </div>
     )
 }
 
