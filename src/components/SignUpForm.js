@@ -153,7 +153,7 @@ function SignUpForm() {
               <button type="submit">회원가입</button>
             </div>
             <div>
-              <a href="/" class="link-light">로그인 화면으로 돌아가기</a>
+              <a href="/Login" class="link-light">로그인 화면으로 돌아가기</a>
             </div>
           </div>
         </div>
