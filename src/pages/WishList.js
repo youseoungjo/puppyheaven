@@ -163,7 +163,7 @@ const WishList = () => {
             <div className="Category">
                 <div className="list-group list-group-flush">
                     <div style={{margin: "10px"}}/>
-                    <button type="button" className="list-group-item" onClick={()=>navigate('/main')}>메인화면</button>
+                    <button type="button" className="list-group-item" onClick={()=>navigate('/')}>메인화면</button>
                     <button type="button" className="list-group-item" onClick={()=>navigate('/shop')}>계속 쇼핑하기</button>
                     <div style={{margin: "30px"}}/>
                 </div>
