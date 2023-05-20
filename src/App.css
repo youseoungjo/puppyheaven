@@ -381,8 +381,8 @@
 }
 
 .main-logo .logo-image {
-  width: 350px;
-  height: 76px;
+  width: 294;
+  height: 70px;
   margin-left: 10px;
 }
 
@@ -395,7 +395,7 @@
 .Main .logout-btn {
   position: absolute; 
   display: flex;
-  margin-top: 15px;
+  margin-top: 13px;
   justify-content: right;
   right: 150px;
   font-family: "GR";

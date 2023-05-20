@@ -27,7 +27,7 @@ const Main = () => {
           <div className="main-text">
             <span>For Better Purchase</span><br/>
             <span>For Better Healthy Life</span><br/>
-            <span className="korean"><span className="korean" style={{ color: "#A1BFEB" }}>퍼피해븐</span>은 애견인들을 위해 최선을 다하겠습니다.</span>
+            <span className="korean"><span className="korean" style={{ color: "#A1BFEB", fontFamily: "GB"}}>퍼피해븐</span>은 애견인들을 위해 최선을 다하겠습니다.</span>
           </div>
       
           <div className="main-btn-box">
