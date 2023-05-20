@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import React, { useState } from 'react'
 
-import Home from './pages/Home';
+import LogIn from './components/LogIn';
 import Join from './pages/Join';
 import FindIdPw from './pages/FindIdPw';
 import Main from './pages/Main';
@@ -12,6 +12,7 @@ import WishList from './pages/WishList';
 
 import PriceCompare from './components/PriceCompare';
 import ProductCompare from './components/ProductCompare';
+
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
           <Route path='/' element={<Main />}/>
           <Route path='/join' element={<Join/>}/>
           <Route path='/find' element={<FindIdPw/>}/>
-          <Route path='/login' element={<Home/>}/>
+          <Route path='/login' element={<LogIn/>}/>
           <Route path='/map' element={<Map/>}/>
           <Route path='/shop' element={<Shop wishItem={wishItem} setWishItem={setWishItem} />}/>
           <Route path='/wish' element={<WishList wishItem={wishItem} setWishItem={setWishItem} />}/>
