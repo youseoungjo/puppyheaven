@@ -80,33 +80,11 @@ const handleAddWish = async (id, isFavorited) => {
         return productdata;
       }
     });
-<<<<<<< HEAD
-  };
-
-  const handleAddWish = (product) => {
-    const newWishItem = [...wishItem, product];
-    setWishItem(newWishItem);
-    axios.post('/wishlist', newWishItem)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-  
-  const handleRemoveWish = (product) => {
-    const newWishItem = wishItem.filter((item) => item.id !== product.id);
-    setWishItem(newWishItem);
-    saveToLocalStorage('wishItem', newWishItem); // 로컬 스토리지에 위시리스트 데이터 저장
-  };
-=======
     setProductdatas(newProductdatas);
   } catch (error) {
     console.error(error);
   }
 };
->>>>>>> origin/master
 
 const handleRemoveWish = async (id) => {
   const token = localStorage.getItem('token');
@@ -182,11 +160,6 @@ const handleRemoveWish = async (id) => {
                 productData={productdatas}
                 handleFavoriteClick={handleFavoriteClick}
                 handleCheckboxClick={handleCheckboxClick}
-<<<<<<< HEAD
-                wishItem={wishItem}
-                selectedProducts={selectedProducts}
-=======
->>>>>>> origin/master
               />
 
           </div>
