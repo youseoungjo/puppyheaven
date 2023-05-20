@@ -364,6 +364,8 @@
   position: relative;
 }
 
+/* puppy.png 출처 Freepik */
+
 .Main .main-logo-box {
   display: flex;
   margin-top: 15px;
@@ -391,6 +393,34 @@
   font-family: "Regular";
   font-size: 25px;
 } */
+
+.Main .login-btn {
+    position: absolute; 
+    display: flex;
+    margin-top: 13px;
+    justify-content: right;
+    right: 150px;
+    font-family: "GR";
+    font-size: 20px;
+    cursor: pointer;
+}
+  
+.Main .login-btn .logout-txt{
+    margin-top: 7px;
+}
+  
+.Main .login-btn:hover {
+    font-family: "GB";
+    font-size: 25px;
+    color: white;
+}
+    
+.Main .login-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
 
 .Main .logout-btn {
   position: absolute; 
@@ -471,41 +501,6 @@
     font-size: 20px;
     color: #A1BFEB;
   }
-
-/* Category */
-
-.Category {
-    background-color: white;
-    width: 19vw;
-    height: 74vh;
-    border-radius: 10px;
-    text-align: center;
-    position: relative;
-    font-family: "Regular";
-    font-size: 20px;
-}
-
-.Category .list-group list-group-flush {
-
-    width: 100%;
-    margin-top: 20px;
-    margin-left: 7px;
-    margin-right: 7px;
-    align-items: left;
-    justify-content: space-around;
-}
-
-.Category button {
-    width: 100%;
-    min-height: 38px;
-    text-align: left;
-}
-
-.Category button:hover {
-    font-family: "Bold";
-    font-size: 23px;
-  }
-
   
 /* WishList */
 
@@ -587,12 +582,47 @@
     margin-right: 40px;
 }
 
+/* Category */
+
+.Category {
+    background-color: white;
+    width: 19vw;
+    height: 84vh;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    font-family: "Regular";
+    font-size: 20px;
+}
+
+.Category .list-group list-group-flush {
+
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 7px;
+    margin-right: 7px;
+    align-items: left;
+    justify-content: space-around;
+}
+
+.Category button {
+    width: 100%;
+    min-height: 38px;
+    text-align: left;
+}
+
+.Category button:hover {
+    font-family: "Bold";
+    font-size: 23px;
+  }
+
+
 /* ProductList */
 
 .product-list {
     background-color: white;
     width: 50vw;
-    height: 74vh;
+    height: 84vh;
     border-radius: 10px;
     position: relative;
     text-align: center;
@@ -637,215 +667,12 @@
     margin: 0 auto;  
 }
 
-/* 하이퍼링크 */
-
-a {
-    text-decoration: none;
-    color: black;
-    text-align: center;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-
-
-/* 가격비교 */
-.price-compare {
-    background-color: white;
-    width: 75vw;
-    height: 74vh;
-    border-radius: 10px;
-    position: relative;
-    text-align: center;
-    justify-content: center;
-    font-family: "Light";
-    font-size: 17px;
-    overflow: auto;
-}
-
-.compare-title {
-    margin-top: 50px;
-    margin-bottom: 40px;
-    margin-left: 210px;
-    text-align: left;
-    font-family: "Regular";
-    font-size: 35px;
-}
-
-.price-compare .compare-left {
-    float: left;
-    margin-top: 20px;
-    margin-right: 20px;
-    margin-left: 200px;
-}
-
-.compare-left .compare-img {
-    width: 400px;
-    height: 400px;
-}
-
-.price-compare .compare-right {
-    float: right;
-    margin-top: 20px;
-    margin-right: 250px;
-}
-
-.compare-right table {
-    border-collapse: separate;
-    border-spacing: 20px;
-  }
-
-.compare-right .row-price-title {
-    font-family: "Regular";
-    font-size: 25px;
-    margin-right: 125px;
-}
-
-.compare-right .row-price {
-    font-family: "Regular";
-    font-size: 25px;
-    margin-right: 125px;
-}
-
-.compare-right .row-price a{
-    font-family: "Bold";
-    color: #2070EB;
-    margin-right: 25px;
-}
-
-.compare-right .row-price-btn {
-    background-color: black;
-    color: white;
-    padding: 4px;
-}
-
-.compare-right .deliveryfee {
-    background-color: lightgray;
-    text-align: left;
-}
-
-.compare-right .shop-img{
-    text-align: left;
-}
-
 /* 상품 비교 리스트 */
 
 .product-compare-list {
     background-color: white;
     width: 22vw;
-    height: 74vh;
-    border-radius: 10px;
-    text-align: center;
-    position: relative;
-    overflow: auto;
-    font-family: "Light";
-    font-size: 18px;
-}
-
-.ProductCompareList {
-    height: calc(100% - 40px);
-    position: relative;
-    padding-bottom: 30px;
-    overflow: auto;
-}
-
-a {
-    text-decoration: none;
-    color: black;
-    text-align: center;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-
-  
-/* 가격비교 */
-.price-compare {
-    background-color: white;
-    width: 75vw;
-    height: 74vh;
-    border-radius: 10px;
-    position: relative;
-    text-align: center;
-    justify-content: center;
-    font-family: "Light";
-    font-size: 17px;
-    overflow: auto;
-}
-
-.compare-title {
-    margin-top: 50px;
-    margin-bottom: 40px;
-    margin-left: 210px;
-    text-align: left;
-    font-family: "Regular";
-    font-size: 35px;
-}
-
-.price-compare .compare-left {
-    float: left;
-    margin-top: 20px;
-    margin-right: 20px;
-    margin-left: 200px;
-}
-
-.compare-left .compare-img {
-    width: 400px;
-    height: 400px;
-}
-
-.price-compare .compare-right {
-    float: right;
-    margin-top: 20px;
-    margin-right: 250px;
-}
-
-.compare-right table {
-    border-collapse: separate;
-    border-spacing: 20px;
-  }
-
-.compare-right .row-price-title {
-    font-family: "Regular";
-    font-size: 25px;
-    margin-right: 125px;
-}
-
-.compare-right .row-price {
-    font-family: "Regular";
-    font-size: 25px;
-    margin-right: 125px;
-}
-
-.compare-right .row-price a{
-    font-family: "Bold";
-    color: #2070EB;
-    margin-right: 25px;
-}
-
-.compare-right .row-price-btn {
-    background-color: black;
-    color: white;
-    padding: 4px;
-}
-
-.compare-right .deliveryfee {
-    background-color: lightgray;
-    text-align: left;
-}
-
-.compare-right .shop-img{
-    text-align: left;
-}
-
-/* 상품 비교 리스트 */
-
-.product-compare-list {
-    background-color: white;
-    width: 22vw;
-    height: 74vh;
+    height: 84vh;
     border-radius: 10px;
     text-align: center;
     position: relative;
@@ -904,12 +731,104 @@ a {
     font-size: 20px;
 }
 
+/* 하이퍼링크 */
+
+a {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+
+/* 가격비교 */
+.price-compare {
+    background-color: white;
+    width: 75vw;
+    height: 84vh;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    font-family: "Light";
+    font-size: 17px;
+    overflow: auto;
+    margin-left: 10px;
+}
+
+.compare-title {
+    margin-top: 50px;
+    margin-bottom: 40px;
+    margin-left: 210px;
+    text-align: left;
+    font-family: "Regular";
+    font-size: 35px;
+}
+
+.price-compare .compare-left {
+    float: left;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 200px;
+}
+
+.compare-left .compare-img {
+    width: 400px;
+    height: 400px;
+}
+
+.price-compare .compare-right {
+    float: right;
+    margin-top: 20px;
+    margin-right: 250px;
+}
+
+.compare-right table {
+    border-collapse: separate;
+    border-spacing: 20px;
+  }
+
+.compare-right .row-price-title {
+    font-family: "Regular";
+    font-size: 25px;
+    margin-right: 125px;
+}
+
+.compare-right .row-price {
+    font-family: "Regular";
+    font-size: 25px;
+    margin-right: 125px;
+}
+
+.compare-right .row-price a{
+    font-family: "Bold";
+    color: #2070EB;
+    margin-right: 25px;
+}
+
+.compare-right .row-price-btn {
+    background-color: black;
+    color: white;
+    padding: 4px;
+}
+
+.compare-right .deliveryfee {
+    background-color: lightgray;
+    text-align: left;
+}
+
+.compare-right .shop-img{
+    text-align: left;
+}
+
 /* 상품 비교 */
 
 .product-compare {
     background-color: white;
     width: 75vw;
-    height: 74vh;
+    height: 84vh;
     border-radius: 10px;
     position: relative;
     text-align: center;
