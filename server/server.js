@@ -4,7 +4,10 @@ const bodyParser = require('body-parser');
 const userRouter = require('./router/userRouter');
 const productRouter = require('./router/productRouter');
 const wishlistRouter = require('./router/wishlistRouter');
+<<<<<<< HEAD
 const mapRouter = require('./router/mapRouter');
+=======
+>>>>>>> 35949575b5c53bc60502489ddba72c3c90198f3e
 // const { saveDataToFile } = require('./saveDataToFile');
 
 const app = express();
