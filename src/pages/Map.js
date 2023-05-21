@@ -39,11 +39,7 @@ function Map() {
     <div className="Map">
       <div className="Logo">
         <img
-<<<<<<< HEAD
           src="shortlogo2.png"
-=======
-          src="shortlogo.png"
->>>>>>> 83ebf2fa307e0e0f2cf5321dde4170e5a2c84edd
           alt="로고 이미지"
           className="logo-image"
         ></img>
@@ -60,11 +56,7 @@ function Map() {
           <label
             className="btn btn-outline-dark"
             htmlFor="mainbtn"
-<<<<<<< HEAD
             onClick={() => navigate("/")}
-=======
-            onClick={() => navigate("/main")}
->>>>>>> 83ebf2fa307e0e0f2cf5321dde4170e5a2c84edd
           >
             Main
           </label>
