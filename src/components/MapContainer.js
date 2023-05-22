@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 const { kakao } = window
 
-const MapContainer = ({ searchPlace, addressList }) => {
-
-  console.log(addressList);
+const MapContainer = ({ searchPlace, addressList, isHospitalChecked }) => {
 
   const geocodeAddress = (address) => {
     return new Promise((resolve, reject) => {
@@ -24,7 +22,7 @@ const MapContainer = ({ searchPlace, addressList }) => {
       if (addressList.length > 0) {
         for (let i = 0; i < addressList.length; i++) {
           try {
-            const LatLng = await geocodeAddress(addressList[i]);
+            const LatLng = geocodeAddress(addressList[i]);
             console.log(LatLng);
             setCenter(new kakao.maps.LatLng(LatLng[0], LatLng[1]));
           } catch (error) {
@@ -32,18 +30,17 @@ const MapContainer = ({ searchPlace, addressList }) => {
           }
         }
       } else {
-        setCenter(new kakao.maps.LatLng(37.5832206, 127.0103893));
+        console.log('error');
       }
     };
     addLatLng();
-  }, [addressList]);
-
-  const [center, setCenter] = useState(new kakao.maps.LatLng(37.5832206, 127.0103893));
+  }, [addressList])
   
-  // 검색결과 배열에 담아줌
+  const [center, setCenter] = useState(new kakao.maps.LatLng(37.5832206, 127.0103893)); 
+
   useEffect(() => {
+  // 검색결과 배열에 담아줌
     var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 })
-    var markers = []
 
     const container = document.getElementById('myMap')
     const options = {
@@ -54,7 +51,7 @@ const MapContainer = ({ searchPlace, addressList }) => {
 
     const ps = new kakao.maps.services.Places()
 
-    ps.keywordSearch(searchPlace, placesSearchCB)
+    ps.keywordSearch(searchPlace ? (isHospitalChecked ? searchPlace + '동물병원' : searchPlace + '공원') : '서울특별시 중구 세종대로 110', placesSearchCB);
 
     function placesSearchCB(data, status, pagination) {
       if (status === kakao.maps.services.Status.OK) {
@@ -80,7 +77,7 @@ const MapContainer = ({ searchPlace, addressList }) => {
         infowindow.open(map, marker)
       })
     }
-  }, [center, searchPlace])
+  }, [center, searchPlace, addressList, isHospitalChecked])
 
   return (
 

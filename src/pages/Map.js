@@ -9,6 +9,7 @@ function Map() {
   const [InputText, setInputText] = useState('')
   const [Place, setPlace] = useState('')
   const [addresses, setAddresses] = useState([]);
+  const [isHospitalChecked, setIsHospitalChecked] = useState(true);
 
   const navigate = useNavigate();
 
@@ -23,8 +24,9 @@ function Map() {
     };
     getAddresses();
   }, [])
+
   const addressList = addresses.filter((address) => address.address).map((address) => address.address);
-  console.log(addressList);
+
   const onChange = (e) => {
     setInputText(e.target.value)
   }
@@ -35,6 +37,16 @@ function Map() {
     setInputText('')
   }
 
+  const handleHospitalClick = () => {
+    setIsHospitalChecked(true);
+  };
+
+  const handleParkClick = () => {
+    setIsHospitalChecked(false);
+  };
+
+  console.log(InputText)
+  console.log(Place)
   return (
     <div className="Map">
       <div className="Logo">
@@ -67,6 +79,7 @@ function Map() {
             name="options"
             autoComplete="off"
             defaultChecked
+            onClick={handleHospitalClick}
           />
           <label className="btn btn-outline-dark" htmlFor="btn1">
             동물병원
@@ -77,6 +90,7 @@ function Map() {
             id="btn2"
             name="options"
             autoComplete="off"
+            onClick={handleParkClick}
           />
           <label className="btn btn-outline-dark" htmlFor="btn2">
             산책로
@@ -93,12 +107,12 @@ function Map() {
         </div>
 
         <div className="search_results">
-          <MapSearchResults searchPlace={Place} />
+          <MapSearchResults searchPlace={Place} addressList={addressList} isHospitalChecked={isHospitalChecked}/>
         </div>
       </div>
 
       <div className="map_wrapper">
-        <MapContainer searchPlace={Place} addressList={addressList}/>
+        <MapContainer searchPlace={Place} addressList={addressList} isHospitalChecked={isHospitalChecked}/>
       </div>
     </div>
   );

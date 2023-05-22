@@ -2,25 +2,59 @@ import React, { useEffect, useState } from 'react'
 
 const { kakao } = window
 
-const MapSearchResults = ({ searchPlace }) => {
+const MapSearchResults = ({ searchPlace, addressList, isHospitalChecked }) => {
 
   // 검색결과 배열에 담아줌
-  const [Places, setPlaces] = useState([])
+  const [Places, setPlaces] = useState([]);
+
+  const geocodeAddress = (address) => {
+    return new Promise((resolve, reject) => {
+      const geocoder = new kakao.maps.services.Geocoder();
+      geocoder.addressSearch(address, (result, status) => {
+        if (status === kakao.maps.services.Status.OK) {
+          resolve([result[0].y, result[0].x]);
+        } else {
+          reject(status);
+        }
+      });
+    });
+  };
+
+  
+  useEffect(() => {
+    const addLatLng = async () => {
+      if (addressList.length > 0) {
+        for (let i = 0; i < addressList.length; i++) {
+          try {
+            const LatLng = await geocodeAddress(addressList[i]);
+            console.log(LatLng);
+            setCenter(new kakao.maps.LatLng(LatLng[0], LatLng[1]));
+          } catch (error) {
+            console.log(error);
+          }
+        }
+      } else {
+        setCenter(new kakao.maps.LatLng(37.5832206, 127.0103893));
+      }
+    };
+    addLatLng();
+  }, [addressList]);
+
+  const [center, setCenter] = useState(new kakao.maps.LatLng(37.5832206, 127.0103893));
   
   useEffect(() => {
     var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 })
-    var markers = []
     const container = document.getElementById('myMap')
     const options = {
-      center: new kakao.maps.LatLng(37.5832206, 127.0103893),
+      center: center,
       level: 3,
     }
     const map = new kakao.maps.Map(container, options)
 
     const ps = new kakao.maps.services.Places()
 
-    ps.keywordSearch(searchPlace, placesSearchCB)
-
+    
+    ps.keywordSearch(searchPlace ? (isHospitalChecked ? searchPlace + '동물병원' : searchPlace + '공원') : (isHospitalChecked ? addressList + '동물병원' : addressList + '공원'), placesSearchCB);
     function placesSearchCB(data, status, pagination) {
       if (status === kakao.maps.services.Status.OK) {
         let bounds = new kakao.maps.LatLngBounds()
@@ -79,7 +113,7 @@ const MapSearchResults = ({ searchPlace }) => {
         infowindow.open(map, marker)
       })
     }
-  }, [searchPlace])
+  }, [center, searchPlace, isHospitalChecked, addressList])
 
   return (
 
