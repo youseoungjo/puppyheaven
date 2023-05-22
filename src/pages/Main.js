@@ -44,8 +44,8 @@ const Main = () => {
           </div>
       
           <div className="main-btn-box">
-            <button className="main-btn" onClick={()=>navigate('/map')}> <img src="map.gif" alt="map" /> <span>PUPPY MAP</span> </button>
-            <button className="main-btn" onClick={()=>navigate('/shop')}> <img src="shop.gif" alt="GIF 이미지" /> <span>PUPPY SHOP</span></button>
+            <button className="map-btn" onClick={()=>navigate('/map')}> <img src="map.gif" alt="map" /> <span>PUPPY MAP</span> </button>
+            <button className="shop-btn" onClick={()=>navigate('/shop')}> <img src="shop.gif" alt="GIF 이미지" /> <span>PUPPY SHOP</span></button>
           </div>
       </div>
     );

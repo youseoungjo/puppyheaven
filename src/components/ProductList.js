@@ -94,7 +94,7 @@ return (
           const wishItem = wishItems.find((item) => item.productId === product.id);
           const isFavorited = wishItem ? true : false;
           return (
-            <tr key={product.id}>
+            <tr key={product.id} className="Product-box">
               <td className="Product-img">
                 <img src={product.image} alt={product.name} width="120" height="100" />
               </td>
