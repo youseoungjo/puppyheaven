@@ -101,7 +101,7 @@ return (
               <td className="Product-name">
                 {product.name}
               </td>
-              <td className="Product-price">
+              <td className="Product-price" title="가격 비교하기">
                 {uniqueSortedProducts.map((uniqueProduct) => (
                   <tr key={uniqueProduct.kg}>
                     {uniqueProduct.kg === 0 ? (
