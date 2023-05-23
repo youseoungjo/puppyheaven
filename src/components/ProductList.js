@@ -96,7 +96,7 @@ return (
           return (
             <tr key={product.id} className="Product-box">
               <td className="Product-img">
-                <img src={product.image} alt={product.name} width="120" height="100" />
+                <img src={product.image} alt={product.name} width="120" height="100" style={{ borderRadius: '10%' }}/>
               </td>
               <td className="Product-name">
                 {product.name}
@@ -127,7 +127,7 @@ return (
               <td className="Product-button" onClick={() => handleFavoriteClick(product.id)} style={{ cursor: "pointer", color: isFavorited ? "red" : "black", }}>
                 {isFavorited ? "❤️" : "🤍"}
               </td>
-              <td className="Product-button"><input type="checkbox" onClick={() => handleCheckboxClick(product)} /></td>
+              <td className="Product-button"><input type="checkbox" onClick={() => handleCheckboxClick(product)} style={{ cursor: "pointer", transform: 'scale(1.4)' }}/></td>
             </tr>
           );
         })}

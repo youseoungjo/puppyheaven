@@ -25,8 +25,8 @@ const ProductCompareList = ({ selectedProducts }) => {
             <tbody>
             {selectedProducts.map((product) => (
               <tr>
-                <td><img src={product.image} alt={product.name} width="120" height="100"/></td>
-                <td>{product.name}</td>
+                <td style={{ height: '120px' }}><img src={product.image} alt={product.name} width="120" height="100" style={{ borderRadius: '10%' }} /></td>
+                <td style={{ width: '281px' }}>{product.name}</td>
               </tr>
             ))}
             </tbody>

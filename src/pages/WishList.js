@@ -175,9 +175,15 @@ const WishList = () => {
 
             {isLoggedIn ? (
             // 로그인 상태: 로그아웃 버튼 표시
-              <div className="logout-btn2" onClick={handleLogout}>
-                <img src="logout.png" alt="로그아웃" className="logout-img" />
-                <div className="logout-txt">로그아웃</div>
+              <div>
+                <div className="logout-btn2" onClick={handleLogout}>
+                  <img src="logout.png" alt="로그아웃" className="logout-img" />
+                  <div className="logout-txt">로그아웃</div>
+                </div>
+                <div className="wish-btn" onClick={() => navigate('/wish')}>
+                  <img src="wishlist.png" alt="장바구니" className="wish-img" />
+                  <div className="wish-txt">장바구니</div>
+                </div>
               </div>
             ) : (
               // 비로그인 상태: 로그인 버튼 표시
@@ -193,7 +199,6 @@ const WishList = () => {
             <div className="Category">
                 <div className="list-group list-group-flush">
                     <div style={{margin: "10px"}}/>
-                    <button type="button" className="list-group-item" onClick={()=>navigate('/')}>메인화면</button>
                     <button type="button" className="list-group-item" onClick={()=>navigate('/shop')}>계속 쇼핑하기</button>
                     <div style={{margin: "30px"}}/>
                 </div>

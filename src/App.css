@@ -502,7 +502,7 @@
     display: flex;
     margin-top: 26px;
     justify-content: right;
-    right: 110px;
+    right: 270px;
     font-family: "GR";
     font-size: 20px;
     cursor: pointer;
@@ -567,7 +567,7 @@
     font-family: "GR";
     font-size: 17px;
     color: black;
-    transition: color 0.3s ease, font-size 0.3s ease;;
+    transition: color 0.3s ease, font-size 0.3s ease;
     margin: 10px;
 }
 
@@ -594,7 +594,7 @@
     font-family: "GR";
     font-size: 17px;
     color: black;
-    transition: color 0.3s ease, font-size 0.3s ease;;
+    transition: color 0.3s ease, font-size 0.3s ease;
     margin: 10px;
 }
 
@@ -616,6 +616,35 @@
 
     width: 100%;
     height: 100vh; 
+}
+
+.wish-btn {
+    position: absolute; 
+    display: flex;
+    margin-top: 26px;
+    justify-content: right;
+    right: 110px;
+    font-family: "GR";
+    font-size: 20px;
+    cursor: pointer;
+}
+  
+.wish-btn .wish-txt{
+    margin-top: 7px;
+    transition: color 0.3s ease, font-size 0.3s ease;;
+}
+
+.wish-btn .wish-img {
+    width: 36px;
+    height: 36px;
+    margin-right: 15px;
+    margin-top: 2px;
+}
+
+.wish-btn:hover {
+    font-family: "GB";
+    font-size: 23px;
+    color: white;
 }
 
 .WishList .wish_content {
@@ -828,7 +857,7 @@
   }
 
 .ProductCompareList .pcl-btn {
-    background-color: lightgray;
+    background-color: #DBDCE7;
     margin-top: 30px;
     width: 150px;
     height: 30px;
@@ -837,6 +866,10 @@
     cursor: pointer;
     font-family: "GR";
     font-size: 20px;
+}
+
+.pcl-btn:hover {
+    scale: 1.1;
 }
 
 /* 하이퍼링크 */
@@ -985,9 +1018,12 @@ a {
 
 .product-compare .pc-info {
     display: inline-block;
-    width: 250px;
+    width: 270px;
     margin: 20px;
     align-items: center; 
+    background-color: #DBDCE7;
+    border-radius: 10%;
+    padding: 20px;
 }
 
 .pc-info .pc-name {
@@ -995,6 +1031,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: GR;
 }
 
 .pc-info .pc-price-box {

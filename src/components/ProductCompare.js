@@ -105,9 +105,15 @@ const ProductCompare = () => {
 
             {isLoggedIn ? (
             // 로그인 상태: 로그아웃 버튼 표시
-              <div className="logout-btn2" onClick={handleLogout}>
-                <img src="logout.png" alt="로그아웃" className="logout-img" />
-                <div className="logout-txt">로그아웃</div>
+              <div>
+                <div className="logout-btn2" onClick={handleLogout}>
+                  <img src="logout.png" alt="로그아웃" className="logout-img" />
+                  <div className="logout-txt">로그아웃</div>
+                </div>
+                <div className="wish-btn" onClick={() => navigate('/wish')}>
+                  <img src="wishlist.png" alt="장바구니" className="wish-img" />
+                  <div className="wish-txt">장바구니</div>
+                </div>
               </div>
             ) : (
               // 비로그인 상태: 로그인 버튼 표시
@@ -122,9 +128,7 @@ const ProductCompare = () => {
           <div className="Category">
             <div className="list-group list-group-flush">
               <div style={{margin: "10px"}}/>
-              <button type="button" className="list-group-item" onClick={() => navigate('/main')}>메인화면</button>
               <button type="button" className="list-group-item" onClick={() => navigate('/shop')}>계속 쇼핑하기</button>
-              <button type="button" className="list-group-item" onClick={() => navigate('/wish')}>위시리스트</button>
               <div style={{margin: "30px"}}/>
             </div>
           </div>
@@ -133,7 +137,7 @@ const ProductCompare = () => {
             <div className="pc-product">
               {selectedProducts.map((product) => (
                 <div className="pc-info" key={product.name}>
-                    <div className="pc-img-box"><img src={product.image} alt={product.name} className="pc-img" /></div>
+                    <div className="pc-img-box"><img src={product.image} alt={product.name} className="pc-img" style={{ borderRadius: '10%' }}/></div>
                     <div className="pc-name">{product.name}</div>
                     <div className="pc-price-box">
                     {uniqueSortedProducts.map((uniqueProduct) => (

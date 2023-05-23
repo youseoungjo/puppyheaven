@@ -132,6 +132,7 @@ const handleRemoveWish = async (id) => {
 };
   
   const [selectedProducts, setSelectedProducts] = useState([]);
+
   const handleCheckboxClick = (product) => {
     if (selectedProducts.some((selectedProduct) => selectedProduct.id === product.id)) {
       // 이미 선택된 상품인 경우, 선택 해제
@@ -159,17 +160,24 @@ const handleRemoveWish = async (id) => {
             </div>
 
             {isLoggedIn ? (
-            // 로그인 상태: 로그아웃 버튼 표시
+            // 로그인 상태: 로그아웃 버튼 표시>
+            <div>
               <div className="logout-btn2" onClick={handleLogout}>
                 <img src="logout.png" alt="로그아웃" className="logout-img" />
                 <div className="logout-txt">로그아웃</div>
               </div>
+              <div className="wish-btn" onClick={() => navigate('/wish')}>
+                <img src="wishlist.png" alt="장바구니" className="wish-img" />
+                <div className="wish-txt">장바구니</div>
+              </div>
+            </div>
             ) : (
               // 비로그인 상태: 로그인 버튼 표시
               <div className="login-btn2" onClick={() => navigate('/login')}>
                 <img src="login.png" alt="로그인" className="login-img" />
                 <div className="login-txt">로그인</div>
               </div>
+              
             )}
           </div>
 
@@ -177,16 +185,10 @@ const handleRemoveWish = async (id) => {
               <div className="Category">
                 <div className="list-group list-group-flush">
                     <div style={{margin: "10px"}}/>
-                      <button type="button" className="list-group-item" onClick={() => navigate('/')}>메인화면</button>
-                      <button type="button" className="list-group-item" onClick={() => navigate('/shop')}>계속 쇼핑하기</button>
-                      <button type="button" className="list-group-item" onClick={() => navigate('/wish')}>위시리스트</button>
-                      <div style={{margin: "30px"}}/>
-                      <section>
                         <button type="button" className="list-group-item" onClick={() => categoryFilterResult('all')}>All</button>
                         <button type="button" className="list-group-item" onClick={() => categoryFilterResult('1')}>애견 사료</button>
                         <button type="button" className="list-group-item" onClick={() => categoryFilterResult('2')}>애견 장난감</button>
                         <button type="button" className="list-group-item" onClick={() => categoryFilterResult('3')}>애견 용품</button>
-                      </section>
                 </div>
               </div>
 
