@@ -167,7 +167,7 @@ const WishList = () => {
 
           <div className="Logo">
             <div onClick={() => navigate('/')}>
-              <img src="shortlogo2.png" alt="로고 이미지" className="logo-image"/>
+              <img src="shortlogo4.png" alt="로고 이미지" className="logo-image"/>
             </div>
             <div>
               <img src="puppylogo.png" alt="배경 이미지" className="logo-box"/>
