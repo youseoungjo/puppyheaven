@@ -635,10 +635,10 @@
 }
 
 .wish-btn .wish-img {
-    width: 36px;
-    height: 36px;
+    width: 35px;
+    height: 35px;
     margin-right: 15px;
-    margin-top: 2px;
+    margin-top: 4px;
 }
 
 .wish-btn:hover {
