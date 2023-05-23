@@ -124,10 +124,10 @@ return (
                   </tr>
                 ))}
               </td>
-              <td className="Product-button" onClick={() => handleFavoriteClick(product.id)} style={{ cursor: "pointer", color: isFavorited ? "red" : "black", }}>
+              <td className="Product-button" onClick={() => handleFavoriteClick(product.id)} style={{ cursor: "pointer", color: isFavorited ? "red" : "black", }} title="장바구니에 추가하기">
                 {isFavorited ? "❤️" : "🤍"}
               </td>
-              <td className="Product-button"><input type="checkbox" onClick={() => handleCheckboxClick(product)} style={{ cursor: "pointer", transform: 'scale(1.4)' }}/></td>
+              <td className="Product-button" title="상품 비교하기"><input type="checkbox" onClick={() => handleCheckboxClick(product)} style={{ cursor: "pointer", transform: 'scale(1.4)' }} /></td>
             </tr>
           );
         })}
