@@ -13,6 +13,17 @@ function Map() {
 
   const navigate = useNavigate();
 
+  const isLoggedIn = !!localStorage.getItem('token');
+
+  const handleLogout = () => {
+      const confirmed = window.confirm("로그아웃 하시겠습니까?");
+
+      if (confirmed) {
+        localStorage.removeItem('token');
+        navigate("/shop");
+      }
+  };
+
 
   useEffect(() => {
     const getAddresses = async () => {
@@ -50,12 +61,28 @@ function Map() {
   return (
     <div className="Map">
       <div className="Logo">
-        <img
-          src="shortlogo2.png"
-          alt="로고 이미지"
-          className="logo-image"
-        ></img>
-      </div>
+        <div className='title-logo' onClick={() => navigate('/')}>
+          <img src="shortlogo4.png" alt="로고 이미지" className="logo-image"/>
+        </div>
+        <div>
+          <img src="puppylogo2.png" alt="배경 이미지" className="banner"/>
+        </div>
+
+        {isLoggedIn ? (
+          <div>
+            <div className="logout-btn2" onClick={handleLogout}>
+              <img src="logout.png" alt="로그아웃" className="logout-img" />
+              <div className="logout-txt">로그아웃</div>
+            </div>
+          </div>
+          ) : (
+            <div className="login-btn2" onClick={() => navigate('/login')}>
+              <img src="login.png" alt="로그인" className="login-img" />
+              <div className="login-txt">로그인</div>
+            </div>
+              
+            )}
+          </div>
 
       <div className="search_wrapper">
         <div className="btn-group-md" role="group">
