@@ -1049,7 +1049,7 @@ a {
     justify-content: center;
 }
 
-/*  */
+/* Map */
 
 .Map {
     display: flex;
@@ -1059,7 +1059,8 @@ a {
     width: 100%;
     height: 100vh; 
 
-    background-color: #B6CDEF;
+    background-color: #AECFF1;
+    overflow: hidden;
 }
 
 .Map .Logo {
@@ -1069,11 +1070,33 @@ a {
     margin-bottom: 15px;
     align-items: center;
   }
+
+.Map .Logo .banner {
+    width: 100vw;
+    height: 198px;
+  }
   
 .Map .Logo .logo-image {
-    width: 250px;
-  }
+    margin-bottom: 55%;
+}
 
+.Map .title-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.Map .login-btn2 {
+    position: absolute;
+    top: 0;
+    right: 3;
+}
+
+.Map .logout-btn2 {
+    position: absolute;
+    top: 0;
+    right: 3;
+}
 
 .Map .search_wrapper {
     background-color: white;
@@ -1084,12 +1107,13 @@ a {
     border-radius: 10px;
     position: absolute;
     justify-content: center;
+    overflow: hidden;
 }
 
 
 .Map .search_wrapper .btn-group-md  {
     position: relative;
-    font-family: "Bold";
+    font-family: "GR";
     margin-top: 20px;
     margin-left: 20px;
     z-index: 1;
@@ -1103,6 +1127,8 @@ a {
 .Map .search_wrapper .btn {
     position: relative;
     margin-left: 10px;
+    background-color: #DEE5ED;
+    border-color: white;
 }
 
 .Map .search_wrapper .search_bar {
@@ -1116,7 +1142,7 @@ a {
     height: 35px;
     font-size: 15px;
     border-radius: 20px;
-    border: 1px solid gray;
+    border: 1px solid #BDCADA;
 }
 
 .Map .search_wrapper .searchBtn {
@@ -1124,16 +1150,17 @@ a {
     margin-bottom: 5px;
     height: 32px;
     background-color: white;
-    font-family: "Light";
+    font-family: "GL";
     border-radius: 20px;
-    border: 1px solid gray;
+    border: 1px solid #BDCADA;
+    background-color: #DEE5ED;
 }
 
 .Map .search_wrapper .search_results {
     margin-top: 15px;
     margin-left: 10px;
     margin-right: 10px;
-    font-family: "Light";
+    font-family: "GL";
     font-size: small;
 }
 
@@ -1148,12 +1175,16 @@ a {
     position: absolute;
     display: flex;
     justify-content: center;
- 
+    overflow: hidden;
 }
 
 .Map .map {
     margin-right: 20px;
 }
+
+
+
+
 
 
 
