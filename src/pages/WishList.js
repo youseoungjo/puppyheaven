@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
+import ProductCompareList from '../components/ProductCompareList';
+import { RiDeleteBin2Fill } from 'react-icons/ri';
 
 const WishList = () => {
 
@@ -17,6 +19,22 @@ const WishList = () => {
           navigate("/shop");
         }
     };
+
+    const [selectedProducts, setSelectedProducts] = useState([]);
+
+  const handleCheckboxClick = (product) => {
+    if (selectedProducts.some((selectedProduct) => selectedProduct.id === product.id)) {
+      // 이미 선택된 상품인 경우, 선택 해제
+      const newSelectedProducts = selectedProducts.filter((selectedProduct) => selectedProduct.id !== product.id);
+      setSelectedProducts(newSelectedProducts);
+      localStorage.setItem('selectedProducts', JSON.stringify(newSelectedProducts));
+    } else {
+      // 선택되지 않은 상품인 경우, 선택
+      const newSelectedProducts = [...selectedProducts, product];
+      setSelectedProducts(newSelectedProducts);
+      localStorage.setItem('selectedProducts', JSON.stringify(newSelectedProducts));
+    }
+  };
 
     const [coupangs, setCoupangs] = useState([]);
     const [gmarkets, setGmarkets] = useState([]);
@@ -129,10 +147,10 @@ const WishList = () => {
         return matchedItems.map(item => (
 
               <React.Fragment key={item.id}>
-                <tr>
-                  <td rowSpan="2" style={{ width: "150px", height: "150px" }}><img src={process.env.PUBLIC_URL + item.image} alt={item.name} width="120" height="100"/></td>
-                  <td rowSpan="2" style={{ width: "200px", height: "150px" }}>{item.name}</td>
-                  <td>
+                <tr className="wish-list-box" height="160" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  <td className="wish-list-img"><img src={process.env.PUBLIC_URL + item.image} alt={item.name} width="120" height="100" style={{ borderRadius: '10%' }}/></td>
+                  <td className="wish-list-name">{item.name}</td>
+                  <td className="wish-list-price">
                     {uniqueSortedProducts.map((uniqueProduct) => (
                         <tr key={uniqueProduct.kg}>
                             {uniqueProduct.kg === 0 ? (
@@ -155,7 +173,8 @@ const WishList = () => {
                         </tr>
                     ))}
                   </td>
-                  <td className="cart" style={{ width: "150px", height: "75px" }}><button onClick={()=>handleRemoveWish(item.id)}>제거</button></td>
+                  <td className="wish-list-delete-box"><RiDeleteBin2Fill className="wish-list-delete" onClick={()=>handleRemoveWish(item.id)}/></td>
+                  <td className="wish-list-button" title="상품 비교하기"><input type="checkbox" onClick={() => handleCheckboxClick(item.id)} style={{ cursor: "pointer", transform: 'scale(1.4)' }} /></td>
                 </tr>
               </React.Fragment>
             ))
@@ -205,12 +224,10 @@ const WishList = () => {
             </div>
 
             <div className="edit_wish">
-                <header style={{margin:"15px"}}>위시리스트</header>
-
-
+                <div className="wish-title">위시리스트</div>
                 
 
-                <div className="col-md-9">
+                <div className="wish-list">
                     <div className="row">
 
                         {matchedItems.length > 0 ? showWishItem() : <p>비어있음</p>}
@@ -218,6 +235,14 @@ const WishList = () => {
 
                     </div>
                 </div>
+
+            </div>
+
+            <div className="product-compare-list">
+
+                <ProductCompareList
+                  selectedProducts={selectedProducts}
+                />
 
             </div>
 
