@@ -99,8 +99,8 @@ const PriceCompare = () => {
                 <div className="logout-txt">로그아웃</div>
               </div>
               <div className="wish-btn" onClick={() => navigate('/wish')}>
-                <img src="wishlist.png" alt="장바구니" className="wish-img" />
-                <div className="wish-txt">장바구니</div>
+                <img src="wishlist.png" alt="위시리스트" className="wish-img" />
+                <div className="wish-txt">위시리스트</div>
               </div>
             </div>
             ) : (

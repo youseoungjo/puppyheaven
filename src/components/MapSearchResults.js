@@ -274,7 +274,7 @@ function getTimeHTML(distance) {
   walkMin = '<span class="number">' + walkkTime % 60 + '</span>분'
 
   // 거리와 도보 시간, 자전거 시간을 가지고 HTML Content를 만들어 리턴합니다
-  var content = '<ul class="dotOverlay distanceInfo">';
+  var content = '<ul class="dotOverlay distanceInfo"style="background-color: rgba(0, 0, 0, 0.5); color: white;">';
   content += '    <li>';
   content += '        <span class="label">총거리</span><span class="number">' + distance + '</span>m';
   content += '    </li>';
