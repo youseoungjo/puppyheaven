@@ -4,6 +4,9 @@ const { kakao } = window
 
 const MapContainer = ({ searchPlace, addressList, isHospitalChecked }) => {
 
+
+
+
   const geocodeAddress = (address) => {
     return new Promise((resolve, reject) => {
       const geocoder = new kakao.maps.services.Geocoder();
@@ -77,7 +80,9 @@ const MapContainer = ({ searchPlace, addressList, isHospitalChecked }) => {
         infowindow.open(map, marker)
       })
     }
-  }, [center, searchPlace, addressList, isHospitalChecked])
+
+    
+}, [center, searchPlace, addressList, isHospitalChecked])
 
   return (
 
