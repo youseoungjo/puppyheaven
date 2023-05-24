@@ -91,7 +91,7 @@ const MapContainer = ({ searchPlace, addressList, isHospitalChecked }) => {
       <div
         id="myMap"
         style={{
-          width: "1300px", height: "90%", marginLeft: "60px", marginTop: "45px", marginRight: "60px", marginBottom: "45px"
+          width: "65vw", height: "90%", marginLeft: "60px", marginTop: "45px", marginRight: "60px", marginBottom: "45px"
         }}
       > 
 
