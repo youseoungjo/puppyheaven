@@ -1074,7 +1074,7 @@ a {
 
 .Map .Logo .banner {
     width: 100vw;
-    height: 198px;
+    height: 21vh;
   }
   
 .Map .Logo .logo-image {
@@ -1090,13 +1090,13 @@ a {
 .Map .login-btn2 {
     position: absolute;
     top: 0;
-    right: 1;
+    right: 0;
 }
 
 .Map .logout-btn2 {
     position: absolute;
     top: 0;
-    right: 1;
+    right: 0;
 }
 
 .Map .search_wrapper {
