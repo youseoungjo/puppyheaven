@@ -1090,13 +1090,13 @@ a {
 .Map .login-btn2 {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 1;
 }
 
 .Map .logout-btn2 {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 1;
 }
 
 .Map .search_wrapper {
