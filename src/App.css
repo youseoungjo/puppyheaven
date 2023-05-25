@@ -1181,7 +1181,7 @@ a {
 .Map .search_wrapper .btn {
     position: relative;
     margin-left: 10px;
-    background-color: #DEE5ED;
+    background-color: #bdcada;
     border-color: white;
     width: 100px;
     height: 35px;
@@ -1190,7 +1190,7 @@ a {
 .Map .search_wrapper .btn.active {
     position: relative;
     margin-left: 10px;
-    background-color: #dee5ed3b;
+    background-color: #bdcada67;
     border-color: white;
     width: 100px;
     height: 35px;
