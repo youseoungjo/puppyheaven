@@ -81,7 +81,8 @@ function SignUpForm() {
       axios.post('http://localhost:3001/signup', data)
       .then(response => {
         console.log(response.data);
-        navigate('/')
+        alert('회원가입이 완료되었습니다!');
+        navigate('/Login')
       })
       .catch(error => {
         console.log('404error');
@@ -96,7 +97,7 @@ function SignUpForm() {
     return (
       <form onSubmit={handleSubmit}>
         <div className="SignUp">
-          <img src="shortlogo4.png" alt="로고 이미지" />
+          <img src="logo.png" alt="로고 이미지"  width="350px" height="173px" style={{ marginBottom: '15px', cursor: 'pointer' }} onClick={()=>navigate('/')}/>
           <div className="form_wrap">
             <div className="id_form">
               <label>아이디</label>
@@ -133,11 +134,6 @@ function SignUpForm() {
               <label>우편번호</label>
               <input className="zonecode_input" type="text" name="zonecode" value={zonecode} onChange={handleZonecodeChange} />
             </div> */}
-
-            <div className="address_form">
-              <label>주소</label>
-              <input className="address_input" type="text" name="address" value={address} onChange={handleAddressChange} /> 
-            </div>
             <div className="zonecode_form">
               <label>우편번호</label>
               <div className="zonecode_set">
@@ -145,15 +141,16 @@ function SignUpForm() {
               <AddressInput setZonecode={setZonecode} setAddress={setAddress} setDetailAddress={setDetailAddress}/>
               </div>
             </div>
+            <div className="address_form">
+              <label>주소</label>
+              <input className="address_input" type="text" name="address" value={address} onChange={handleAddressChange} readOnly/> 
+            </div>
             <div className="detailAddress_form">
               <label>상세 주소</label>
               <input  className="detailAddress_input"type="text" name="detailAddress" value={detailAddress} onChange={handleDetailAddressChange} />
             </div>
             <div>
               <button type="submit">회원가입</button>
-            </div>
-            <div>
-              <a href="/Login" class="link-light">로그인 화면으로 돌아가기</a>
             </div>
           </div>
         </div>

@@ -93,7 +93,7 @@
 }
 
 .LogIn .pw_form {
-    margin-top: 20px;
+    margin-top: 10px;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -108,7 +108,7 @@
     background-color: white;
     border: none;
     width: 300px;
-    height: 30px;
+    height: 40px;
 }
 
 .LogIn .pw_input {
@@ -119,7 +119,7 @@
     background-color: white;
     border: none;
     width: 300px;
-    height: 30px;
+    height: 40px;
 }
 
 .LogIn label {
@@ -136,19 +136,42 @@
 
 .LogIn button {
     background-color: #DEE5ED;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-left: 5px;
     margin-right: 5px;
-    width: 80px;
-    height: 30px;
-    border-radius: 20px;
+    margin-bottom: 13px;
+    width: 300px;
+    height: 35px;
+    border-radius: 8px;
     border: none;
     cursor: pointer;
-    font-family: 'GL';
+    font-family: 'GR';
 }
 
 .LogIn .btn-form {
     margin-bottom: 50px;
+}
+
+.join-btn {
+    cursor: pointer;
+    font-family: 'GL';
+    font-size: 17px;
+}
+
+.join-btn:hover {
+    color: white;
+    font-family: 'GR';
+}
+
+.login-back-btn {
+    cursor: pointer;
+    font-family: 'GL';
+    font-size: 17px;
+}
+
+.login-back-btn:hover {
+    color: white;
+    font-family: 'GR';
 }
 
 
@@ -329,7 +352,7 @@
     margin-top: 30px;
     margin-left: 5px;
     margin-right: 5px;
-    margin-bottom: 3px;
+    margin-bottom: 50px;
     width: 300px;
     height: 30px;
     border-radius: 20px;

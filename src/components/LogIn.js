@@ -74,14 +74,13 @@ const LogIn = () => {
     <div className="LogIn">
 
       <div onClick={logoOnClick}>
-        <img src="shortlogo4.png" alt="로고 이미지" />
+        <img src="logo.png" alt="로고 이미지" width="405px" height="200px" style={{ marginBottom: '15px', cursor: 'pointer' }} onClick={()=>navigate('/')}/>
       </div>
 
         <div className="form_wrap">
         
           <div className="id_form">
-            <label>ID</label>
-            <input className="id_input" type="text" value={inputId} onChange={handleInputId} />
+            <input className="id_input" type="text" value={inputId} onChange={handleInputId} placeholder="아이디"/>
             <div className="inputError">
               {
                 !idValid && inputId.length > 0 && (
@@ -92,8 +91,7 @@ const LogIn = () => {
           </div>
 
           <div className="pw_form">
-            <label>Password</label>
-            <input className="pw_input" type="password" value={inputPw} onChange={handleInputPw}/>
+            <input className="pw_input" type="password" value={inputPw} onChange={handleInputPw} placeholder="비밀번호"/>
             <div className="inputError">
               {
                 !pwValid && inputPw.length > 0 && (
@@ -106,8 +104,7 @@ const LogIn = () => {
 
           <div>
           <button onClick={onClickLoginButton}>로그인</button>
-          <button onClick={()=>navigate('/join')}>회원가입</button>
-          <button onClick={()=>navigate('/')}>Main</button>
+          <div className="join-btn" onClick={()=>navigate('/join')}>아직 회원이 아니신가요?</div>
           </div>
         </div>
 
