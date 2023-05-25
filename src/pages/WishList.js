@@ -174,7 +174,7 @@ const WishList = () => {
                     ))}
                   </td>
                   <td className="wish-list-delete-box"><RiDeleteBin2Fill className="wish-list-delete" onClick={()=>handleRemoveWish(item.id)}/></td>
-                  <td className="wish-list-button" title="상품 비교하기"><input type="checkbox" onClick={() => handleCheckboxClick(item.id)} style={{ cursor: "pointer", transform: 'scale(1.4)' }} /></td>
+                  <td className="wish-list-button" title="상품 비교하기"><input type="checkbox" onClick={() => handleCheckboxClick(item)} style={{ cursor: "pointer", transform: 'scale(1.4)' }} /></td>
                 </tr>
               </React.Fragment>
             ))
