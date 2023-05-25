@@ -1153,7 +1153,7 @@ a {
 }
 
 .Map .search_wrapper {
-    background-color: #F9FAFC;
+    background-color: #F8F8FB;
     margin-top: 22.7vh;
     margin-left: 5vh;
     width: 22vw;
@@ -1183,7 +1183,20 @@ a {
     margin-left: 10px;
     background-color: #DEE5ED;
     border-color: white;
+    width: 100px;
+    height: 35px;
 }
+
+.Map .search_wrapper .btn.active {
+    position: relative;
+    margin-left: 10px;
+    background-color: #dee5ed3b;
+    border-color: white;
+    width: 100px;
+    height: 35px;
+
+}
+
 
 .Map .search_wrapper .search_bar {
     position: relative;
@@ -1220,7 +1233,7 @@ a {
 
 
 .Map .map_wrapper {
-    background-color: #F9FAFC;
+    background-color: #F8F8FB;
     margin-top: 22.7vh;
     margin-left: 55vh;
     width: 70vw;
@@ -1235,6 +1248,7 @@ a {
 .Map .map {
     margin-right: 20px;
 }
+
 
 
 
