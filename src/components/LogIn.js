@@ -74,7 +74,7 @@ const LogIn = () => {
     <div className="LogIn">
 
       <div onClick={logoOnClick}>
-        <img src="shortlogo2.png" alt="로고 이미지" />
+        <img src="shortlogo4.png" alt="로고 이미지" />
       </div>
 
         <div className="form_wrap">
