@@ -1088,15 +1088,27 @@ a {
 }
 
 .Map .login-btn2 {
-    position: absolute;
+    position: absolute; 
+    display: flex;
+    margin-top: 25px;
+    justify-content: right;
     top: 0;
-    right: 1;
+    right: 110px;
+    font-family: "GR";
+    font-size: 20px;
+    cursor: pointer;
 }
 
 .Map .logout-btn2 {
-    position: absolute;
+    position: absolute; 
+    display: flex;
+    margin-top: 25px;
+    justify-content: right;
+    right: 110px;
     top: 0;
-    right: 1;
+    font-family: "GR";
+    font-size: 20px;
+    cursor: pointer;
 }
 
 .Map .search_wrapper {
