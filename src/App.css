@@ -1140,6 +1140,12 @@ a {
     cursor: pointer;
 }
 
+.Map .login-btn2:hover {
+        font-family: "GB";
+        font-size: 23px;
+        color: white;
+}
+
 .Map .logout-btn2 {
     position: absolute; 
     display: flex;
@@ -1150,6 +1156,12 @@ a {
     font-family: "GR";
     font-size: 20px;
     cursor: pointer;
+}
+
+.Map .logout-btn2:hover {
+    font-family: "GB";
+    font-size: 23px;
+    color: white;
 }
 
 .Map .search_wrapper {
