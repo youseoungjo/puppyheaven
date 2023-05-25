@@ -96,7 +96,7 @@ function SignUpForm() {
     return (
       <form onSubmit={handleSubmit}>
         <div className="SignUp">
-          <img src="shortlogo2.png" alt="로고 이미지" />
+          <img src="shortlogo4.png" alt="로고 이미지" />
           <div className="form_wrap">
             <div className="id_form">
               <label>아이디</label>
