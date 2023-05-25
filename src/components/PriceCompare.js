@@ -77,8 +77,10 @@ const PriceCompare = () => {
     if (includeDelivery && lowestPriceProduct) {
       totalPrice += lowestPriceProduct.deliveryFee;
     }
-    return totalPrice.toLocaleString();
+    return totalPrice !== null ? totalPrice.toLocaleString() : 'N/A';
   }
+
+  const formattedTotalPrice = getTotalPrice().toLocaleString();
 
   return (
     <div className="Shop">
@@ -140,7 +142,7 @@ const PriceCompare = () => {
                           <span className="row-price-title">최저가</span>
                         </td>
                         <td className="row-price">
-                          <a href={lowestPriceUrl}>{getTotalPrice()}원</a>
+                          <a href={lowestPriceUrl}>{formattedTotalPrice}원</a>
                         </td>
                         <td>
                           <button className="row-price-btn" onClick={() => {if(lowestPriceUrl){window.location.href=lowestPriceUrl;}}}>최저가 구매하기</button>
