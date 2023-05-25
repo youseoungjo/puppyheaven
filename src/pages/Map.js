@@ -89,26 +89,14 @@ function Map() {
           <input
             type="radio"
             className="btn-check"
-            id="mainbtn"
-            autoComplete="off"
-          />
-          <label
-            className="btn btn-outline-dark"
-            htmlFor="mainbtn"
-            onClick={() => navigate("/")}
-          >
-            Main
-          </label>
-          <input
-            type="radio"
-            className="btn-check"
             id="btn1"
             name="options"
             autoComplete="off"
-            defaultChecked
+            defaultChecked={!isHospitalChecked}
             onClick={handleHospitalClick}
           />
-          <label className="btn btn-outline-dark" htmlFor="btn1">
+          <label className={`btn ${!isHospitalChecked ? 'active' : ''}`}
+          htmlFor="btn1">
             동물병원
           </label>
           <input
@@ -117,9 +105,11 @@ function Map() {
             id="btn2"
             name="options"
             autoComplete="off"
+            defaultChecked={isHospitalChecked}
             onClick={handleParkClick}
           />
-          <label className="btn btn-outline-dark" htmlFor="btn2">
+          <label className={`btn ${isHospitalChecked ? 'active' : ''}`}
+           htmlFor="btn2">
             산책로
           </label>
         </div>
