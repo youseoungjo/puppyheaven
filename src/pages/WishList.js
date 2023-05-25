@@ -157,7 +157,7 @@ const WishList = () => {
                                 <a href={`/pricecompare?name=${encodeURIComponent(item.name)}&kg=${uniqueProduct.kg}`}>
                                     {getPrice(item.name, uniqueProduct.kg) === Infinity ? null : (
                                         <>
-                                            {getPrice(item.name, uniqueProduct.kg)}원
+                                            {getPrice(item.name, uniqueProduct.kg).toLocaleString()}원
                                         </>
                                     )}
                                 </a>
@@ -165,7 +165,7 @@ const WishList = () => {
                                 <a href={`/pricecompare?name=${encodeURIComponent(item.name)}&kg=${uniqueProduct.kg}`}>
                                     {getPrice(item.name, uniqueProduct.kg) === Infinity ? null : (
                                         <>
-                                            {uniqueProduct.kg}kg {getPrice(item.name, uniqueProduct.kg)}원
+                                            {uniqueProduct.kg}kg {getPrice(item.name, uniqueProduct.kg).toLocaleString()}원
                                         </>
                                     )}
                                 </a>

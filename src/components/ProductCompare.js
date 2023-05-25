@@ -145,13 +145,13 @@ const ProductCompare = () => {
                         {uniqueProduct.kg === 0 ? (
                           <a href={`/pricecompare?name=${encodeURIComponent(product.name)}&kg=${uniqueProduct.kg}`}>
                             {getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
-                              <>{getPrice(product.name, uniqueProduct.kg)}원</>
+                              <>{getPrice(product.name, uniqueProduct.kg).toLocaleString()}원</>
                             )}
                           </a>
                         ) : (
                           <a href={`/pricecompare?name=${encodeURIComponent(product.name)}&kg=${uniqueProduct.kg}`}>
                             {getPrice(product.name, uniqueProduct.kg) === Infinity ? null : (
-                              <>{uniqueProduct.kg}kg {getPrice(product.name, uniqueProduct.kg)}원</>
+                              <>{uniqueProduct.kg}kg {getPrice(product.name, uniqueProduct.kg).toLocaleString()}원</>
                             )}
                           </a>
                         )}

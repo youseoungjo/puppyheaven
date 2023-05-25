@@ -4,10 +4,10 @@ import axios from "axios";
 
 const LogIn = () => {
 
-  const User = {
-    id : '12345678',
-    pw : '!123qwerty'
-  }
+  // const User = {
+  //   id : '12345678',
+  //   pw : '!123qwerty'
+  // }
 
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
@@ -60,13 +60,13 @@ const LogIn = () => {
       console.log('error');
       alert("서버와의 통신에 실패했습니다.");
     }
-    //User로그인
-    if(inputId === User.id && inputPw === User.pw){
-      alert('로그인에 성공했습니다.');
-      navigate("/");
-    } else {
-      alert('회원 정보가 없습니다.');
-    }
+    // //User로그인
+    // if(inputId === User.id && inputPw === User.pw){
+    //   alert('로그인에 성공했습니다.');
+    //   navigate("/");
+    // } else {
+    //   alert('회원 정보가 없습니다.');
+    // }
   };
 
 
@@ -102,10 +102,7 @@ const LogIn = () => {
               }
             </div>
           </div>
-          
-          {/* <div>
-          <a href="/find" class="link-light">아이디/비밀번호 찾기</a>
-          </div> */}
+        
 
           <div>
           <button onClick={onClickLoginButton}>로그인</button>
