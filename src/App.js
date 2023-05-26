@@ -9,6 +9,7 @@ import Main from './pages/Main';
 import Map from './pages/Map';
 import Shop from './pages/Shop';
 import WishList from './pages/WishList';
+import Admin from './pages/Admin';
 
 import PriceCompare from './components/PriceCompare';
 import ProductCompare from './components/ProductCompare';
@@ -31,6 +32,7 @@ function App() {
           <Route path='/wish' element={<WishList wishItem={wishItem} setWishItem={setWishItem} />}/>
           <Route path='/pricecompare' element={<PriceCompare/>}/>
           <Route path='/productcompare' element={<ProductCompare/>}/>
+          <Route path='/admin' element={<Admin/>}/>
         </Routes>
       </div>
     </BrowserRouter>
