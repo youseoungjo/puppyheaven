@@ -9,6 +9,11 @@ const LogIn = () => {
   //   pw : '!123qwerty'
   // }
 
+  const admin = {
+    id : 'admin',
+    pw : '1234'
+  }
+
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
 
@@ -43,6 +48,10 @@ const LogIn = () => {
   
 
   const onClickLoginButton = async () => {
+    if(inputId === admin.id && inputPw === admin.pw){
+      alert('관리자 로그인에 성공했습니다.');
+      navigate("/admin");
+    } else {
     try {
       const response = await axios.post("http://localhost:3001/login", {
         id: inputId,
@@ -60,6 +69,7 @@ const LogIn = () => {
       console.log('error');
       alert("서버와의 통신에 실패했습니다.");
     }
+  }
     // //User로그인
     // if(inputId === User.id && inputPw === User.pw){
     //   alert('로그인에 성공했습니다.');

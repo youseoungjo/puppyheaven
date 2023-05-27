@@ -6,7 +6,15 @@ import { useNavigate } from 'react-router-dom';
 const Admin = () => {
 
     const navigate = useNavigate();
-    const isLoggedIn = !!localStorage.getItem('token');
+
+    
+    const handleLogout = () => {
+        const confirmed = window.confirm("로그아웃 하시겠습니까?");
+  
+        if (confirmed) {
+          navigate("/shop");
+        }
+    };
 
     return (
     <div className="Admin">
@@ -19,25 +27,13 @@ const Admin = () => {
             <img src="puppylogo.png" alt="배경 이미지" className="logo-box"/>
         </div>
 
-        {isLoggedIn ? (
-        // 로그인 상태: 로그아웃 버튼 표시
         <div>
             <div className="logout-btn2" onClick={handleLogout}>
             <img src="logout.png" alt="로그아웃" className="logout-img" />
             <div className="logout-txt">로그아웃</div>
             </div>
-            <div className="wish-btn" onClick={() => navigate('/wish')}>
-            <img src="wishlist.png" alt="장바구니" className="wish-img" />
-            <div className="wish-txt">장바구니</div>
-            </div>
         </div>
-        ) : (
-            // 비로그인 상태: 로그인 버튼 표시
-            <div className="login-btn2" onClick={() => navigate('/login')}>
-            <img src="login.png" alt="로그인" className="login-img" />
-            <div className="login-txt">로그인</div>
-            </div>
-        )}
+
         </div>
 
         <div className="admin_content">

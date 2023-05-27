@@ -158,8 +158,10 @@ const ProductCompare = () => {
                       </div>
                     ))}
                     </div>
-                    <div div className="pc-age">{product.age}</div>
-                    <div div className="pc-maker">{product.maker}</div>
+                    <div div className="pc-age">연령 : {product.age}</div>
+                    <div div className="pc-maker">제조사 : {product.maker}</div>
+                    <div div className="pc-source">주원료 : {product.source}</div>
+                    <div div className="pc-function">특징 : {product.function}</div>
                   </div>
               ))}
             </div>         
