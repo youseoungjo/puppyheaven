@@ -35,11 +35,19 @@ const Product = sequelize.define('product', {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  ingredient: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  content: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  }
 });
 
 
 const Coupang = sequelize.define('coupang', {
-  productId: {
+  id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true,
@@ -75,7 +83,7 @@ const Coupang = sequelize.define('coupang', {
 });
 
 const Gmarket = sequelize.define('gmarket', {
-  productId: {
+  id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true,
@@ -111,7 +119,7 @@ const Gmarket = sequelize.define('gmarket', {
 });
 
 const Eleven = sequelize.define('eleven', {
-  productId: {
+  id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true,
