@@ -1322,7 +1322,7 @@ a {
 
 .AdminProductInfo .info_content {
     height: 100%;
-    margin-top: 4%;
+    margin-top: 2%;
 }
 
 .AdminProductInfo label {
@@ -1370,6 +1370,17 @@ a {
     text-align: left;
     display: flex;
     flex-direction: column;    
+}
+
+.AdminProductInfo .category_input {
+    display: flex;
+    border-radius: 8px;
+    margin-top: 0;
+    background-color: white;
+    border: 1px solid #9b9fca;
+    width: 300px;
+    height: 35px;
+    font-family: 'GL';
 }
 
 
@@ -1483,6 +1494,7 @@ a {
 }
 
 
+
 .AdminShoppingMall .shoppingMallName_form {
     margin-top: 20px;
     text-align: left;
@@ -1526,6 +1538,16 @@ a {
     flex-direction: column;    
 }
 
+.AdminShoppingMall .category_input {
+    display: flex;
+    border-radius: 8px;
+    margin-top: 0;
+    background-color: white;
+    border: 1px solid #9b9fca;
+    width: 300px;
+    height: 35px;
+    font-family: 'GL';
+}
 
 .AdminShoppingMall .shoppingMallName_input {
     display: flex;
