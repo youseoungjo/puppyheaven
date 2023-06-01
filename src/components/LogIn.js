@@ -4,11 +4,6 @@ import axios from "axios";
 
 const LogIn = () => {
 
-  // const User = {
-  //   id : '12345678',
-  //   pw : '!123qwerty'
-  // }
-
   const admin = {
     id : 'admin',
     pw : '1234'
