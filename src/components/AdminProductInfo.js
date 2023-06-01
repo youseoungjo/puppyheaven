@@ -80,7 +80,7 @@ const AdminProductInfo = () => {
         <div className='AdminProductInfo'>
             <div className='info_content'>
                 <form onSubmit={handleSubmit}>
-                    <label>상품 등록</label>
+                    {/* <label>상품 등록</label> */}
                     <div className="name_form">
                         <label>카테고리</label>
                         <select className="category_input" value={categoryid} onChange={handleCategoryIdChange}>
