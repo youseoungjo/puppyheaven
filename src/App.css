@@ -1322,7 +1322,7 @@ a {
 
 .AdminProductInfo .info_content {
     height: 100%;
-    margin-top: 6%;
+    margin-top: 4%;
 }
 
 .AdminProductInfo label {
@@ -1379,7 +1379,7 @@ a {
     padding: 16px;
     margin-top: 0;
     background-color: white;
-    border: none;
+    border: 1px solid #9b9fca;
     width: 300px;
     height: 30px;
     font-family: 'GL';
@@ -1391,7 +1391,7 @@ a {
     padding: 16px;
     margin-top: 0;
     background-color: white;
-    border: none;
+    border: 1px solid #9b9fca;
     width: 300px;
     height: 30px;
     font-family: 'GL';
@@ -1403,7 +1403,7 @@ a {
     padding: 16px;
     margin-top: 0;
     background-color: white;
-    border: none;
+    border: 1px solid #9b9fca;
     width: 300px;
     height: 30px;
     font-family: 'GL';
@@ -1415,7 +1415,7 @@ a {
     padding: 16px;
     margin-top: 0;
     background-color: white;
-    border: none;
+    border: 1px solid #9b9fca;
     width: 300px;
     height: 30px;
     font-family: 'GL';
@@ -1426,7 +1426,7 @@ a {
     padding: 16px;
     margin-top: 0;
     background-color: white;
-    border: none;
+    border: 1px solid #9b9fca;
     width: 300px;
     height: 30px;
     font-family: 'GL';
@@ -1438,7 +1438,7 @@ a {
     padding: 16px;
     margin-top: 0;
     background-color: white;
-    border: none;
+    border: 1px solid #9b9fca;
     width: 300px;
     height: 60px;
     font-family: 'GL';
@@ -1533,7 +1533,7 @@ a {
     padding: 16px;
     margin-top: 0;
     background-color: white;
-    border: none;
+    border: 1px solid #9b9fca;
     width: 300px;
     height: 30px;
     font-family: 'GL';
@@ -1545,7 +1545,7 @@ a {
     padding: 16px;
     margin-top: 0;
     background-color: white;
-    border: none;
+    border: 1px solid #9b9fca;
     width: 300px;
     height: 30px;
     font-family: 'GL';
@@ -1557,7 +1557,7 @@ a {
     padding: 16px;
     margin-top: 0;
     background-color: white;
-    border: none;
+    border: 1px solid #9b9fca;
     width: 300px;
     height: 30px;
     font-family: 'GL';
@@ -1569,7 +1569,7 @@ a {
     padding: 16px;
     margin-top: 0;
     background-color: white;
-    border: none;
+    border: 1px solid #9b9fca;
     width: 300px;
     height: 30px;
     font-family: 'GL';
@@ -1580,7 +1580,7 @@ a {
     padding: 16px;
     margin-top: 0;
     background-color: white;
-    border: none;
+    border: 1px solid #9b9fca;
     width: 300px;
     height: 30px;
     font-family: 'GL';
@@ -1592,7 +1592,7 @@ a {
     padding: 16px;
     margin-top: 0;
     background-color: white;
-    border: none;
+    border: 1px solid #9b9fca;
     width: 300px;
     height: 30px;
     font-family: 'GL';
@@ -1612,5 +1612,4 @@ a {
     cursor: pointer;
     font-family: 'GL';
 }
-
 
