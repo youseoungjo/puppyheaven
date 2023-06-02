@@ -697,6 +697,10 @@
     flex-direction: column;
 }
 
+.wishList .edit_wish::-webkit-scrollbar {
+    display: none;
+}
+
 .WishList .wish-title {
     padding: 15px;
     font-size: 25px;
@@ -708,6 +712,10 @@
     flex-wrap: wrap;
     height: 750px;
     overflow: auto;
+}
+
+.WishList .wish-list::-webkit-scrollbar {
+    display: none;
 }
 
 .wish-list-box:hover{
@@ -832,6 +840,10 @@
     margin-top: 30px;
 }
 
+.product-list::-webkit-scrollbar {
+    display: none;
+}
+
 .ProductList table {
     width: 100%;
     table-layout: fixed;
@@ -885,6 +897,10 @@
     margin-top: 30px;
 }
 
+.product-compare-list::-webkit-scrollbar {
+    display: none;
+}
+
 .ProductCompareList {
     height: calc(100% - 40px);
     position: relative;
@@ -907,10 +923,14 @@
 
 .ProductCompareList .pcl-product {
     max-height: calc(100% - 110px);
-    overflow-y: auto;
+    overflow-y: scroll;
     margin-bottom: 10px;
     margin-left: 10px;
     margin-right: 10px;
+}
+
+.ProductCompareList .pcl-product::-webkit-scrollbar {
+    display: none;
 }
 
 .pcl-btn-box {
@@ -964,6 +984,10 @@ a {
     overflow: auto;
     margin-left: 10px;
     margin-top: 30px;
+}
+
+.price-compare::-webkit-scrollbar {
+    display: none;
 }
 
 .compare-title {
@@ -1051,6 +1075,10 @@ a {
     margin-top: 30px;
 }
 
+.product-compare::-webkit-scrollbar {
+    display: none;
+}
+
 .product-compare .pc-title {
     top: 10px;
     left: 50%;
@@ -1071,6 +1099,10 @@ a {
     margin-bottom: 60px;
 }
 
+.product-compare .pc-product::-webkit-scrollbar {
+    display: none;
+}
+
 .product-compare .pc-img-box {
     height: 110px;
 }
@@ -1085,11 +1117,17 @@ a {
 .product-compare .pc-info {
     display: inline-block;
     width: 270px;
+    height: 434px;;
     margin: 20px;
     align-items: center; 
     background-color: #DBDCE7;
     border-radius: 10%;
     padding: 20px;
+    overflow-y: scroll;
+}
+
+.product-compare .pc-info::-webkit-scrollbar {
+    display: none;
 }
 
 .pc-info .pc-name {
