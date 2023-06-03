@@ -1322,6 +1322,14 @@ a {
     margin-right: 20px;
 }
 
+/* .MapSearchResults .search_results {
+    max-height: 550px;
+    overflow-y: auto;
+} */
+
+/* .MapSearchResults .search_results::-webkit-scrollbar {
+    display: none;
+} */
 
 /* Admin */
 

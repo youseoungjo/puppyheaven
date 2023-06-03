@@ -63,26 +63,6 @@ const AdminShoppingMall = () => {
         });
     }
 
-    // const handleRemove = async (event) => {
-    //     event.preventDefault();
-    //     const removedata = {
-    //         store: store,
-    //         name: name,
-    //         kg: kg,
-    //     };
-    //     console.log(`submit! ${name} ${kg}`);
-    //     console.log(removedata);
-    //     axios.post('http://localhost:3001/mallremove', removedata)
-    //     .then(response => {
-    //       console.log(response.data);
-    //       alert('쇼핑몰 상품이 삭제 되었습니다!');
-    //       navigate('/admin')
-    //     })
-    //     .catch(error => {
-    //       console.log('404error');
-    //     });
-    // }
-
 
     return (
         <div className='AdminShoppingMall'>
@@ -122,28 +102,6 @@ const AdminShoppingMall = () => {
                         <button type="submit">쇼핑몰 상품 등록</button>
                     </div>
                 </form>
-                {/* <form onSubmit={handleRemove}>
-                    <div className="shoppingMallName_form">
-                        <label>삭제할 상품의 쇼핑몰</label>
-                        <select className="category_input" value={store} onChange={handleStoreChange}>
-                            <option>쇼핑몰을 선택해주세요</option>
-                            <option value="11번가">11번가</option>
-                            <option value="G마켓">G마켓</option>
-                            <option value="쿠팡">쿠팡</option>
-                        </select>
-                    </div>
-                    <div className="weight_form">
-                        <label>삭제할 상품명</label>
-                        <input className="productName_input" type="text" value={name} onChange={handleNameChange} />
-                    </div>
-                    <div className="weight_form">
-                        <label>삭제할 상품의 중량</label>
-                        <input className="weight_input" type="number" value={kg} onChange={handleKgChange} />
-                    </div>
-                    <div>
-                        <button type="submit">쇼핑몰 상품 삭제</button>
-                    </div>
-                </form> */}
             </div>
         </div>
     )

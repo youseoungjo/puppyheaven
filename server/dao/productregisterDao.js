@@ -41,16 +41,4 @@ productregisterDao.createCoupangs = async (mallData) => {
   }
 };
 
-// productregisterDao.MallRemove = async (mallData) => {
-//   try {
-//     const result = await Eleven.destroy({
-//       where: {
-//         userId,
-//         productId,
-//       },
-//   } catch (error) {
-//     throw error;
-//   }
-// };
-
 module.exports = productregisterDao ;

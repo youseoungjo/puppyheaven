@@ -18,7 +18,6 @@ app.post('/login', userRouter);
 //상품 등록 / 삭제
 app.post('/productregister', productregisterRouter)
 app.post('/mallregister', productregisterRouter)
-app.post('/mallremove', productregisterRouter)
 
 //물품 정보 get
 app.get('/productdata', productRouter);

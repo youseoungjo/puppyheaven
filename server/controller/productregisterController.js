@@ -67,15 +67,3 @@ exports.MallRegister = async (req, res) => {
         res.status(500).json({ success: false, message: '쇼핑몰 등록 실패' });
     }
 };
-
-// exports.MallRemove = async (req, res) => {
-//   const { store, name, kg } = req.body;
-//   console.log(req.body);
-//   try {
-//     const result = await ProductRegisterDao.delete(store, name, kg);
-//     res.status(200).json(result);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ message: 'Internal server error' });
-//   }
-// };
